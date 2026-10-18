@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Day 1 — Emergency Medicine</title>
+<style>
+:root{
+  --bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e4e8ef;
+  --blue:#1769e0;--blue-soft:#edf4ff;--nav:#102033;--green:#138a54;--green-soft:#effaf4;
+  --red:#d9363e;--red-soft:#fff1f2;--amber:#b96c00;--amber-soft:#fff8e8;
+  --purple:#6e3ac4;--purple-soft:#f6f0ff;--shadow:0 10px 30px rgba(16,32,51,.07)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+.sidebar{background:var(--nav);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;margin:2px 8px 22px}
+.brand .logo{font-size:34px}.brand b{font-size:20px}.brand small{display:block;color:#b7c3d1;font-size:12px}
+.nav-label{font-size:11px;color:#8fa3b7;text-transform:uppercase;letter-spacing:.08em;margin:17px 9px 7px}
+.nav a{display:flex;gap:10px;align-items:center;padding:10px 11px;border-radius:10px;margin:4px 0;color:#e6edf5}
+.nav a:hover,.nav a.active{background:#1e4f84}
+.main{padding:22px 26px 44px;max-width:1500px;width:100%}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.search{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff}
+.btn.secondary{background:#eef2ff;color:#3143a5}
+.breadcrumb{font-size:13px;color:#4d6682;margin-bottom:9px}
+.page-title{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.page-title h1{font-size:34px;margin:0}.page-title p{margin:5px 0 0;color:var(--muted)}
+.day-badge{background:#eaf3ff;color:#245aa5;padding:10px 16px;border-radius:12px;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+.topic-menu{margin-top:16px}
+.topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.topic-btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:14px 12px;border-radius:13px;font-weight:800;transition:.15s}
+.topic-btn:hover{transform:translateY(-1px);border-color:#a9c7f4}
+.topic-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.panel{display:none;margin-top:18px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}
+.panel-head h2{margin:0;font-size:29px}.panel-head p{margin:5px 0 0;color:var(--muted)}
+.tag{background:#eef5ff;color:#2f63ac;border-radius:999px;padding:5px 9px;font-size:12px;white-space:nowrap}
+.columns{display:grid;grid-template-columns:1.35fr .75fr;gap:14px}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}
+.box h3{margin:0 0 8px;font-size:18px}
+.box p,.box li{line-height:1.56}
+.box ul,.box ol{margin:6px 0 0 20px;padding:0}
+.blue{background:var(--blue-soft);border-color:#d4e5ff}
+.green{background:var(--green-soft);border-color:#d6efdf}
+.red{background:var(--red-soft);border-color:#ffd7da}
+.amber{background:var(--amber-soft);border-color:#ffe6b0}
+.purple{background:var(--purple-soft);border-color:#e6d8ff}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f8fafc}
+code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.kv{display:grid;grid-template-columns:180px 1fr;gap:7px 12px}
+.kv b{color:#243752}
+.additions{margin-top:15px;border:1px dashed #b8c6d5;background:#fbfcfe;border-radius:13px;padding:14px}
+.additions textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}
+.save-row{display:flex;gap:10px;align-items:center;margin-top:8px}.save-status{font-size:12px;color:var(--green)}
+.rapid{margin-top:18px}.rapid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.rapid-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px;display:flex;justify-content:space-between;gap:12px}
+.tracker{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tracker input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.42);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.open{display:flex}.modalbox{background:#fff;border-radius:18px;padding:20px;width:min(720px,96vw);max-height:88vh;overflow:auto}
+.modalbox input,.modalbox textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.modalbox textarea{min-height:120px}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.note-line{font-size:12px;color:var(--muted);margin-top:6px}
+.footer-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px}
+@media(max-width:1050px){.topic-grid{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.tracker{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto;gap:5px}.nav-label{display:none}.nav a{white-space:nowrap}.main{padding:14px}.topic-grid{grid-template-columns:1fr}.rapid-grid,.tracker{grid-template-columns:1fr}.page-title{flex-direction:column}.kv{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
+  <div class="nav-label">Navigation</div>
+  <nav class="nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="index.html#plan">📅 Study Plan</a>
+    <a class="active" href="day1.html">🚨 Day 1 — Emergency</a>
+    <a href="index.html#subjects">📖 Notes by Subject</a>
+    <a href="index.html#mistakes">⚠️ My Mistakes</a>
+    <a href="index.html#resources">🔗 Resources</a>
+  </nav>
+  <div class="nav-label">Quick access</div>
+  <nav class="nav">
+    <a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
+    <a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
+  </nav>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <input class="search" id="searchBox" placeholder="Search within Day 1...">
+    <button class="btn" onclick="openModal('noteModal')">+ Add Note</button>
+  </div>
+
+  <div class="breadcrumb">Emergency Medicine › Day 1</div>
+  <div class="page-title">
+    <div><h1>Day 1 — Emergency Medicine</h1><p>Press a topic button to open the full high-yield DOH review.</p></div>
+    <div class="day-badge">📅 Day 1</div>
+  </div>
+
+  <section class="card topic-menu">
+    <div class="topic-grid">
+      <button class="topic-btn active" data-topic="abcde" onclick="showTopic('abcde')">1. ABCDE Approach</button>
+      <button class="topic-btn" data-topic="shock" onclick="showTopic('shock')">2. Shock</button>
+      <button class="topic-btn" data-topic="sepsis" onclick="showTopic('sepsis')">3. Sepsis</button>
+      <button class="topic-btn" data-topic="anaphylaxis" onclick="showTopic('anaphylaxis')">4. Anaphylaxis</button>
+      <button class="topic-btn" data-topic="ams" onclick="showTopic('ams')">5. AMS / Hypoglycemia</button>
+      <button class="topic-btn" data-topic="heat" onclick="showTopic('heat')">6. Heat Illness</button>
+      <button class="topic-btn" data-topic="burns" onclick="showTopic('burns')">7. Burns</button>
+      <button class="topic-btn" data-topic="trauma" onclick="showTopic('trauma')">8. Trauma Basics</button>
+    </div>
+  </section>
+
+  <section id="panel-abcde" class="panel active">
+    <div class="panel-head"><div><h2>1. ABCDE Approach</h2><p>Universal first approach to an unstable patient.</p></div><span class="tag">Foundation</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Definition & exam principle</h3><p>ABCDE is a structured primary assessment designed to identify immediately reversible life threats. <b>Treat the problem as soon as you identify it; do not finish the whole survey first.</b></p></div>
+        <div class="box"><h3>A — Airway</h3><ul><li>Ask if the patient can speak clearly; inability to speak normally can indicate airway compromise.</li><li>Look/listen for stridor, gurgling, snoring, foreign body, facial/neck trauma, blood/vomit, soot, hoarseness.</li><li>Immediate actions may include positioning, suction, visible foreign-body removal, airway adjuncts, bag-mask ventilation, and definitive airway if needed.</li><li>Trauma: maintain cervical-spine protection while managing the airway.</li></ul></div>
+        <div class="box"><h3>B — Breathing</h3><ul><li>Assess RR, SpO₂, chest expansion, respiratory effort, breath sounds, cyanosis and tracheal position.</li><li>Life threats: tension pneumothorax, massive hemothorax, severe asthma, pulmonary edema, severe hypoxemia.</li><li><b>Tension pneumothorax is a clinical emergency: decompress immediately; do not delay for CXR.</b></li></ul></div>
+        <div class="box"><h3>C — Circulation</h3><ul><li>HR, BP, pulses, capillary refill, skin temperature, JVP, ECG and major bleeding.</li><li>Control catastrophic external hemorrhage immediately.</li><li>Obtain IV/IO access, send relevant labs/crossmatch, and resuscitate according to the cause.</li><li>Normal BP does not exclude early shock.</li></ul></div>
+        <div class="box"><h3>D — Disability / E — Exposure</h3><ul><li>D: AVPU/GCS, pupils, focal deficit, seizures, bedside glucose.</li><li>E: expose sufficiently to find rash, bleeding, burns, trauma, infection source; maintain dignity and prevent hypothermia.</li></ul></div>
+      </div>
+      <div>
+        <div class="box green"><h3>🔥 Must memorize</h3><p><b>Airway → Breathing → Circulation → Brain → Body</b></p><p>Find a life threat → treat it → continue ABCDE.</p></div>
+        <div class="box red"><h3>Common wrong-answer traps</h3><ul><li>CT brain before checking glucose in a confused unstable patient.</li><li>Chest X-ray before treating tension pneumothorax.</li><li>Ignoring C-spine precautions in trauma.</li><li>Completing the entire exam before intervening.</li></ul></div>
+        <div class="box amber"><h3>Don't confuse with</h3><p><b>Primary survey</b> = immediate life threats. <b>Secondary survey</b> = detailed head-to-toe examination after stabilization.</p></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-abcde"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('abcde')">Save my addition</button><span id="saved-abcde" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-shock" class="panel">
+    <div class="panel-head"><div><h2>2. Shock</h2><p>Recognize the type from the vignette and know the first priorities.</p></div><span class="tag">Very high yield</span></div>
+    <div class="box blue"><h3>Definition</h3><p>Shock is inadequate tissue perfusion causing cellular hypoxia and organ dysfunction. Hypotension is common but may be absent early.</p></div>
+    <div class="box table-wrap"><h3>Compare the 4 major shock patterns</h3><table>
+      <tr><th>Type</th><th>Classic clues</th><th>JVP / lungs</th><th>Immediate priorities</th></tr>
+      <tr><td><b>Hypovolemic</b></td><td>Hemorrhage, vomiting/diarrhea, dehydration; tachycardia, cool clammy skin</td><td>Low JVP, usually clear lungs</td><td>Stop losses/bleeding; crystalloid for nonhemorrhagic loss; blood-based resuscitation for major hemorrhage</td></tr>
+      <tr><td><b>Cardiogenic</b></td><td>MI, severe HF, myocarditis; chest pain, cool skin</td><td>Raised JVP, crackles/pulmonary edema</td><td>Treat cardiac cause; avoid indiscriminate large fluid boluses; vasoactive support if needed</td></tr>
+      <tr><td><b>Distributive</b></td><td>Sepsis, anaphylaxis, neurogenic; warm extremities may occur early</td><td>Variable</td><td>Fluids + cause-specific treatment ± vasopressor</td></tr>
+      <tr><td><b>Obstructive</b></td><td>Massive PE, tension pneumothorax, tamponade</td><td>Often raised JVP; lungs depend on cause</td><td>Relieve obstruction urgently</td></tr>
+    </table></div>
+    <div class="columns">
+      <div>
+        <div class="box"><h3>Clinical signs of impaired perfusion</h3><ul><li>Altered mental status</li><li>Oliguria</li><li>Tachycardia</li><li>Cool/mottled peripheries, except early distributive shock may be warm</li><li>Prolonged capillary refill</li><li>Elevated lactate can support hypoperfusion but is not specific.</li></ul></div>
+        <div class="box"><h3>General initial approach</h3><ul><li>ABCDE, monitoring, ECG, IV/IO access.</li><li>Oxygen if hypoxemic.</li><li>Identify the cause and use cause-specific resuscitation.</li><li>Repeated reassessment is essential.</li></ul></div>
+      </div>
+      <div>
+        <div class="box green"><h3>Pattern shortcuts</h3><p><b>Dry + flat neck veins</b> → hypovolemia.</p><p><b>Wet lungs + high JVP</b> → cardiogenic.</p><p><b>Warm + infection</b> → septic/distributive.</p><p><b>High JVP + sudden collapse</b> → obstructive until proven otherwise.</p></div>
+        <div class="box red"><h3>Traps</h3><ul><li>Normal BP = no shock ❌</li><li>Large fluid bolus for every shock type ❌</li><li>Missing PE/tamponade/tension PTX in sudden deterioration ❌</li></ul></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-shock"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('shock')">Save my addition</button><span id="saved-shock" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-sepsis" class="panel">
+    <div class="panel-head"><div><h2>3. Sepsis & Septic Shock</h2><p>Current 2026 Surviving Sepsis Campaign principles.</p></div><span class="tag">Emergency</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Recognition</h3><p>Sepsis is life-threatening organ dysfunction caused by a dysregulated response to infection. Sepsis is a <b>clinical diagnosis</b>; no single biomarker rules it in or out.</p><ul><li>Possible clues: hypotension, tachypnea, altered mentation, oliguria, AKI, hypoxemia, thrombocytopenia, rising bilirubin, lactate elevation.</li><li>Blood cultures: obtain as soon as possible and ideally before antimicrobials, provided this does not meaningfully delay treatment.</li><li>Measure lactate in suspected sepsis/septic shock.</li></ul></div>
+        <div class="box"><h3>Antibiotics</h3><ul><li><b>Septic shock / probable or definite sepsis:</b> antimicrobials immediately, ideally within 1 hour of recognition.</li><li><b>Possible sepsis without shock:</b> rapid diagnostic assessment; if infection concern persists, antibiotics within 3 hours.</li><li>Use local antibiogram/source/risk factors to select empiric therapy; de-escalate when cultures clarify the diagnosis.</li></ul></div>
+        <div class="box"><h3>Fluids</h3><ul><li>Crystalloids are first-line; balanced crystalloids are generally preferred over 0.9% saline during initial resuscitation.</li><li>For sepsis-induced hypoperfusion or septic shock, 2026 SSC suggests <b>at least 30 mL/kg IV crystalloid in the first 3 hours</b>, individualized to the patient.</li><li>Reassess frequently to avoid under- or over-resuscitation, especially in HF/renal disease.</li></ul></div>
+        <div class="box"><h3>Vasopressors</h3><ul><li><b>Norepinephrine = first-line vasopressor.</b></li><li>Initial MAP target: <b>65 mmHg</b>.</li><li>If norepinephrine dose escalates, vasopressin may be added; epinephrine may be added if MAP remains inadequate.</li><li>In unstable septic shock, vasopressors may be started concurrently with fluids; peripheral initiation can be appropriate rather than delaying for central access.</li></ul></div>
+        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+          <div class="kv"><b>Initial crystalloid</b><span><code class="dose">≥30 mL/kg IV</code> within the first 3 h for sepsis-induced hypoperfusion/septic shock, then reassess</span></div>
+          <div class="kv"><b>MAP target</b><span><code class="dose">65 mmHg</code></span></div>
+          <div class="kv"><b>Antibiotics</b><span>Septic shock / high-likelihood sepsis: immediately, ideally within <code class="dose">1 hour</code></span></div>
+        </div>
+        <div class="box"><h3>Source control</h3><p>Drain abscesses, remove infected devices, decompress obstructed systems, and address the anatomic source as soon as feasible.</p></div>
+      </div>
+      <div>
+        <div class="box green"><h3>🔥 Must memorize</h3><p>Sepsis + hypoperfusion → <b>crystalloid + antibiotics + source control</b>.</p><p>Persistent hypotension → <b>norepinephrine</b>.</p><p>MAP → <b>65 mmHg</b>.</p></div>
+        <div class="box red"><h3>Exam traps</h3><ul><li>Waiting for every culture before treating septic shock.</li><li>Using qSOFA as the only screening tool.</li><li>Giving endless fluids without reassessment.</li><li>Forgetting source control.</li></ul></div>
+        <div class="box amber"><h3>Important nuance</h3><p>Fluid volume is not a fixed “blind bolus.” The guideline suggests 30 mL/kg initially for sepsis-induced hypoperfusion/septic shock, but patient factors and response must guide ongoing resuscitation.</p></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-sepsis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('sepsis')">Save my addition</button><span id="saved-sepsis" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-anaphylaxis" class="panel">
+    <div class="panel-head"><div><h2>4. Anaphylaxis</h2><p>Do not delay epinephrine.</p></div><span class="tag">Must memorize</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Classic presentation</h3><p>Rapid systemic hypersensitivity reaction after a likely trigger, with airway, breathing, circulatory and/or skin/mucosal involvement. Severe bronchospasm or hypotension can occur even if rash is absent.</p></div>
+        <div class="box"><h3>First-line treatment</h3><p><b>IM epinephrine in the mid-anterolateral thigh.</b></p><p><code class="dose">0.01 mg/kg of 1 mg/mL (1:1000), max 0.5 mg adult</code></p><p>Repeat every <b>5–15 minutes</b> if symptoms persist.</p></div>
+        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+          <div class="kv"><b>IM epinephrine</b><span><code class="dose">0.01 mg/kg</code> of 1 mg/mL, adult max <code class="dose">0.5 mg</code></span></div>
+          <div class="kv"><b>Repeat interval</b><span><code class="dose">Every 5–15 min</code> if needed</span></div>
+        </div>
+        <div class="box"><h3>Supportive treatment</h3><ul><li>Call for help; ABC assessment.</li><li>Position appropriately: generally supine unless respiratory distress/vomiting requires modification.</li><li>High-flow oxygen if needed.</li><li>Large-bore IV access; rapid isotonic crystalloid for hypotension.</li><li>Inhaled beta-agonist for persistent bronchospasm.</li><li>Antihistamines/corticosteroids are adjunctive; they do not replace epinephrine.</li></ul></div>
+        <div class="box"><h3>Biphasic reaction</h3><p>Symptoms can recur after initial resolution without re-exposure. Observation duration depends on severity, treatment requirements, comorbidities and access to emergency care.</p></div>
+      </div>
+      <div>
+        <div class="box green"><h3>🔥 Memory line</h3><p><b>Anaphylaxis → IM epinephrine first.</b></p></div>
+        <div class="box red"><h3>Traps</h3><ul><li>Antihistamine before epinephrine.</li><li>Waiting for hypotension.</li><li>Routine IV epinephrine bolus in a non-monitored setting.</li><li>Standing/walking a hypotensive patient.</li></ul></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-anaphylaxis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('anaphylaxis')">Save my addition</button><span id="saved-anaphylaxis" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-ams" class="panel">
+    <div class="panel-head"><div><h2>5. Altered Mental Status / Hypoglycemia</h2><p>Prioritize reversible causes.</p></div><span class="tag">Common vignette</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Immediate approach</h3><ul><li>ABCDE and vitals.</li><li><b>Bedside glucose early.</b></li><li>Assess oxygenation, temperature, medications/toxins, infection, trauma, seizures and focal neurologic deficits.</li><li>Consider opioid toxicity, stroke, sepsis, CO exposure, electrolyte disorders and endocrine emergencies depending on context.</li></ul></div>
+        <div class="box"><h3>Hypoglycemia clues</h3><p>Autonomic: sweating, tremor, palpitations, hunger. Neuroglycopenic: confusion, behavior change, seizure, focal-like deficit, coma.</p></div>
+        <div class="box"><h3>Treatment</h3><ul><li>Alert and able to swallow: rapid oral glucose/carbohydrate, then recheck.</li><li>Severe/unconscious: IV dextrose when IV access is available.</li><li>No IV access: glucagon is an option.</li><li>Recheck glucose after treatment and give longer-acting carbohydrate when appropriate.</li><li>Identify the cause: insulin/sulfonylurea, missed food, alcohol, sepsis, renal/hepatic failure, adrenal insufficiency.</li></ul></div>
+        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+          <div class="kv"><b>Conscious adult</b><span><code class="dose">15 g</code> fast-acting carbohydrate, recheck in <code class="dose">15 min</code></span></div>
+          <div class="kv"><b>Repeat</b><span>If still low, repeat fast-acting carbohydrate and recheck</span></div>
+          <div class="kv"><b>Severe / unable to swallow</b><span>Use IV dextrose per local formulation/protocol; glucagon if IV access is unavailable</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="box green"><h3>🔥 Must memorize</h3><p><b>Altered mental status → glucose early.</b></p></div>
+        <div class="box red"><h3>Traps</h3><ul><li>CT first before checking glucose.</li><li>Failing to recheck after treatment.</li><li>Missing prolonged/recurrent hypoglycemia from sulfonylureas or renal impairment.</li></ul></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-ams"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('ams')">Save my addition</button><span id="saved-ams" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-heat" class="panel">
+    <div class="panel-head"><div><h2>6. Heat Illness</h2><p>Heat stroke is defined by CNS dysfunction, not by dry skin.</p></div><span class="tag">Pattern recognition</span></div>
+    <div class="box table-wrap"><h3>Heat exhaustion vs heat stroke</h3><table>
+      <tr><th></th><th>Heat exhaustion</th><th>Heat stroke</th></tr>
+      <tr><td><b>Mental status</b></td><td>No severe CNS dysfunction</td><td><b>Delirium, confusion, seizure or coma</b></td></tr>
+      <tr><td><b>Temperature</b></td><td>Elevated</td><td>Marked hyperthermia, commonly around ≥40°C but clinical diagnosis depends on CNS dysfunction and heat exposure</td></tr>
+      <tr><td><b>Sweating</b></td><td>Usually present</td><td>May be present or absent</td></tr>
+      <tr><td><b>Treatment</b></td><td>Cooling + oral/IV fluid as appropriate</td><td><b>Immediate rapid active cooling + ABC resuscitation</b></td></tr>
+    </table></div>
+    <div class="columns">
+      <div>
+        <div class="box"><h3>Heat stroke complications</h3><ul><li>Rhabdomyolysis</li><li>AKI</li><li>Hepatic injury</li><li>Coagulopathy/DIC</li><li>Electrolyte abnormalities</li><li>Arrhythmia/shock</li></ul></div>
+        <div class="box"><h3>Management priorities</h3><ul><li>ABCDE.</li><li>Rapid active cooling; do not wait for lab results.</li><li>Monitor core temperature, renal function, CK, electrolytes, coagulation and liver injury as indicated.</li></ul></div>
+      </div>
+      <div>
+        <div class="box green"><h3>Memory</h3><p><b>Heat stroke = heat exposure + hyperthermia + CNS dysfunction.</b></p></div>
+        <div class="box red"><h3>Trap</h3><p>Dry skin is not required; exertional heat stroke often has sweating.</p></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-heat"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('heat')">Save my addition</button><span id="saved-heat" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-burns" class="panel">
+    <div class="panel-head"><div><h2>7. Burns</h2><p>Airway, burn depth/TBSA, fluid resuscitation, and complications.</p></div><span class="tag">High yield</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Initial approach</h3><ul><li>Stop the burning process; remove hot/wet clothing and constricting jewelry if safe.</li><li>ABCDE.</li><li>Assess burn depth and TBSA.</li><li>Cover with clean dry material after cooling; avoid hypothermia.</li></ul></div>
+        <div class="box"><h3>Inhalation injury</h3><p>Clues: enclosed-space fire, facial burns, singed nasal hair, soot, carbonaceous sputum, hoarseness, stridor, respiratory distress.</p><p><b>Airway edema can progress rapidly → early airway planning.</b></p></div>
+        <div class="box"><h3>TBSA essentials</h3><ul><li>Rule of Nines is a rapid adult estimate.</li><li>Patient palm including fingers ≈ 1% TBSA for scattered small burns.</li><li>Superficial/first-degree erythema is generally not included in TBSA used for formal fluid resuscitation.</li></ul></div>
+        <div class="box"><h3>Burn fluid formulas — exam vs current guideline</h3><p><b>Classic exam formula (Parkland):</b> <code class="dose">4 mL × kg × %TBSA</code> lactated Ringer's in first 24 h; half in first 8 h from time of burn, remainder over next 16 h.</p>
+        <p><b>Current ABA 2024 adult burn-shock guidance:</b> for adults with burns ≥20% TBSA, consider starting around <code class="dose">2 mL/kg/%TBSA</code> to reduce excessive fluid volumes, then titrate to clinical response.</p>
+        <p>For exam questions, follow the formula specifically requested; if asked contemporary management, know the ABA update.</p></div>
+        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+          <div class="kv"><b>Classic Parkland</b><span><code class="dose">4 mL × kg × %TBSA</code> over 24 h</span></div>
+          <div class="kv"><b>Timing</b><span>Half in first <code class="dose">8 h</code> from burn time; remainder over next <code class="dose">16 h</code></span></div>
+          <div class="kv"><b>Current ABA adult starting point</b><span><code class="dose">2 mL/kg/%TBSA</code> for ≥20% TBSA, then titrate</span></div>
+        </div>
+        <div class="box"><h3>Monitoring</h3><p>Urine output and overall clinical response guide titration. Watch for under-resuscitation and “fluid creep.”</p></div>
+      </div>
+      <div>
+        <div class="box red"><h3>Red flags / burn-center-type concerns</h3><ul><li>Airway/inhalation injury</li><li>Large TBSA burns</li><li>Electrical or chemical burns</li><li>Circumferential burns</li><li>Face, hands, genitalia/perineum, major joints</li><li>Associated trauma or significant comorbidity</li></ul></div>
+        <div class="box green"><h3>Memory</h3><p><b>Facial burn + soot/hoarseness → inhalation injury → early airway.</b></p></div>
+        <div class="box amber"><h3>Don't forget</h3><p>Electrical injury may cause deep tissue damage, rhabdomyolysis and arrhythmias despite limited skin findings.</p></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-burns"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('burns')">Save my addition</button><span id="saved-burns" class="save-status"></span></div></div>
+  </section>
+
+  <section id="panel-trauma" class="panel">
+    <div class="panel-head"><div><h2>8. Trauma Basics</h2><p>Primary survey, hemorrhage control and secondary survey.</p></div><span class="tag">ABCDE + C-spine</span></div>
+    <div class="columns">
+      <div>
+        <div class="box blue"><h3>Primary survey</h3><ul><li><b>A:</b> Airway with cervical-spine protection.</li><li><b>B:</b> Breathing; immediately treat chest life threats.</li><li><b>C:</b> Circulation with hemorrhage control.</li><li><b>D:</b> Disability — GCS/pupils/neurologic status.</li><li><b>E:</b> Exposure/environment; prevent hypothermia.</li></ul></div>
+        <div class="box"><h3>Catastrophic hemorrhage</h3><ul><li>Direct pressure and appropriate hemorrhage-control measures.</li><li>In major hemorrhage, prioritize blood-product-based resuscitation and definitive bleeding control rather than large-volume crystalloid.</li><li>Consider pelvic bleeding, chest/abdomen/retroperitoneum and long-bone sources when external bleeding is absent.</li></ul></div>
+        <div class="box"><h3>Chest trauma life threats</h3><ul><li>Tension pneumothorax</li><li>Massive hemothorax</li><li>Open pneumothorax</li><li>Cardiac tamponade</li></ul></div>
+        <div class="box"><h3>Secondary survey</h3><p>After immediate threats are controlled: AMPLE history, head-to-toe exam, focused imaging/labs, reassessment and definitive disposition.</p></div>
+      </div>
+      <div>
+        <div class="box green"><h3>Memory</h3><p><b>Primary survey saves life; secondary survey finds the rest.</b></p></div>
+        <div class="box red"><h3>Traps</h3><ul><li>Detailed history before stabilizing ABCs.</li><li>Sending an unstable patient to CT before addressing shock.</li><li>Forgetting hypothermia prevention.</li><li>Missing repeated reassessment after an intervention.</li></ul></div>
+      </div>
+    </div>
+    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-trauma"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('trauma')">Save my addition</button><span id="saved-trauma" class="save-status"></span></div></div>
+  </section>
+
+  <section class="card rapid">
+    <div class="panel-head"><div><h2>🔥 Day 1 Rapid Review</h2><p>These should become automatic.</p></div><span class="tag">30–40 ExamCure questions</span></div>
+    <div class="rapid-grid">
+      <div class="rapid-item"><span>Anaphylaxis</span><b>IM epinephrine</b></div>
+      <div class="rapid-item"><span>Septic shock vasopressor</span><b>Norepinephrine</b></div>
+      <div class="rapid-item"><span>Septic shock MAP</span><b>65 mmHg</b></div>
+      <div class="rapid-item"><span>Suspected tension PTX</span><b>Immediate decompression</b></div>
+      <div class="rapid-item"><span>Altered mental status</span><b>Check glucose</b></div>
+      <div class="rapid-item"><span>Heat stroke</span><b>CNS dysfunction + hyperthermia</b></div>
+      <div class="rapid-item"><span>Burn inhalation clue</span><b>Soot/hoarseness → early airway</b></div>
+      <div class="rapid-item"><span>Trauma</span><b>ABCDE + C-spine</b></div>
+    </div>
+    <div class="tracker" style="margin-top:14px">
+      <div><label class="note-line">Questions</label><input id="ecq" type="number"></div>
+      <div><label class="note-line">Score %</label><input id="ecscore" type="number"></div>
+      <div><label class="note-line">Wrong / flagged</label><input id="ecwrong" type="number"></div>
+      <div><label class="note-line">Weakest topic</label><input id="ecweak" type="text"></div>
+    </div>
+    <button class="btn" style="margin-top:12px" onclick="saveTracker()">Save Day 1 tracker</button>
+  </section>
+
+  <section class="card footer-actions">
+    <div><b>Finished Day 1?</b><div class="note-line">Mark complete only after you review all 8 topics and practice questions.</div></div>
+    <button class="btn" onclick="markDayComplete()">Mark Day 1 complete</button>
+  </section>
+</main>
+</div>
+
+<div id="noteModal" class="modal"><div class="modalbox">
+  <h2>Add Note</h2>
+  <label>Title</label><input id="noteTitle" type="text">
+  <br><br><label>Notes</label><textarea id="noteBody"></textarea>
+  <div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div>
+</div></div>
+<div id="mistakeModal" class="modal"><div class="modalbox">
+  <h2>Add ExamCure Mistake</h2>
+  <label>Topic</label><input id="mTopic" type="text"><br><br>
+  <label>Question clue</label><input id="mClue" type="text"><br><br>
+  <label>Correct answer</label><input id="mAnswer" type="text"><br><br>
+  <label>One-line rule</label><input id="mRule" type="text">
+  <div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
+</div></div>
+
+<script>
+const topics=['abcde','shock','sepsis','anaphylaxis','ams','heat','burns','trauma'];
+
+function showTopic(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  const panel=document.getElementById('panel-'+id);
+  const btn=document.querySelector('[data-topic="'+id+'"]');
+  if(panel) panel.classList.add('active');
+  if(btn) btn.classList.add('active');
+  localStorage.setItem('day1_active_topic',id);
+  window.scrollTo({top:document.querySelector('.topic-menu').offsetTop+document.querySelector('.topic-menu').offsetHeight+8,behavior:'smooth'});
+}
+function saveAddition(id){
+  const el=document.getElementById('add-'+id);
+  localStorage.setItem('day1_add_'+id,el.value);
+  const st=document.getElementById('saved-'+id); st.textContent='Saved'; setTimeout(()=>st.textContent='',1500);
+}
+function loadSaved(){
+  topics.forEach(id=>{
+    const el=document.getElementById('add-'+id);
+    if(el) el.value=localStorage.getItem('day1_add_'+id)||'';
+  });
+  const t=JSON.parse(localStorage.getItem('day1_tracker')||'{}');
+  if(t.q!=null) document.getElementById('ecq').value=t.q;
+  if(t.score!=null) document.getElementById('ecscore').value=t.score;
+  if(t.wrong!=null) document.getElementById('ecwrong').value=t.wrong;
+  if(t.weak) document.getElementById('ecweak').value=t.weak;
+  showTopic(localStorage.getItem('day1_active_topic')||'abcde');
+}
+function saveTracker(){
+  const data={q:document.getElementById('ecq').value,score:document.getElementById('ecscore').value,wrong:document.getElementById('ecwrong').value,weak:document.getElementById('ecweak').value};
+  localStorage.setItem('day1_tracker',JSON.stringify(data)); alert('Day 1 tracker saved.');
+}
+function markDayComplete(){localStorage.setItem('day1_complete','true');alert('Day 1 marked complete.')}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function saveGeneralNote(){
+  const arr=JSON.parse(localStorage.getItem('study_notes')||'[]');
+  arr.push({title:document.getElementById('noteTitle').value,body:document.getElementById('noteBody').value,date:new Date().toLocaleDateString()});
+  localStorage.setItem('study_notes',JSON.stringify(arr));closeModal('noteModal');alert('Note saved in this browser.');
+}
+function saveMistake(){
+  const arr=JSON.parse(localStorage.getItem('study_mistakes')||'[]');
+  arr.push({topic:document.getElementById('mTopic').value,clue:document.getElementById('mClue').value,answer:document.getElementById('mAnswer').value,rule:document.getElementById('mRule').value,date:new Date().toLocaleDateString()});
+  localStorage.setItem('study_mistakes',JSON.stringify(arr));closeModal('mistakeModal');alert('Mistake saved in this browser.');
+}
+document.getElementById('searchBox').addEventListener('input',e=>{
+  const q=e.target.value.toLowerCase().trim();
+  if(!q) return;
+  const hit=topics.find(id=>document.getElementById('panel-'+id).innerText.toLowerCase().includes(q));
+  if(hit) showTopic(hit);
+});
+document.addEventListener('DOMContentLoaded',loadSaved);
+</script>
+</body>
+</html>
