@@ -5,6 +5,7 @@ let notes=load("study_notes",[]);
 let mistakes=load("study_mistakes",[]);
 let stats=load("study_stats",[]);
 let dayDone=load("day_done",Array(30).fill(false));
+
 function updateKPIs(){
   const d=dayDone.filter(Boolean).length;
   const q=stats.reduce((a,s)=>a+(+s.q||0),0);
@@ -39,4 +40,37 @@ function markDay1(){
   dayDone[0]=true;save("day_done",dayDone);updateKPIs();
   alert("Day 1 marked complete.");
 }
-updateKPIs();
+
+// Per-topic personal notes (saved in this browser)
+function saveTopicNote(topicId){
+  const el=document.getElementById("note-"+topicId);
+  if(!el) return;
+  localStorage.setItem("day1_"+topicId, el.value);
+  const status=document.getElementById("status-"+topicId);
+  if(status){
+    status.textContent="Saved";
+    setTimeout(()=>status.textContent="",1500);
+  }
+}
+function loadTopicNotes(){
+  ["abcde","shock","sepsis","anaphylaxis","ams","heat","burns","trauma"].forEach(id=>{
+    const el=document.getElementById("note-"+id);
+    if(el) el.value=localStorage.getItem("day1_"+id)||"";
+  });
+}
+function saveExamCure(){
+  const q=+document.getElementById("ecq").value||0;
+  const score=+document.getElementById("ecscore").value||0;
+  const wrong=+document.getElementById("ecwrong").value||0;
+  const weak=document.getElementById("ecweak").value.trim();
+  localStorage.setItem("day1_examcure",JSON.stringify({q,score,wrong,weak}));
+  alert("Day 1 ExamCure tracker saved.");
+}
+function loadExamCure(){
+  const d=JSON.parse(localStorage.getItem("day1_examcure")||"{}");
+  if(document.getElementById("ecq")) document.getElementById("ecq").value=d.q||"";
+  if(document.getElementById("ecscore")) document.getElementById("ecscore").value=d.score||"";
+  if(document.getElementById("ecwrong")) document.getElementById("ecwrong").value=d.wrong||"";
+  if(document.getElementById("ecweak")) document.getElementById("ecweak").value=d.weak||"";
+}
+document.addEventListener("DOMContentLoaded",()=>{updateKPIs();loadTopicNotes();loadExamCure();});
