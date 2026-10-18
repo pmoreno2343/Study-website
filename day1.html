@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Day 1 — Emergency Medicine</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="shell"><aside class="sidebar"><div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div><div class="nav-label">Navigation</div><nav class="nav"><a href="index.html">🏠 Home</a><a href="index.html#plan">📅 Study Plan</a><a class="active" href="day1.html">🚨 Day 1 — Emergency</a><a href="index.html#subjects">📖 Notes by Subject</a><a href="index.html#mistakes">⚠️ My Mistakes</a><a href="index.html#resources">🔗 Resources</a></nav><div class="nav-label">Quick access</div><nav class="nav"><a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a><a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a></nav></aside>
+<main class="main">
+<div class="top"><input class="search" placeholder="Search notes, topics, or questions..."><button class="btn" onclick="openModal('noteModal')">+ Add Note</button></div>
+<div class="breadcrumb">Emergency Medicine &nbsp;›&nbsp; Day 1 &nbsp;›&nbsp; ABCDE Approach</div>
+<div class="page-title"><div><h1>Day 1 — Emergency Medicine</h1><p>Topic 1: ABCDE approach to the unstable patient</p></div><div class="day-badge">📅 Day 1</div></div>
+
+<section class="card definition">
+<h2>🎯 Definition</h2>
+<p><b>ABCDE</b> is the systematic approach to any acutely ill or unstable patient.</p>
+<p><b>Key principle:</b> Treat life-threatening problems immediately when you find them.</p>
+</section>
+
+<section class="abc-card red"><div class="letter">A</div><div><h3>Airway</h3><ul><li>Can the patient speak normally?</li><li>Look for stridor, gurgling, snoring, foreign body, facial/neck trauma, burns, hoarseness.</li><li>In trauma: protect cervical spine.</li></ul></div><div class="action-box"><b>Immediate actions</b><br>• Open airway<br>• Suction / remove obstruction<br>• Airway adjunct if needed<br>• Prepare for intubation if threatened</div></section>
+
+<section class="abc-card blue"><div class="letter">B</div><div><h3>Breathing</h3><ul><li>Assess RR, SpO₂, chest expansion, breath sounds, work of breathing, cyanosis.</li><li>Identify life threats: tension pneumothorax, severe asthma, pulmonary edema, massive PE.</li></ul></div><div class="action-box"><b>Key rule</b><br>If tension pneumothorax is suspected → treat immediately. Do not wait for chest X-ray.</div></section>
+
+<section class="abc-card green"><div class="letter">C</div><div><h3>Circulation</h3><ul><li>Assess HR, BP, pulses, capillary refill, skin temperature, JVP, major bleeding, ECG.</li><li>Gain IV/IO access; send labs; give fluids/blood products as appropriate.</li></ul></div><div class="action-box"><b>Important</b><br>Control hemorrhage.<br>Hypotension is a late sign of shock; normal BP does not exclude poor perfusion.</div></section>
+
+<section class="abc-card amber"><div class="letter">D</div><div><h3>Disability</h3><ul><li>Assess consciousness/GCS, pupils, limb movement, seizures.</li><li>Always check bedside glucose in any confused or unconscious patient.</li></ul></div><div class="action-box"><b>Key rule</b><br>Altered mental status → check glucose early. Do not jump to CT before glucose in an unstable patient.</div></section>
+
+<section class="abc-card violet"><div class="letter">E</div><div><h3>Exposure</h3><ul><li>Expose fully enough to look for rash, bleeding, trauma, burns, infection source, swelling.</li><li>Prevent hypothermia, especially in trauma.</li></ul></div><div class="action-box"><b>Key points</b><br>Examine the whole patient.<br>Look for hidden injuries.<br>Keep the patient warm.</div></section>
+
+<section class="side-panels">
+<div class="card panel high"><h3>🔥 High-Yield Points</h3><ul><li>Treat life threats immediately.</li><li>Airway obstruction kills first.</li><li>Tension pneumothorax → immediate treatment.</li><li>Hypotension can be a late sign of shock.</li><li>Always check glucose in altered mental status.</li><li>Prevent hypothermia during exposure.</li></ul></div>
+<div class="card panel memory"><h3>🧠 Memory Line</h3><p><b>Airway → Breathing → Circulation → Brain → Body</b></p><p>“Find a life threat → treat it → then continue ABCDE.”</p></div>
+<div class="card panel traps"><h3>⚠️ Common Traps</h3><ul><li>Chest X-ray first in suspected tension pneumothorax.</li><li>CT brain before checking glucose.</li><li>Finishing the entire exam before intervention.</li><li>Ignoring cervical spine protection in trauma.</li></ul></div>
+<div class="card panel selfcheck"><h3>☑ Quick Self-Check</h3><label class="check"><input type="checkbox"> Can the patient speak?</label><label class="check"><input type="checkbox"> Have I checked SpO₂ and breathing effort?</label><label class="check"><input type="checkbox"> Have I assessed perfusion and bleeding?</label><label class="check"><input type="checkbox"> Have I checked glucose if mental status is altered?</label><label class="check"><input type="checkbox"> Have I exposed the patient and prevented heat loss?</label></div>
+</section>
+
+<section class="lesson-footer"><div><b>Next Day 1 topic:</b> Shock — hypovolemic vs cardiogenic vs distributive vs obstructive</div><button class="btn" onclick="markDay1()">Mark Day 1 complete</button></section>
+</main></div>
+<div id="noteModal" class="modal"><div class="modalbox">
+<h2>Add Note</h2>
+<label class="muted">Subject</label>
+<select id="noteSubject"><option>Emergency Medicine</option><option>Cardiology</option><option>Respiratory</option><option>Endocrinology</option><option>Renal & Electrolytes</option><option>Infectious Diseases</option><option>Gastroenterology</option><option>Hematology & Oncology</option><option>Neurology</option><option>Pediatrics</option><option>OB/GYN</option><option>Dermatology</option><option>Rheumatology & MSK</option></select><br><br>
+<label class="muted">Title</label><input id="noteTitle" type="text"><br><br>
+<label class="muted">Notes</label><textarea id="noteBody" rows="10"></textarea>
+<div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveNote()">Save</button></div>
+</div></div>
+<div id="mistakeModal" class="modal"><div class="modalbox">
+<h2>Add Mistake</h2>
+<label class="muted">Topic</label><input id="mTopic" type="text"><br><br>
+<label class="muted">Question clue</label><input id="mClue" type="text"><br><br>
+<label class="muted">Correct answer</label><input id="mAnswer" type="text"><br><br>
+<label class="muted">One-line rule</label><input id="mRule" type="text">
+<div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
+</div></div>
+<script src="script.js"></script></body></html>
