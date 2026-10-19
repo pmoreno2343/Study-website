@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1300" viewBox="0 0 1200 1300">
+<defs>
+<style>
+.title{font:700 54px Arial,Helvetica,sans-serif;fill:#102033}
+.sub{font:400 24px Arial,Helvetica,sans-serif;fill:#52677f}
+.h{font:700 28px Arial,Helvetica,sans-serif;fill:#102033}
+.p{font:400 22px Arial,Helvetica,sans-serif;fill:#243752}
+.small{font:400 18px Arial,Helvetica,sans-serif;fill:#52677f}
+.num{font:700 24px Arial,Helvetica,sans-serif;fill:white}
+</style>
+</defs>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<rect x="40" y="35" width="1120" height="135" rx="28" fill="#eaf3ff"/>
+<text x="70" y="98" class="title">Severe Hypertension</text>
+<text x="70" y="140" class="sub">Emergency versus severe hypertension without acute organ injury</text>
+<rect x="140" y="220" width="920" height="150" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="262" r="25" fill="#1769e0"/>
+<text x="182" y="270" text-anchor="middle" class="num">1</text>
+<text x="222" y="270" class="h">Markedly elevated BP</text>
+<text x="172" y="312" class="p">• Repeat with correct technique</text>
+<text x="172" y="348" class="p">• Assess symptoms and examine for acute organ injury</text><line x1="600" y1="370" x2="600" y2="425" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,407 610,407 600,425" fill="#7aa0c7"/><rect x="140" y="430" width="920" height="220" rx="24" fill="#fff7f7" stroke="#ffd7da" stroke-width="2"/>
+<circle cx="182" cy="472" r="25" fill="#d9363e"/>
+<text x="182" y="480" text-anchor="middle" class="num">2</text>
+<text x="222" y="480" class="h">Acute target-organ damage?</text>
+<text x="172" y="522" class="p">• Brain: encephalopathy / ICH / selected stroke scenarios</text>
+<text x="172" y="558" class="p">• Heart: ACS / acute pulmonary edema</text>
+<text x="172" y="594" class="p">• Aorta: dissection</text>
+<text x="172" y="630" class="p">• Kidney: acute kidney injury</text>
+<text x="172" y="666" class="p">• Eye: acute retinopathy / papilledema</text><line x1="600" y1="650" x2="600" y2="710" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,692 610,692 600,710" fill="#7aa0c7"/><rect x="85" y="715" width="500" height="280" rx="24" fill="#fff1f2" stroke="#ffd7da" stroke-width="2"/>
+<circle cx="127" cy="757" r="25" fill="#d9363e"/>
+<text x="127" y="765" text-anchor="middle" class="num">3A</text>
+<text x="167" y="765" class="h">YES — Hypertensive emergency</text>
+<text x="117" y="807" class="p">• Monitored setting</text>
+<text x="117" y="843" class="p">• Use titratable IV therapy suited to the organ injury</text>
+<text x="117" y="879" class="p">• For many emergencies: controlled initial reduction rather than immediate normalization</text>
+<text x="117" y="915" class="p">• Aortic dissection, stroke and pregnancy have condition-specific targets</text><rect x="615" y="715" width="500" height="280" rx="24" fill="#effaf4" stroke="#d6efdf" stroke-width="2"/>
+<circle cx="657" cy="757" r="25" fill="#138a54"/>
+<text x="657" y="765" text-anchor="middle" class="num">3B</text>
+<text x="697" y="765" class="h">NO — No acute organ damage</text>
+<text x="647" y="807" class="p">• Do not rapidly normalize BP with IV medication</text>
+<text x="647" y="843" class="p">• Reinstitute / intensify oral antihypertensives</text>
+<text x="647" y="879" class="p">• Assess adherence and reversible contributors</text>
+<text x="647" y="915" class="p">• Arrange timely outpatient follow-up</text><rect x="140" y="1050" width="920" height="180" rx="24" fill="#fff8e8" stroke="#ffe6b0" stroke-width="2"/>
+<text x="168" y="1100" class="h">Key distinction</text>
+<text x="172" y="1142" class="p">• The BP number alone does not define a hypertensive emergency</text>
+<text x="172" y="1178" class="p">• Acute target-organ damage determines the emergency pathway</text>
+</svg>
