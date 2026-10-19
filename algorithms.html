@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithms Library — Study Website</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e4e8ef;--blue:#1769e0;--nav:#102033}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
+.top{background:var(--nav);color:#fff;padding:18px 22px;position:sticky;top:0;z-index:5}
+.top a{color:#dbe9f8;text-decoration:none;margin-right:18px;font-weight:700}
+main{max-width:1160px;margin:auto;padding:28px 18px 50px}
+h1{font-size:36px;margin:0 0 6px}.lead{color:var(--muted);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.algo-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 8px 22px rgba(16,32,51,.05)}
+.algo-card img{width:100%;height:180px;object-fit:cover;object-position:top;display:block}
+.algo-card div{padding:12px}.algo-card strong,.algo-card span{display:block}.algo-card span{color:#356da6;font-size:13px;margin-top:4px}
+.algo-section{scroll-margin-top:76px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:28px 0;box-shadow:0 8px 22px rgba(16,32,51,.05)}
+.section-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.section-head h2{margin:0;font-size:28px}.section-head p{margin:4px 0;color:var(--muted)}.section-head a,.section-actions a{color:#245aa5;text-decoration:none;font-weight:700}
+.algo-section img{display:block;width:min(100%,900px);height:auto;margin:18px auto;border:1px solid var(--line);border-radius:14px}
+.section-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.note{background:#fff8e8;border:1px solid #ffe6b0;border-radius:12px;padding:12px;margin:22px 0;color:#6b4a00}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:29px}.section-head{flex-direction:column}}
+
+.day2-visual-card{background:#fff;border:1px solid #e1e9f3;border-radius:16px;padding:16px;margin:18px 0;box-shadow:0 6px 18px rgba(16,32,51,.05)}
+.day2-visual-card h3{margin:0 0 6px}.day2-visual-card p{margin:0 0 12px;color:#667085}
+.mini-flow{display:grid;gap:8px}.mini-step{border:1px solid #cfe0f5;background:#f8fbff;border-radius:10px;padding:10px;display:grid;grid-template-columns:36px 1fr;gap:9px}
+.mini-num{width:30px;height:30px;border-radius:50%;background:#1769e0;color:#fff;display:grid;place-items:center;font-weight:800}.mini-arrow{text-align:center;color:#8ba8c7;font-weight:800}
+.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.mini-tile{border:1px solid #e4e8ef;background:#fbfcfe;border-radius:10px;padding:10px}.mini-tile b{display:block;margin-bottom:4px}
+.open-topic{display:inline-block;margin-top:12px;background:#1769e0;color:white!important;padding:9px 12px;border-radius:9px;text-decoration:none;font-weight:700}
+@media(max-width:700px){.mini-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body id="top">
+<nav class="top">
+  <a href="index.html">🏠 Dashboard</a>
+  <a href="day1.html">📘 Day 1</a>
+  <a href="algorithms.html">🧭 Algorithms</a>
+</nav>
+<main>
+  <h1>🧭 Clinical Algorithms Library</h1>
+  <p class="lead">Step-by-step visual pathways for high-yield DOH decision-making topics.</p>
+  <div class="note"><b>How to use this library:</b> learn the notes first, use the algorithm to rehearse the sequence, then complete the 10-question topic quiz.</div>
+  <div class="grid">
+      <a class="algo-card" href="#abcde">
+        <img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach algorithm preview" loading="lazy">
+        <div><strong>ABCDE Approach</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#shock">
+        <img src="shock_recognition_and_management_guide.png" alt="Shock algorithm preview" loading="lazy">
+        <div><strong>Shock</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#sepsis">
+        <img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock algorithm preview" loading="lazy">
+        <div><strong>Sepsis &amp; Septic Shock</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#anaphylaxis">
+        <img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis algorithm preview" loading="lazy">
+        <div><strong>Anaphylaxis</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#ams">
+        <img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia algorithm preview" loading="lazy">
+        <div><strong>AMS &amp; Hypoglycemia</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#heat">
+        <img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness algorithm preview" loading="lazy">
+        <div><strong>Heat Illness</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#burns">
+        <img src="burn_initial_assessment_algorithm.png" alt="Burns algorithm preview" loading="lazy">
+        <div><strong>Burns</strong><span>Open algorithm ↓</span></div>
+      </a>
+    
+      <a class="algo-card" href="#trauma">
+        <img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma algorithm preview" loading="lazy">
+        <div><strong>Trauma</strong><span>Open algorithm ↓</span></div>
+      </a>
+    </div>
+  
+    <section id="abcde" class="algo-section">
+      <div class="section-head">
+        <div><h2>ABCDE Approach</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener"><img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="shock" class="algo-section">
+      <div class="section-head">
+        <div><h2>Shock</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener"><img src="shock_recognition_and_management_guide.png" alt="Shock algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="sepsis" class="algo-section">
+      <div class="section-head">
+        <div><h2>Sepsis &amp; Septic Shock</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener"><img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="anaphylaxis" class="algo-section">
+      <div class="section-head">
+        <div><h2>Anaphylaxis</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener"><img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="ams" class="algo-section">
+      <div class="section-head">
+        <div><h2>AMS &amp; Hypoglycemia</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener"><img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="heat" class="algo-section">
+      <div class="section-head">
+        <div><h2>Heat Illness</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener"><img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="burns" class="algo-section">
+      <div class="section-head">
+        <div><h2>Burns</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener"><img src="burn_initial_assessment_algorithm.png" alt="Burns algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+    <section id="trauma" class="algo-section">
+      <div class="section-head">
+        <div><h2>Trauma</h2><p>DOH-focused decision pathway</p></div>
+        <a href="day1.html">← Back to Day 1</a>
+      </div>
+      <a href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener"><img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma algorithm" loading="lazy"></a>
+      <div class="section-actions">
+        <a href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener">Open full size ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </section>
+    
+<section class="algo-section"><div class="section-head"><div><h2>Day 2 — Cardiology I</h2><p>Selected decision pathways</p></div><a href="day2.html">Open Day 2 →</a></div><div class="day2-visual-card"><h3>Chest Pain Triage Algorithm</h3><p>Step-by-step clinical pathway.</p><div class="mini-flow"><div class="mini-step"><div class="mini-num">1</div><div><b>Assess stability</b><div>ABCDE • vitals • monitor</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">2</div><div><b>Look for immediate killers</b><div>ACS • aortic dissection • PE • tension PTX • tamponade • esophageal rupture</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">3</div><div><b>ECG early</b><div>Obtain 12-lead ECG promptly if ACS is possible</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">4</div><div><b>Focused testing</b><div>hs-troponin ± CXR / CTA / echo / PE work-up according to the pattern</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">5</div><div><b>Reassess</b><div>Repeat ECG/troponin if suspicion persists; escalate instability</div></div></div></div><a class="open-topic" href="day2.html#visual-chestpain">Open inside Day 2 →</a></div><div class="day2-visual-card"><h3>Acute Coronary Syndrome Algorithm</h3><p>Step-by-step clinical pathway.</p><div class="mini-flow"><div class="mini-step"><div class="mini-num">1</div><div><b>Ischemic symptoms</b><div>ECG + monitor + IV access + hs-troponin</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">2</div><div><b>Persistent diagnostic ST elevation?</b><div>YES → STEMI reperfusion pathway immediately</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">3</div><div><b>No persistent ST elevation</b><div>Serial hs-troponin + risk assessment → NSTEMI / UA / alternative diagnosis</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">4</div><div><b>Initial therapy</b><div>Aspirin • statin • anti-ischemic therapy when appropriate • antithrombotic therapy per pathway</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">5</div><div><b>Reperfusion / invasive strategy</b><div>Primary PCI preferred when timely; selected early STEMI may need fibrinolysis if PCI delay is excessive</div></div></div></div><a class="open-topic" href="day2.html#visual-acs">Open inside Day 2 →</a></div><div class="day2-visual-card"><h3>Hypertension Diagnosis Algorithm</h3><p>Step-by-step clinical pathway.</p><div class="mini-flow"><div class="mini-step"><div class="mini-num">1</div><div><b>Accurate office BP</b><div>Correct cuff • seated rest • repeat measurements</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">2</div><div><b>Elevated reading</b><div>Review prior readings, medications and contributing factors</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">3</div><div><b>Confirm</b><div>Home or ambulatory BP monitoring when feasible</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">4</div><div><b>Assess risk</b><div>ASCVD risk • kidney disease • diabetes • target-organ damage</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">5</div><div><b>Treat</b><div>Lifestyle for all; pharmacotherapy based on BP, global risk and comorbidities</div></div></div></div><a class="open-topic" href="day2.html#visual-htndx">Open inside Day 2 →</a></div><div class="day2-visual-card"><h3>Severe Hypertension Decision Pathway</h3><p>Step-by-step clinical pathway.</p><div class="mini-flow"><div class="mini-step"><div class="mini-num">1</div><div><b>Very high BP</b><div>Repeat correctly and assess symptoms</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">2</div><div><b>Acute target-organ damage?</b><div>Brain • heart • aorta • kidney • retina</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">3A</div><div><b>YES → hypertensive emergency</b><div>Monitored setting + titratable IV therapy + condition-specific target</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">3B</div><div><b>NO</b><div>Avoid rapid IV normalization; adjust oral therapy and ensure close follow-up</div></div></div><div class="mini-arrow">↓</div><div class="mini-step"><div class="mini-num">4</div><div><b>Remember special cases</b><div>Aortic dissection, stroke and pregnancy use specific targets</div></div></div></div><a class="open-topic" href="day2.html#visual-htncrisis">Open inside Day 2 →</a></div></section></main>
+</body>
+</html>
