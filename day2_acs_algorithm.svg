@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1420" viewBox="0 0 1200 1420">
+<defs><style>
+.title{font:700 50px Arial,Helvetica,sans-serif;fill:#102033}
+.sub{font:400 23px Arial,Helvetica,sans-serif;fill:#52677f}
+.h{font:700 27px Arial,Helvetica,sans-serif;fill:#102033}
+.p{font:400 20px Arial,Helvetica,sans-serif;fill:#243752}
+.num{font:700 22px Arial,Helvetica,sans-serif;fill:white}
+</style></defs>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<rect x="40" y="35" width="1120" height="135" rx="28" fill="#eaf3ff"/>
+<text x="70" y="96" class="title">Acute Coronary Syndrome</text>
+<text x="70" y="138" class="sub">Recognition, early treatment and reperfusion strategy</text>
+<rect x="140" y="220" width="920" height="175" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="262" r="25" fill="#1769e0"/>
+<text x="182" y="270" text-anchor="middle" class="num">1</text>
+<text x="222" y="270" class="h">Suspected acute coronary syndrome</text>
+<text x="172" y="312" class="p">• Ischemic symptoms or anginal equivalent</text>
+<text x="172" y="350" class="p">• ECG, monitoring, IV access and high-sensitivity troponin</text><line x1="600" y1="395" x2="600" y2="450" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,432 610,432 600,450" fill="#7aa0c7"/><rect x="140" y="455" width="920" height="190" rx="24" fill="#f6f0ff" stroke="#e6d8ff" stroke-width="2"/>
+<circle cx="182" cy="497" r="25" fill="#6e3ac4"/>
+<text x="182" y="505" text-anchor="middle" class="num">2</text>
+<text x="222" y="505" class="h">Persistent diagnostic ST elevation?</text>
+<text x="172" y="547" class="p">• YES → STEMI pathway</text>
+<text x="172" y="585" class="p">• NO → serial high-sensitivity troponin, repeat ECG and risk</text>
+<text x="172" y="615" class="p">  assessment</text><line x1="600" y1="645" x2="600" y2="700" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,682 610,682 600,700" fill="#7aa0c7"/><rect x="70" y="705" width="520" height="330" rx="24" fill="#fff1f2" stroke="#ffd7da" stroke-width="2"/>
+<circle cx="112" cy="747" r="25" fill="#d9363e"/>
+<text x="112" y="755" text-anchor="middle" class="num">3A</text>
+<text x="152" y="755" class="h">STEMI</text>
+<text x="102" y="797" class="p">• Do not wait for troponin</text>
+<text x="102" y="835" class="p">• Aspirin unless contraindicated</text>
+<text x="102" y="873" class="p">• High-intensity statin</text>
+<text x="102" y="911" class="p">• Primary PCI preferred when it can</text>
+<text x="102" y="941" class="p">  be delivered in time</text>
+<text x="102" y="979" class="p">• If timely PCI is not possible,</text>
+<text x="102" y="1009" class="p">  consider fibrinolysis when</text>
+<text x="102" y="1039" class="p">  eligible</text><rect x="610" y="705" width="520" height="330" rx="24" fill="#edf4ff" stroke="#d4e5ff" stroke-width="2"/>
+<circle cx="652" cy="747" r="25" fill="#1769e0"/>
+<text x="652" y="755" text-anchor="middle" class="num">3B</text>
+<text x="692" y="755" class="h">NSTE-ACS</text>
+<text x="642" y="797" class="p">• Serial troponin distinguishes</text>
+<text x="642" y="827" class="p">  NSTEMI from unstable angina</text>
+<text x="642" y="865" class="p">• Use antiplatelet and</text>
+<text x="642" y="895" class="p">  anticoagulation therapy according</text>
+<text x="642" y="925" class="p">  to the pathway</text>
+<text x="642" y="963" class="p">• High-risk features favor early</text>
+<text x="642" y="993" class="p">  invasive evaluation</text>
+<text x="642" y="1031" class="p">• Treat recurrent ischemia or</text>
+<text x="642" y="1061" class="p">  instability urgently</text><line x1="600" y1="1035" x2="600" y2="1090" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,1072 610,1072 600,1090" fill="#7aa0c7"/><rect x="140" y="1095" width="920" height="260" rx="24" fill="#fff8e8" stroke="#ffe6b0" stroke-width="2"/>
+<circle cx="182" cy="1137" r="25" fill="#b96c00"/>
+<text x="182" y="1145" text-anchor="middle" class="num">4</text>
+<text x="222" y="1145" class="h">Important cautions</text>
+<text x="172" y="1187" class="p">• Oxygen is for hypoxemia or respiratory distress, not</text>
+<text x="172" y="1217" class="p">  routine normoxia</text>
+<text x="172" y="1255" class="p">• Avoid nitrates with hypotension, suspected RV infarction</text>
+<text x="172" y="1285" class="p">  or recent PDE-5 inhibitor use</text>
+<text x="172" y="1323" class="p">• Consider aortic dissection before antithrombotics when the</text>
+<text x="172" y="1353" class="p">  presentation is classic</text>
+</svg>

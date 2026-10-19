@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1610" viewBox="0 0 1200 1610">
+<defs><style>
+.title{font:700 50px Arial,Helvetica,sans-serif;fill:#102033}
+.sub{font:400 23px Arial,Helvetica,sans-serif;fill:#52677f}
+.h{font:700 27px Arial,Helvetica,sans-serif;fill:#102033}
+.p{font:400 20px Arial,Helvetica,sans-serif;fill:#243752}
+.num{font:700 22px Arial,Helvetica,sans-serif;fill:white}
+</style></defs>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<rect x="40" y="35" width="1120" height="135" rx="28" fill="#eaf3ff"/>
+<text x="70" y="96" class="title">Hypertension Diagnosis</text>
+<text x="70" y="138" class="sub">Confirm the diagnosis before long-term treatment</text>
+<rect x="140" y="220" width="920" height="190" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="262" r="25" fill="#1769e0"/>
+<text x="182" y="270" text-anchor="middle" class="num">1</text>
+<text x="222" y="270" class="h">Accurate office measurement</text>
+<text x="172" y="312" class="p">• Use the correct cuff size</text>
+<text x="172" y="350" class="p">• Allow seated rest with back supported and feet on the</text>
+<text x="172" y="380" class="p">  floor</text>
+<text x="172" y="418" class="p">• Repeat measurements and average</text><line x1="600" y1="410" x2="600" y2="465" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,447 610,447 600,465" fill="#7aa0c7"/><rect x="140" y="470" width="920" height="210" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="512" r="25" fill="#1769e0"/>
+<text x="182" y="520" text-anchor="middle" class="num">2</text>
+<text x="222" y="520" class="h">Elevated reading</text>
+<text x="172" y="562" class="p">• Review prior readings</text>
+<text x="172" y="600" class="p">• Check medications, substances, pain and measurement</text>
+<text x="172" y="630" class="p">  technique</text>
+<text x="172" y="668" class="p">• One reading usually does not establish chronic</text>
+<text x="172" y="698" class="p">  hypertension</text><line x1="600" y1="680" x2="600" y2="735" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,717 610,717 600,735" fill="#7aa0c7"/><rect x="140" y="740" width="920" height="195" rx="24" fill="#f2fbf6" stroke="#d6efdf" stroke-width="2"/>
+<circle cx="182" cy="782" r="25" fill="#138a54"/>
+<text x="182" y="790" text-anchor="middle" class="num">3</text>
+<text x="222" y="790" class="h">Confirm when feasible</text>
+<text x="172" y="832" class="p">• Use home BP monitoring or ambulatory BP monitoring</text>
+<text x="172" y="870" class="p">• Identify white-coat and masked hypertension</text><line x1="600" y1="935" x2="600" y2="990" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,972 610,972 600,990" fill="#7aa0c7"/><rect x="140" y="995" width="920" height="295" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="1037" r="25" fill="#1769e0"/>
+<text x="182" y="1045" text-anchor="middle" class="num">4</text>
+<text x="222" y="1045" class="h">Assess overall risk</text>
+<text x="172" y="1087" class="p">• Assess ASCVD risk and comorbid disease</text>
+<text x="172" y="1125" class="p">• Check kidney function, electrolytes and albuminuria when</text>
+<text x="172" y="1155" class="p">  appropriate</text>
+<text x="172" y="1193" class="p">• Look for ECG or other target-organ effects</text>
+<text x="172" y="1231" class="p">• Consider secondary causes with abrupt onset, resistant or</text>
+<text x="172" y="1261" class="p">  severe hypertension, hypokalemia or young age</text><line x1="600" y1="1290" x2="600" y2="1345" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,1327 610,1327 600,1345" fill="#7aa0c7"/><rect x="140" y="1350" width="920" height="200" rx="24" fill="#f6f0ff" stroke="#e6d8ff" stroke-width="2"/>
+<circle cx="182" cy="1392" r="25" fill="#6e3ac4"/>
+<text x="182" y="1400" text-anchor="middle" class="num">5</text>
+<text x="222" y="1400" class="h">Treat</text>
+<text x="172" y="1442" class="p">• Lifestyle intervention for all</text>
+<text x="172" y="1480" class="p">• Use pharmacotherapy according to BP level, cardiovascular</text>
+<text x="172" y="1510" class="p">  risk and comorbidities</text>
+<text x="172" y="1548" class="p">• Reassess adherence and home or office BP response</text>
+</svg>
