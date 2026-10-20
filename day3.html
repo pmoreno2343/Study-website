@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Day 3 — Cardiology II</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e4e8ef;--blue:#1769e0;--blue-soft:#edf4ff;--nav:#102033;--green:#138a54;--green-soft:#effaf4;--red:#d9363e;--red-soft:#fff1f2;--amber:#b96c00;--amber-soft:#fff8e8;--purple:#6e3ac4;--purple-soft:#f6f0ff;--shadow:0 10px 30px rgba(16,32,51,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}button,input,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{background:var(--nav);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;margin:2px 8px 22px}.brand .logo{font-size:34px}.brand b{font-size:20px}.brand small{display:block;color:#b7c3d1;font-size:12px}
+.nav-label{font-size:11px;color:#8fa3b7;text-transform:uppercase;letter-spacing:.08em;margin:17px 9px 7px}.nav a{display:flex;gap:10px;align-items:center;padding:10px 11px;border-radius:10px;margin:4px 0;color:#e6edf5}.nav a:hover,.nav a.active{background:#1e4f84}
+.main{padding:22px 26px 44px;max-width:1500px;width:100%}.topbar{display:flex;align-items:center;gap:12px;margin-bottom:16px}.search{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff}.btn.secondary{background:#eef2ff;color:#3143a5}
+.breadcrumb{font-size:13px;color:#4d6682;margin-bottom:9px}.page-title{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}.page-title h1{font-size:34px;margin:0}.page-title p{margin:5px 0 0;color:var(--muted)}.day-badge{background:#eaf3ff;color:#245aa5;padding:10px 16px;border-radius:12px;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.topic-menu{margin-top:16px}.topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.topic-btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:14px 12px;border-radius:13px;font-weight:800}.topic-btn:hover{border-color:#a9c7f4}.topic-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.panel{display:none;margin-top:18px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}.panel-head h2{margin:0;font-size:29px}.panel-head p{margin:5px 0 0;color:var(--muted)}.tag{background:#eef5ff;color:#2f63ac;border-radius:999px;padding:5px 9px;font-size:12px;white-space:nowrap}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}.box h3{margin:0 0 8px;font-size:18px}.box p,.box li{line-height:1.56}.box ul,.box ol{margin:6px 0 0 20px;padding:0}
+.blue{background:var(--blue-soft);border-color:#d4e5ff}.green{background:var(--green-soft);border-color:#d6efdf}.red{background:var(--red-soft);border-color:#ffd7da}.amber{background:var(--amber-soft);border-color:#ffe6b0}.purple{background:var(--purple-soft);border-color:#e6d8ff}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f8fafc}
+code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.kv{display:grid;grid-template-columns:190px 1fr;gap:7px 12px}.kv b{color:#243752}
+.additions{margin-top:15px;border:1px dashed #b8c6d5;background:#fbfcfe;border-radius:13px;padding:14px}.additions textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}.save-row{display:flex;gap:10px;align-items:center;margin-top:8px}.save-status{font-size:12px;color:var(--green)}
+.visual-shell,.quiz-shell{border:1px solid #d8e4f4;background:#f8fbff;border-radius:14px;margin:14px 0;overflow:hidden}.visual-head,.quiz-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:#eef6ff}.visual-head h3,.quiz-summary h3{margin:0;font-size:18px}.visual-head small,.quiz-summary p{display:block;color:var(--muted);font-size:12px;margin:3px 0 0}
+.visual-toggle,.quiz-toggle{border:0;border-radius:10px;padding:9px 12px;background:var(--blue);color:#fff;font-weight:800}.visual-body,.quiz-body{display:none;padding:14px;background:#fff}.visual-body.open,.quiz-body.open{display:block}
+.flow{display:grid;gap:9px;max-width:900px;margin:auto}.flowstep{border:1px solid #cfe0f5;border-radius:12px;padding:12px;background:#f9fcff;display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:start}.flowstep .num{width:34px;height:34px;border-radius:50%;background:#1769e0;color:#fff;display:grid;place-items:center;font-weight:800}.arrow{text-align:center;color:#7a9bbf;font-size:20px}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.info-tile{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fbfcfe}.info-tile b{display:block;margin-bottom:5px}
+.quiz-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}.quiz-card h4{margin:0 0 10px;font-size:17px;line-height:1.4}.option{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin:7px 0;background:#fbfcfe}.option:hover{border-color:#a9c7f4;background:#f7fbff}.option input{margin-right:8px}.answer-box{display:none;margin-top:10px;padding:11px;border-radius:10px;background:var(--green-soft);border:1px solid #d6efdf;line-height:1.5}.answer-box.wrong{background:var(--red-soft);border-color:#ffd7da}.quiz-toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}.score-pill{font-weight:800;background:#eef5ff;color:#2f63ac;padding:9px 12px;border-radius:999px}
+.sources-list{display:grid;gap:9px}.source-link{display:block;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff}.source-link:hover{border-color:#a9c7f4;background:#f8fbff}.source-link b{display:block;margin-bottom:3px}.source-link span{font-size:13px;color:var(--muted)}.local-source{border-left:5px solid var(--green)}.international-source{border-left:5px solid var(--blue)}.disclaimer{font-size:12px;color:var(--muted);line-height:1.45}
+.rapid{margin-top:18px}.rapid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.rapid-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px;display:flex;justify-content:space-between;gap:12px}.tracker{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tracker input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px}.note-line{font-size:12px;color:var(--muted);margin-top:6px}.footer-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px}
+@media(max-width:1050px){.topic-grid{grid-template-columns:repeat(2,1fr)}.tracker{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto;gap:5px}.nav-label{display:none}.nav a{white-space:nowrap}.main{padding:14px}.topic-grid,.rapid-grid,.tracker,.info-grid{grid-template-columns:1fr}.page-title{flex-direction:column}.kv{grid-template-columns:1fr}.visual-head,.quiz-summary{align-items:flex-start;flex-direction:column}}
+
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.42);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.open{display:flex}.modalbox{background:#fff;border-radius:18px;padding:20px;width:min(720px,96vw);max-height:88vh;overflow:auto}
+.modalbox input,.modalbox textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.modalbox textarea{min-height:120px}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+
+
+@media print{
+  .sidebar,.topics,.quiz-shell,.additions,.tracker,.complete-card,.algorithm-head button{display:none!important}
+  .app{display:block!important}.main{padding:0!important}.panel{display:block!important;page-break-after:always}
+  .algorithm-body{display:block!important}.algorithm-body img{max-height:none!important}
+  .card,.box,.algorithm-shell{box-shadow:none!important}
+}
+
+
+html,body{min-height:100%}
+.app{min-height:100vh;align-items:stretch}
+.sidebar{align-self:stretch;min-height:100vh}
+@media(max-width:760px){.sidebar{min-height:auto}}
+
+
+.algorithm-shell{border:1px solid #cfe0f5;background:#f7fbff;border-radius:14px;margin:14px 0;overflow:hidden}
+.algorithm-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:#eef6ff}
+.algorithm-head h3{margin:0;font-size:18px}
+.algorithm-head small{display:block;color:var(--muted);margin-top:3px}
+.algorithm-toggle{border:0;border-radius:10px;padding:9px 12px;background:#1769e0;color:#fff;font-weight:800;cursor:pointer}
+.algorithm-toggle:hover{filter:brightness(.96)}
+.algorithm-body{display:none;padding:14px;background:#fff}
+.algorithm-body.open{display:block}
+.algorithm-body img{display:block;width:min(100%,900px);height:auto;margin:0 auto;border-radius:12px;border:1px solid var(--line)}
+.algorithm-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.algorithm-links a{display:inline-block;padding:8px 11px;border-radius:9px;background:#eef5ff;color:#245aa5;font-weight:700}
+
+.quiz-shell{border:1px solid #e6d8ff;background:var(--purple-soft);border-radius:14px;margin:12px 0;overflow:hidden}
+.quiz-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:#fbf8ff;border-bottom:1px solid #eadfff}
+.quiz-summary-left{display:flex;align-items:center;gap:10px;min-width:0}
+.quiz-summary h3{margin:0;font-size:18px}
+.quiz-summary p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.quiz-summary-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.quiz-toggle{border:0;border-radius:10px;padding:9px 12px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}
+.quiz-toggle:hover{filter:brightness(.96)}
+.quiz-body{display:none;padding:14px 16px 16px}
+.quiz-body.open{display:block}
+.quiz-chevron{display:inline-block;transition:transform .18s ease;margin-left:5px}
+.quiz-toggle.open .quiz-chevron{transform:rotate(180deg)}
+.score-pill{font-weight:800;background:#eef5ff;color:#2f63ac;padding:9px 12px;border-radius:999px}
+@media(max-width:760px){
+  .algorithm-head{align-items:flex-start;flex-direction:column}
+  .quiz-summary{align-items:flex-start;flex-direction:column}
+  .quiz-summary-actions{justify-content:flex-start}
+}
+</style></head>
+<body><div class="app">
+<aside class="sidebar">
+<div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
+<div class="nav-label">Navigation</div>
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="index.html#plan">📅 Study Plan</a>
+<a href="day1.html">🚨 Day 1 — Emergency</a>
+<a href="day2.html">❤️ Day 2 — Cardiology I</a><a class="active" href="day3.html">💓 Day 3 — Cardiology II</a>
+<a href="index.html#subjects">📖 Notes by Subject</a>
+<a href="index.html#mistakes">⚠️ My Mistakes</a>
+<a href="index.html#resources">🔗 Resources</a>
+</nav>
+<div class="nav-label">Quick access</div>
+<nav class="nav">
+<a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
+<a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
+</nav>
+</aside>
+<main class="main">
+<header class="day-header"><div><span class="eyebrow">DAY 3 · CARDIOLOGY II</span><h1>💓 Arrhythmias, Heart Failure &amp; Valvular Disease</h1><p>Deep clinical reasoning with current guideline-based management, pattern recognition, algorithms and physician-level questions.</p></div><div class="day-badge">8 topics<br/><b>80 questions</b></div></header>
+<div class="topics"><button class="topic-btn active" data-topic="tachy" onclick="showTopic('tachy')">1. Tachyarrhythmia Approach</button>
+<button class="topic-btn" data-topic="af" onclick="showTopic('af')">2. Atrial Fibrillation &amp; Flutter</button>
+<button class="topic-btn" data-topic="brady" onclick="showTopic('brady')">3. Bradycardia &amp; AV Block</button>
+<button class="topic-btn" data-topic="hfdiag" onclick="showTopic('hfdiag')">4. Heart Failure: Classification &amp; Diagnosis</button>
+<button class="topic-btn" data-topic="acutehf" onclick="showTopic('acutehf')">5. Acute Decompensated HF / Pulmonary Edema</button>
+<button class="topic-btn" data-topic="hfrEF" onclick="showTopic('hfrEF')">6. Chronic HFrEF Guideline-Directed Therapy</button>
+<button class="topic-btn" data-topic="hfpef" onclick="showTopic('hfpef')">7. HFmrEF, HFpEF &amp; Right-Sided HF</button>
+<button class="topic-btn" data-topic="valves" onclick="showTopic('valves')">8. Valvular Heart Disease &amp; Murmurs</button></div>
+<section class="panel active" id="panel-tachy">
+<div class="panel-head"><div><h2>1. Tachyarrhythmia Approach</h2><p>Stability first, then QRS width and rhythm regularity.</p></div><span class="tag">Arrhythmia</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Definition &amp; first question</h3><p>A tachyarrhythmia is an abnormally rapid rhythm, usually clinically important when the ventricular rate is around <b>≥150/min</b>. The immediate question is not the rhythm name—it is whether the patient is <b>unstable because of the tachycardia</b>.</p></div>
+<div class="box red"><h3>🔥 Unstable = synchronized cardioversion</h3><ul><li>Hypotension or shock</li><li>Acute altered mental status</li><li>Ischemic chest discomfort</li><li>Acute heart failure / pulmonary edema</li></ul><p>Sedate when feasible, but do not delay cardioversion in a crashing patient. If the patient has <b>no pulse</b>, use the cardiac-arrest pathway rather than synchronized cardioversion.</p></div>
+<div class="box"><h3>Narrow-complex tachycardia (&lt;120 ms)</h3><ul><li><b>Regular:</b> sinus tachycardia, AVNRT, AVRT, atrial tachycardia. Treat physiologic sinus tachycardia by correcting the cause. For regular SVT, vagal maneuvers then adenosine when appropriate.</li><li><b>Irregular:</b> atrial fibrillation, flutter with variable block, multifocal atrial tachycardia.</li></ul></div>
+<div class="box"><h3>💊 Adenosine</h3><div class="kv"><b>Initial</b><span><code class="dose">6 mg rapid IV push</code> + flush</span></div><div class="kv"><b>If needed</b><span><code class="dose">12 mg rapid IV push</code></span></div><p class="disclaimer">Use only for appropriate regular rhythms. Avoid reflexive use in irregular wide-complex tachycardia or pre-excited AF.</p></div>
+</div><div>
+<div class="box purple"><h3>Wide-complex tachycardia (≥120 ms)</h3><p>In an adult with structural heart disease or an uncertain diagnosis, a regular wide-complex tachycardia should be treated as <b>ventricular tachycardia until proven otherwise</b>.</p><ul><li>VT clues: AV dissociation, capture/fusion beats, concordance, prior MI/cardiomyopathy.</li><li>Stable monomorphic wide-complex tachycardia may require an antiarrhythmic infusion and expert consultation.</li><li>Adenosine can be considered only if the rhythm is <b>regular and monomorphic</b>.</li></ul></div>
+<div class="box amber"><h3>Dangerous irregular wide-complex rhythms</h3><ul><li>AF with aberrancy</li><li>Polymorphic VT / torsades de pointes</li><li><b>Pre-excited AF (WPW)</b></li></ul><p>In pre-excited AF, avoid AV-nodal blockers such as beta-blockers, diltiazem/verapamil, digoxin and adenosine because they may accelerate conduction over the accessory pathway.</p></div>
+<div class="box"><h3>Torsades de pointes</h3><p>Polymorphic VT with a prolonged QT: stop QT-prolonging drugs, correct K/Mg, and give IV magnesium. Unstable or pulseless polymorphic VT requires immediate defibrillation.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>Fast rhythm → stable or unstable → narrow or wide → regular or irregular.</b></p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>🧭 Tachyarrhythmia Rapid Clinical Algorithm</h3><small>Approved Day 3 algorithm</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_tachyarrhythmia_algorithm.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_tachyarrhythmia_algorithm.png">
+<img alt="🧭 Tachyarrhythmia Rapid Clinical Algorithm" src="day3_tachyarrhythmia_algorithm.png"/>
+<div class="algorithm-links"><a href="day3_tachyarrhythmia_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-tachy"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('tachy')">Save my addition</button><span class="save-status" id="saved-tachy"></span></div></div>
+<div id="quiz-tachy"></div><div class="box" id="sources-tachy"></div>
+</section>
+<section class="panel" id="panel-af">
+<div class="panel-head"><div><h2>2. Atrial Fibrillation &amp; Flutter</h2><p>Rate/rhythm strategy plus stroke prevention.</p></div><span class="tag">High yield</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Classic presentation &amp; ECG</h3><ul><li><b>AF:</b> irregularly irregular ventricular rhythm, absent organized P waves.</li><li><b>Atrial flutter:</b> organized atrial activity, often saw-tooth waves; ventricular response may be regular or variable.</li><li>Symptoms range from none to palpitations, dyspnea, fatigue, chest discomfort, syncope or decompensated HF.</li></ul></div>
+<div class="box red"><h3>Unstable AF/flutter</h3><p>Hypotension, shock, ischemia or acute pulmonary edema attributable to the rhythm → <b>immediate synchronized cardioversion</b>.</p></div>
+<div class="box"><h3>Stable patient: rate vs rhythm</h3><ul><li><b>Rate control:</b> beta-blocker or diltiazem/verapamil when appropriate. Digoxin may be useful in selected patients, especially when BP is low or HF is present.</li><li><b>Rhythm control:</b> increasingly considered early in appropriate symptomatic patients; options include cardioversion, antiarrhythmic therapy and catheter ablation.</li><li>Treat triggers: infection, thyroid disease, alcohol, electrolyte disturbance, ACS, PE, HF.</li></ul></div>
+</div><div>
+<div class="box purple"><h3>Stroke prevention</h3><p>The 2024 ESC guideline uses <b>CHA₂DS₂-VA</b> (without sex category) for thromboembolic risk; many systems still use CHA₂DS₂-VASc. Follow the locally adopted framework.</p><ul><li>DOACs are preferred for many eligible patients with AF.</li><li><b>Warfarin</b> remains standard for mechanical prosthetic valves and moderate-to-severe rheumatic mitral stenosis.</li><li>Bleeding scores help identify modifiable risk but should not be used alone to deny indicated anticoagulation.</li></ul></div>
+<div class="box"><h3>Cardioversion &amp; anticoagulation nuance</h3><ul><li>If AF duration is ≥48 h or unknown, elective cardioversion generally requires therapeutic anticoagulation before/after cardioversion or a TEE-guided strategy.</li><li>Hemodynamic instability overrides the elective timing rule: cardiovert immediately and address anticoagulation as soon as feasible.</li></ul></div>
+<div class="box amber"><h3>WPW trap</h3><p>Irregular wide-complex tachycardia with pre-excitation → <b>avoid AV-nodal blockers</b>. Use an expert/emergency pathway and consider procainamide or cardioversion depending on stability.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>AF management = AF-CARE: comorbidities, avoid stroke, rate/rhythm control, evaluate/reassess.</b></p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>🧭 Atrial Fibrillation &amp; Flutter Algorithm</h3><small>Approved Day 3 algorithm</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_af_flutter_algorithm.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_af_flutter_algorithm.png">
+<img alt="🧭 Atrial Fibrillation &amp; Flutter Algorithm" src="day3_af_flutter_algorithm.png"/>
+<div class="algorithm-links"><a href="day3_af_flutter_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-af"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('af')">Save my addition</button><span class="save-status" id="saved-af"></span></div></div>
+<div id="quiz-af"></div><div class="box" id="sources-af"></div>
+</section>
+<section class="panel" id="panel-brady">
+<div class="panel-head"><div><h2>3. Bradycardia &amp; AV Block</h2><p>Treat the patient, identify the block, anticipate pacing.</p></div><span class="tag">ACLS</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>When is bradycardia clinically important?</h3><p>Bradyarrhythmia is usually considered clinically significant at <b>HR &lt;50/min</b> when it causes hypotension, acute altered mental status, shock, ischemic discomfort or acute HF.</p></div>
+<div class="box red"><h3>🔥 Symptomatic / unstable pathway</h3><div class="kv"><b>Atropine</b><span><code class="dose">1 mg IV</code> every 3–5 min; max <code class="dose">3 mg</code></span></div><p>If ineffective: <b>transcutaneous pacing</b> and/or dopamine <code class="dose">5–20 mcg/kg/min</code> or epinephrine <code class="dose">2–10 mcg/min</code>. Consider transvenous pacing and urgent expert consultation.</p></div>
+<div class="box"><h3>Reversible causes</h3><ul><li>Myocardial ischemia/infarction</li><li>Beta-blocker, calcium-channel blocker or digoxin toxicity</li><li>Hyperkalemia and other electrolyte abnormalities</li><li>Hypoxia, hypothermia, hypothyroidism, increased vagal tone</li></ul></div>
+</div><div>
+<div class="box purple"><h3>AV-block recognition</h3><div class="table-wrap"><table>
+<tr><th>Block</th><th>ECG clue</th><th>Clinical pearl</th></tr>
+<tr><td>1st degree</td><td>PR &gt;200 ms; every P conducts</td><td>Usually benign</td></tr>
+<tr><td>Mobitz I</td><td>Progressive PR lengthening → dropped QRS</td><td>Usually AV-node level</td></tr>
+<tr><td>Mobitz II</td><td>Constant PR with sudden dropped QRS</td><td>Infranodal; pacing mindset</td></tr>
+<tr><td>3rd degree</td><td>P waves and QRS dissociated</td><td>Often requires pacing</td></tr>
+</table></div></div>
+<div class="box amber"><h3>Higher-level traps</h3><ul><li>Atropine may be ineffective in high-grade infranodal block; do not delay pacing when the patient is unstable.</li><li>Inferior MI can cause AV-nodal block; anterior MI with new high-grade block is more ominous and often infranodal.</li><li>A patient can have a “normal” BP yet still have poor perfusion from bradycardia.</li></ul></div>
+<div class="box green"><h3>Memory line</h3><p><b>Mobitz II + complete heart block = urgent pacing mindset.</b></p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>🧭 Symptomatic Bradycardia &amp; AV Block Algorithm</h3><small>Approved Day 3 algorithm</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_bradycardia_avblock_algorithm.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_bradycardia_avblock_algorithm.png">
+<img alt="🧭 Symptomatic Bradycardia &amp; AV Block Algorithm" src="day3_bradycardia_avblock_algorithm.png"/>
+<div class="algorithm-links"><a href="day3_bradycardia_avblock_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-brady"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('brady')">Save my addition</button><span class="save-status" id="saved-brady"></span></div></div>
+<div id="quiz-brady"></div><div class="box" id="sources-brady"></div>
+</section>
+<section class="panel" id="panel-hfdiag">
+<div class="panel-head"><div><h2>4. Heart Failure: Classification &amp; Diagnosis</h2><p>Phenotype, congestion, natriuretic peptides and echocardiography.</p></div><span class="tag">Heart failure</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Definition &amp; EF phenotypes</h3><ul><li><b>HFrEF:</b> LVEF ≤40%</li><li><b>HFmrEF:</b> LVEF 41–49%</li><li><b>HFpEF:</b> LVEF ≥50% with evidence supporting elevated filling pressures/structural or functional cardiac abnormality</li></ul><p>HF is a clinical syndrome; EF alone does not diagnose HF.</p></div>
+<div class="box"><h3>Classic presentation</h3><ul><li>Dyspnea, orthopnea, PND, exercise intolerance</li><li>Peripheral edema, weight gain, elevated JVP</li><li>Crackles, S3, hepatojugular reflux</li><li>Right-sided HF: systemic venous congestion, hepatomegaly/ascites, edema</li></ul></div>
+<div class="box"><h3>BNP / NT-proBNP</h3><p>Elevated natriuretic peptides support HF in the correct context; low values make HF less likely. Values can be higher with age, renal dysfunction and AF, and lower in obesity.</p></div>
+</div><div>
+<div class="box purple"><h3>Core diagnostic tests</h3><ul><li><b>ECG:</b> rhythm, prior infarct, LVH, conduction disease.</li><li><b>CXR:</b> congestion, edema, pleural effusions, alternative lung disease.</li><li><b>Echo:</b> EF, chamber size, diastolic function, valves, RV function and pulmonary pressures.</li><li>Labs: CBC, electrolytes, renal/liver function, glucose/HbA1c, thyroid testing, iron studies when appropriate.</li></ul></div>
+<div class="box amber"><h3>Common precipitants of decompensation</h3><ul><li>ACS or ischemia</li><li>Arrhythmia, especially AF with RVR</li><li>Uncontrolled hypertension</li><li>Infection</li><li>Medication/diet nonadherence</li><li>Renal dysfunction, anemia, thyroid disease, drug toxicity</li></ul></div>
+<div class="box red"><h3>Red flags</h3><p>Shock, severe hypoxemia, rapidly worsening pulmonary edema, new significant murmur, syncope, rising lactate/creatinine or oliguria require urgent escalation.</p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>📊 Heart Failure High-Yield Review</h3><small>Approved Day 3 infographic</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_heart_failure_infographic.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_heart_failure_infographic.png">
+<img alt="📊 Heart Failure High-Yield Review" src="day3_heart_failure_infographic.png"/>
+<div class="algorithm-links"><a href="day3_heart_failure_infographic.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-hfdiag"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('hfdiag')">Save my addition</button><span class="save-status" id="saved-hfdiag"></span></div></div>
+<div id="quiz-hfdiag"></div><div class="box" id="sources-hfdiag"></div>
+</section>
+<section class="panel" id="panel-acutehf">
+<div class="panel-head"><div><h2>5. Acute Decompensated HF / Pulmonary Edema</h2><p>Stabilize, phenotype, decongest and treat the precipitant.</p></div><span class="tag">Emergency HF</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Immediate assessment</h3><ul><li>ABCDE, BP, SpO₂, ECG, monitor, IV access</li><li>Identify pulmonary edema and signs of shock</li><li>ECG, troponin when ischemia possible, renal function/electrolytes, BNP/NT-proBNP, CXR; bedside echo/POCUS when useful</li></ul></div>
+<div class="box"><h3>Respiratory support</h3><ul><li>Give oxygen for hypoxemia—not routinely to a normoxic patient.</li><li>Non-invasive ventilation (CPAP/BiPAP) can reduce work of breathing and improve oxygenation in significant pulmonary edema when appropriate.</li><li>Escalate airway support if mental status, fatigue or gas exchange worsens.</li></ul></div>
+<div class="box purple"><h3>Decongestion</h3><p>IV loop diuretic is standard for congestion. Initial dose depends on prior loop-diuretic exposure, renal function and severity. Assess urine output, symptoms, weight, renal function and electrolytes; intensify the diuretic strategy if response is inadequate.</p></div>
+</div><div>
+<div class="box red"><h3>Cardiogenic shock</h3><p>Hypotension plus poor perfusion/end-organ dysfunction requires ICU-level management, urgent cause identification and often vasoactive support. <b>Norepinephrine</b> is commonly favored when vasopressor support is needed; an inotrope such as dobutamine may be considered for persistent low-output physiology.</p></div>
+<div class="box green"><h3>Hypertensive pulmonary edema</h3><p>Marked hypertension with acute pulmonary edema may respond rapidly to non-invasive ventilation plus vasodilator therapy such as nitrates when BP allows, while congestion and the precipitating cause are addressed.</p></div>
+<div class="box amber"><h3>Do not miss the precipitant</h3><ul><li>ACS</li><li>AF with RVR or other arrhythmia</li><li>Acute MR/mechanical complication</li><li>Hypertensive crisis</li><li>Infection</li><li>Medication nonadherence / renal failure</li></ul></div>
+<div class="box red"><h3>Trap</h3><p>A patient with wet lungs and cardiogenic shock is not treated with indiscriminate large crystalloid boluses. Reassess hemodynamics and congestion repeatedly.</p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>🧭 Acute Heart Failure / Pulmonary Edema Algorithm</h3><small>Approved Day 3 algorithm</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_acute_hf_algorithm.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_acute_hf_algorithm.png">
+<img alt="🧭 Acute Heart Failure / Pulmonary Edema Algorithm" src="day3_acute_hf_algorithm.png"/>
+<div class="algorithm-links"><a href="day3_acute_hf_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-acutehf"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('acutehf')">Save my addition</button><span class="save-status" id="saved-acutehf"></span></div></div>
+<div id="quiz-acutehf"></div><div class="box" id="sources-acutehf"></div>
+</section>
+<section class="panel" id="panel-hfrEF">
+<div class="panel-head"><div><h2>6. Chronic HFrEF Guideline-Directed Therapy</h2><p>The four pillars, diuretics, devices and follow-up.</p></div><span class="tag">GDMT</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>🔥 The four pillars of HFrEF</h3><ol><li><b>ARNI</b> (preferred when appropriate) or ACEi/ARB</li><li><b>Evidence-based beta-blocker:</b> carvedilol, metoprolol succinate, or bisoprolol</li><li><b>MRA:</b> spironolactone or eplerenone when renal function/K permit</li><li><b>SGLT2 inhibitor:</b> dapagliflozin or empagliflozin, regardless of diabetes status</li></ol><p>Start foundational therapies early at tolerated doses rather than waiting to maximize one drug before adding the next.</p></div>
+<div class="box"><h3>Diuretics &amp; congestion</h3><p>Loop diuretics improve symptoms and congestion but are not one of the four mortality-reducing foundational drug classes. Adjust dose to volume status, BP, renal function and electrolytes.</p></div>
+<div class="box"><h3>Selected add-ons</h3><ul><li>Hydralazine/isosorbide dinitrate in selected patients or when RAAS-inhibiting therapy is not tolerated.</li><li>Ivabradine in selected symptomatic patients with LVEF ≤35%, sinus rhythm and HR ≥70 despite maximally tolerated beta-blocker.</li><li>Digoxin may reduce hospitalizations in selected symptomatic patients but requires toxicity awareness.</li></ul></div>
+</div><div>
+<div class="box purple"><h3>Monitoring after starting/titrating GDMT</h3><ul><li>BP, orthostasis, heart rate</li><li>Creatinine/eGFR and potassium</li><li>Volume status and daily weight</li><li>Adherence, sodium intake and precipitating factors</li></ul></div>
+<div class="box amber"><h3>Device basics</h3><ul><li><b>ICD:</b> primary prevention in selected patients with persistently reduced EF despite optimized therapy and adequate expected survival.</li><li><b>CRT:</b> strongest benefit in selected symptomatic patients with reduced EF and wide QRS, especially LBBB with QRS ≥150 ms.</li></ul></div>
+<div class="box red"><h3>Medication traps</h3><ul><li>Do not combine ACEi with ARB routinely.</li><li>Allow an appropriate washout when switching between ACEi and sacubitril/valsartan to reduce angioedema risk.</li><li>NSAIDs can worsen fluid retention and renal function.</li><li>Non-DHP CCBs such as verapamil/diltiazem are generally avoided in HFrEF because of negative inotropy.</li></ul></div>
+<div class="box green"><h3>Memory line</h3><p><b>HFrEF = 4 pillars early + diuretic for congestion + devices when criteria are met.</b></p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>📊 Heart Failure High-Yield Review</h3><small>Shared Day 3 infographic</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_heart_failure_infographic.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_heart_failure_infographic.png">
+<img alt="📊 Heart Failure High-Yield Review" src="day3_heart_failure_infographic.png"/>
+<div class="algorithm-links"><a href="day3_heart_failure_infographic.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-hfrEF"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('hfrEF')">Save my addition</button><span class="save-status" id="saved-hfrEF"></span></div></div>
+<div id="quiz-hfrEF"></div><div class="box" id="sources-hfrEF"></div>
+</section>
+<section class="panel" id="panel-hfpef">
+<div class="panel-head"><div><h2>7. HFmrEF, HFpEF &amp; Right-Sided HF</h2><p>Preserved EF does not mean normal heart.</p></div><span class="tag">HF phenotypes</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>HFpEF diagnosis</h3><p>HF symptoms/signs with LVEF ≥50% plus objective evidence of elevated filling pressures or structural/functional cardiac abnormalities. Common associations include older age, hypertension, obesity, diabetes, CKD, AF and sleep apnea.</p></div>
+<div class="box"><h3>HFpEF / HFmrEF management</h3><ul><li><b>SGLT2 inhibitors</b> reduce HF hospitalization/cardiovascular events across mildly reduced and preserved EF populations and are a major contemporary therapy.</li><li>Diuretics treat congestion.</li><li>Control BP and manage AF, ischemia, obesity, diabetes, CKD and sleep apnea.</li><li>Selected patients may benefit from MRA/RAAS-directed therapy depending on phenotype, EF range and guideline context.</li></ul></div>
+<div class="box amber"><h3>Natriuretic-peptide nuance</h3><p>Obesity can suppress BNP/NT-proBNP; AF and CKD can increase levels. Interpret the value in context rather than using one cutoff in isolation.</p></div>
+</div><div>
+<div class="box purple"><h3>Right-sided HF</h3><ul><li>Elevated JVP, peripheral edema, hepatomegaly, ascites, weight gain</li><li>Causes: left HF, pulmonary hypertension, RV infarction, chronic lung disease, TR, congenital disease</li><li>Echo evaluates RV size/function, TR and pulmonary pressures.</li><li>Diuresis treats systemic congestion, but overly aggressive preload reduction can be harmful in selected RV-failure states.</li></ul></div>
+<div class="box red"><h3>RV infarction pearl</h3><p>Inferior MI + hypotension + elevated JVP + relatively clear lungs → think RV infarction. Obtain right-sided leads. Avoid nitrates if preload-dependent hypotension is present.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>HFpEF: diagnose the syndrome + prove filling-pressure/structural abnormality + treat congestion and comorbidities.</b></p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>📊 Heart Failure High-Yield Review</h3><small>Shared Day 3 infographic</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_heart_failure_infographic.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_heart_failure_infographic.png">
+<img alt="📊 Heart Failure High-Yield Review" src="day3_heart_failure_infographic.png"/>
+<div class="algorithm-links"><a href="day3_heart_failure_infographic.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-hfpef"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('hfpef')">Save my addition</button><span class="save-status" id="saved-hfpef"></span></div></div>
+<div id="quiz-hfpef"></div><div class="box" id="sources-hfpef"></div>
+</section>
+<section class="panel" id="panel-valves">
+<div class="panel-head"><div><h2>8. Valvular Heart Disease &amp; Murmurs</h2><p>Recognize the murmur, predict the radiation, know the emergency clues.</p></div><span class="tag">Murmurs</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Aortic stenosis</h3><ul><li>Crescendo-decrescendo systolic ejection murmur at RUSB → carotids</li><li>Severe classic symptoms: <b>angina, syncope, dyspnea/HF</b></li><li>Echo defines severity; symptomatic severe AS requires valve-team evaluation for intervention.</li></ul></div>
+<div class="box"><h3>Mitral regurgitation</h3><ul><li>Holosystolic blowing murmur at apex → axilla</li><li>Chronic: degenerative disease, ischemic/functional MR, rheumatic disease</li><li><b>Acute severe MR</b> after MI can cause abrupt pulmonary edema and shock and may produce a surprisingly soft murmur.</li></ul></div>
+<div class="box"><h3>Mitral stenosis</h3><ul><li>Opening snap + low-pitched diastolic rumble at apex</li><li>Usually rheumatic globally; causes LA enlargement, AF and pulmonary hypertension</li><li>AF with rheumatic moderate-severe MS → warfarin rather than a DOAC.</li></ul></div>
+</div><div>
+<div class="box purple"><h3>Aortic regurgitation</h3><ul><li>Early diastolic decrescendo murmur, usually LSB</li><li>Chronic severe AR may cause bounding pulses and wide pulse pressure</li><li><b>Acute severe AR</b> can cause pulmonary edema/shock and is an emergency, especially with endocarditis or aortic dissection.</li></ul></div>
+<div class="box"><h3>MVP &amp; tricuspid regurgitation</h3><ul><li><b>MVP:</b> mid-systolic click ± late systolic murmur; click/murmur occurs earlier with standing/Valsalva.</li><li><b>TR:</b> holosystolic murmur at LLSB that increases with inspiration (Carvallo sign).</li></ul></div>
+<div class="box amber"><h3>Dynamic-maneuver pearl</h3><ul><li>Valsalva/standing decreases preload: most murmurs become softer, but <b>HCM becomes louder</b> and MVP occurs earlier.</li><li>Squatting/leg raise increases preload: HCM softens; many flow murmurs become louder.</li></ul></div>
+<div class="box red"><h3>Urgent red flags</h3><p>Syncope with severe AS, new murmur with pulmonary edema/shock, fever with new regurgitant murmur/embolic signs, or suspected acute AR/MR require urgent evaluation.</p></div>
+</div></div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>📊 Valvular Heart Disease &amp; Murmurs</h3><small>Approved Day 3 infographic</small></div>
+<button class="algorithm-toggle" onclick="toggleAlgorithm('day3_valvular_murmurs_infographic.png')">Open visual ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-day3_valvular_murmurs_infographic.png">
+<img alt="📊 Valvular Heart Disease &amp; Murmurs" src="day3_valvular_murmurs_infographic.png"/>
+<div class="algorithm-links"><a href="day3_valvular_murmurs_infographic.png" rel="noopener" target="_blank">Open full size ↗</a></div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-valves"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('valves')">Save my addition</button><span class="save-status" id="saved-valves"></span></div></div>
+<div id="quiz-valves"></div><div class="box" id="sources-valves"></div>
+</section>
+<section class="card rapid">
+<h2>🔥 Day 3 Rapid Review</h2><p>These should become automatic.</p>
+<div class="rapid-item"><span>Unstable tachyarrhythmia</span><b>Synchronized cardioversion</b></div>
+<div class="rapid-item"><span>Regular wide-complex tachycardia</span><b>Assume VT until proven otherwise</b></div>
+<div class="rapid-item"><span>Symptomatic bradycardia</span><b>Atropine 1 mg IV → pacing/pressors if ineffective</b></div>
+<div class="rapid-item"><span>AF + mechanical valve/rheumatic MS</span><b>Warfarin, not routine DOAC</b></div>
+<div class="rapid-item"><span>HFrEF</span><b>Four foundational drug classes</b></div>
+<div class="rapid-item"><span>Acute pulmonary edema</span><b>Oxygen if hypoxemic + NIV/diuresis ± nitrates by phenotype</b></div>
+<div class="rapid-item"><span>Severe AS</span><b>Angina + syncope + dyspnea/HF</b></div>
+<div class="rapid-item"><span>Acute MR after MI</span><b>Papillary-muscle rupture → pulmonary edema/shock</b></div>
+<div class="tracker"><label>Questions <input id="trackQuestions" min="0" type="number"/></label><label>Score % <input id="trackScore" max="100" min="0" type="number"/></label><button class="btn" onclick="saveTracker()">Save Day 3 tracker</button><span id="trackSaved"></span></div>
+</section>
+<section class="card complete-card"><h3>Finished Day 3?</h3><p>Mark complete only after you review all 8 topics and practice questions.</p><button class="btn" id="completeBtn" onclick="toggleComplete()">Mark Day 3 Complete</button></section>
+</main></div>
+<div class="modal" id="noteModal"><div class="modalbox"><h2>Add Note</h2><label>Title</label><input id="noteTitle" type="text"/><br/><br/><label>Notes</label><textarea id="noteBody"></textarea><div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div></div></div>
+<div class="modal" id="mistakeModal"><div class="modalbox"><h2>Add ExamPear Mistake</h2><label>Topic</label><input id="mTopic" type="text"/><br/><br/><label>Question clue</label><input id="mClue" type="text"/><br/><br/><label>Correct answer</label><input id="mAnswer" type="text"/><br/><br/><label>One-line rule</label><input id="mRule" type="text"/><div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div></div></div>
+<script>
+const topics=["tachy", "af", "brady", "hfdiag", "acutehf", "hfrEF", "hfpef", "valves"];
+const quizData={"tachy": [{"q": "A 29-year-old has a regular narrow-complex tachycardia at 190/min, BP 122/76, no chest pain or HF. Vagal maneuvers fail. Best next step?", "opts": ["Adenosine rapid IV push", "Immediate defibrillation", "Amiodarone for all narrow-complex rhythms", "IV magnesium only"], "ans": 0, "exp": "A stable regular narrow-complex SVT is appropriately treated with vagal maneuvers followed by adenosine if needed."}, {"q": "A patient with tachycardia has BP 72/40, chest pain and pulmonary edema. What determines the immediate intervention?", "opts": ["Exact rhythm diagnosis before treatment", "Hemodynamic instability", "Troponin result", "Age"], "ans": 1, "exp": "Persistent tachyarrhythmia causing instability requires synchronized cardioversion."}, {"q": "A regular wide-complex tachycardia occurs in a 68-year-old with prior MI. Safest assumption?", "opts": ["SVT until proven otherwise", "VT until proven otherwise", "AF with RVR", "Sinus tachycardia"], "ans": 1, "exp": "In structural heart disease, regular wide-complex tachycardia should be treated as VT unless proven otherwise."}, {"q": "Which drug should generally be avoided in irregular wide-complex pre-excited AF?", "opts": ["AV-nodal blocker such as diltiazem", "Procainamide", "Appropriate cardioversion if unstable", "Expert consultation"], "ans": 0, "exp": "AV-nodal blockade can promote conduction through the accessory pathway and precipitate VF."}, {"q": "Polymorphic VT with prolonged QT is present. Which medication is a classic immediate therapy?", "opts": ["IV magnesium", "Digoxin", "Verapamil", "Adenosine"], "ans": 0, "exp": "Magnesium is a key treatment for torsades de pointes with prolonged QT."}, {"q": "Adenosine can be considered in which wide-complex rhythm?", "opts": ["Irregular polymorphic tachycardia", "Regular monomorphic wide-complex tachycardia", "Pre-excited AF", "Any wide rhythm"], "ans": 1, "exp": "ACLS allows adenosine consideration only when the wide-complex rhythm is regular and monomorphic."}, {"q": "Capture beats and AV dissociation during a wide-complex tachycardia favor what diagnosis?", "opts": ["VT", "Sinus tachycardia", "AF", "Atrial flutter only"], "ans": 0, "exp": "Capture/fusion beats and AV dissociation are classic VT clues."}, {"q": "A patient with fever, dehydration and sinus tachycardia at 145/min is stable. Best treatment?", "opts": ["Immediate cardioversion", "Treat the underlying cause", "Adenosine regardless of rhythm", "Defibrillation"], "ans": 1, "exp": "Sinus tachycardia is usually a physiologic response; treat the cause rather than the rate itself."}, {"q": "A pulseless patient is found in wide-complex tachycardia. Best pathway?", "opts": ["Synchronized cardioversion", "Cardiac arrest algorithm with unsynchronized defibrillation when shockable", "Vagal maneuvers", "Oral beta-blocker"], "ans": 1, "exp": "Pulseless VT is cardiac arrest and requires the shockable arrest pathway."}, {"q": "What is the most useful first branching sequence for a tachyarrhythmia vignette?", "opts": ["Troponin → BNP → echo", "Stable/unstable → QRS width → regularity", "Age → sex → cholesterol", "Murmur → CXR → CT"], "ans": 1, "exp": "That branching sequence rapidly narrows both the diagnosis and management."}], "af": [{"q": "A patient with AF at 170/min is hypotensive with acute pulmonary edema. Best next step?", "opts": ["Oral metoprolol and observe", "Immediate synchronized cardioversion", "Wait for TEE before any treatment", "Aspirin only"], "ans": 1, "exp": "AF causing hemodynamic instability requires immediate synchronized cardioversion."}, {"q": "Which ECG description best fits AF?", "opts": ["Regular rhythm with saw-tooth waves", "Irregularly irregular rhythm without organized P waves", "Progressive PR prolongation", "Regular wide-complex rhythm"], "ans": 1, "exp": "AF is classically irregularly irregular with absent discrete P waves."}, {"q": "Atrial flutter is classically associated with what atrial activity?", "opts": ["Saw-tooth flutter waves", "No atrial activity ever", "Progressive PR prolongation", "Delta wave only"], "ans": 0, "exp": "Typical flutter often has saw-tooth atrial waves."}, {"q": "Which patient generally requires warfarin rather than a DOAC for AF stroke prevention?", "opts": ["AF with hypertension only", "AF with mechanical prosthetic valve", "Paroxysmal AF with normal valve anatomy", "AF with diabetes"], "ans": 1, "exp": "Mechanical prosthetic valves are a major setting where warfarin remains standard."}, {"q": "In 2024 ESC guidance, which score is emphasized for thromboembolic risk in AF?", "opts": ["CHA2DS2-VA", "TIMI only", "Wells", "GRACE only"], "ans": 0, "exp": "ESC 2024 uses CHA2DS2-VA, while other systems may still use CHA2DS2-VASc."}, {"q": "A stable patient with AF has RVR and no HFrEF or pre-excitation. Which is a reasonable rate-control option?", "opts": ["Diltiazem", "Thrombolysis", "Adenosine as definitive AF treatment", "Atropine"], "ans": 0, "exp": "A beta-blocker or non-DHP CCB can be used for rate control in appropriate stable patients."}, {"q": "AF duration is unknown and elective cardioversion is planned. What is the key issue?", "opts": ["Anticoagulation/TEE strategy to reduce embolic risk", "Always cardiovert without anticoagulation", "Only BNP matters", "Aspirin alone is always sufficient"], "ans": 0, "exp": "Unknown/longer-duration AF requires thromboembolic-risk management around cardioversion."}, {"q": "Irregular wide-complex tachycardia with WPW is suspected. Which action is unsafe?", "opts": ["Give diltiazem", "Consider procainamide if stable", "Cardiovert if unstable", "Obtain urgent expert help"], "ans": 0, "exp": "AV-nodal blockers are dangerous in pre-excited AF."}, {"q": "Which statement about bleeding scores in AF is best?", "opts": ["They automatically prohibit anticoagulation above a threshold", "They identify modifiable bleeding risks and support follow-up", "They replace stroke-risk assessment", "They are unnecessary"], "ans": 1, "exp": "Bleeding risk assessment should guide risk mitigation, not automatically deny indicated anticoagulation."}, {"q": "Which reversible trigger should be sought in new AF?", "opts": ["Thyroid disease", "Only coronary disease", "Only anemia", "No triggers need evaluation"], "ans": 0, "exp": "Thyroid disease, infection, alcohol, electrolyte disturbance, ACS, PE and HF are important triggers."}], "brady": [{"q": "A patient has HR 38/min, hypotension and confusion. First-line medication?", "opts": ["Atropine 1 mg IV", "Adenosine 6 mg", "Amiodarone 300 mg", "Verapamil"], "ans": 0, "exp": "ACLS symptomatic-bradycardia first-line atropine is 1 mg IV, repeated every 3–5 minutes to 3 mg total."}, {"q": "If atropine fails in unstable bradycardia, what is an appropriate next intervention?", "opts": ["Transcutaneous pacing", "Vagal maneuvers", "Adenosine", "Discharge"], "ans": 0, "exp": "TCP and/or dopamine or epinephrine infusion are next-line options."}, {"q": "Mobitz I is characterized by what?", "opts": ["Progressively longer PR intervals before a dropped QRS", "Constant PR with random dropped QRS", "Complete AV dissociation", "Short PR with delta wave"], "ans": 0, "exp": "Wenckebach shows progressive PR prolongation followed by a nonconducted P wave."}, {"q": "Mobitz II should trigger what mindset?", "opts": ["Usually harmless", "Risk of progression to complete block; pacing may be needed", "Treat with adenosine", "No monitoring"], "ans": 1, "exp": "Mobitz II is usually infranodal and can progress unpredictably."}, {"q": "Complete heart block ECG shows what?", "opts": ["P waves and QRS complexes dissociated", "Progressive PR shortening", "Only tachycardia", "Saw-tooth waves"], "ans": 0, "exp": "Third-degree AV block has independent atrial and ventricular activity."}, {"q": "Which reversible cause can produce severe bradycardia?", "opts": ["Hyperkalemia", "Mild hypernatremia only", "Hyperlipidemia", "Stable hypertension"], "ans": 0, "exp": "Hyperkalemia is a classic reversible bradyarrhythmia cause."}, {"q": "What is the maximum total atropine dose in adult symptomatic bradycardia?", "opts": ["1 mg", "2 mg", "3 mg", "10 mg"], "ans": 2, "exp": "Maximum total atropine dose is 3 mg."}, {"q": "Dopamine infusion range for refractory symptomatic bradycardia is typically?", "opts": ["0.1–0.5 mcg/kg/min", "5–20 mcg/kg/min", "50–100 mcg/kg/min", "1 g/min"], "ans": 1, "exp": "The AHA adult bradycardia algorithm lists 5–20 mcg/kg/min."}, {"q": "Anterior MI complicated by new high-grade AV block is concerning because it often implies what?", "opts": ["Benign vagal tone", "Infranodal conduction-system injury", "Normal variant", "Hyperthyroidism"], "ans": 1, "exp": "Anterior MI-related high-grade block often reflects extensive infranodal injury and carries worse prognosis."}, {"q": "A stable asymptomatic patient has first-degree AV block. Best general approach?", "opts": ["Immediate transvenous pacing", "Observation and evaluate causes/medications", "Defibrillation", "Adenosine"], "ans": 1, "exp": "First-degree block is commonly observed while reversible contributors are reviewed."}], "hfdiag": [{"q": "Which EF range defines HFrEF?", "opts": ["≤40%", "41–49%", "≥50%", "Any EF with hypertension"], "ans": 0, "exp": "HFrEF is generally LVEF ≤40%."}, {"q": "An obese patient with convincing HFpEF symptoms has a relatively low BNP. Best interpretation?", "opts": ["HF is impossible", "Obesity can lower natriuretic peptide levels", "BNP is never useful", "This proves PE"], "ans": 1, "exp": "Obesity can suppress BNP/NT-proBNP, so clinical context matters."}, {"q": "Which bedside sign most strongly suggests systemic venous congestion?", "opts": ["Elevated JVP", "Hyperreflexia", "Fixed dilated pupil", "Dry mucosa only"], "ans": 0, "exp": "Elevated JVP is a classic marker of elevated right-sided filling pressure."}, {"q": "What test best characterizes EF, valve disease and RV function?", "opts": ["Echocardiography", "Urinalysis", "D-dimer", "Abdominal CT"], "ans": 0, "exp": "Echo is central to structural and functional HF assessment."}, {"q": "Which can precipitate acute HF decompensation?", "opts": ["AF with RVR", "Only anemia", "Only infection", "None of these"], "ans": 0, "exp": "Arrhythmia is a common precipitant, as are ACS, infection, hypertension and nonadherence."}, {"q": "Normal natriuretic peptide levels generally do what?", "opts": ["Make HF less likely", "Prove HFrEF", "Prove acute MI", "Require immediate diuresis"], "ans": 0, "exp": "Low levels reduce the likelihood of HF, though context and obesity matter."}, {"q": "Which symptom is most characteristic of left-sided congestion?", "opts": ["Orthopnea", "Isolated leg rash", "Polyuria", "Hearing loss"], "ans": 0, "exp": "Orthopnea and PND are classic left-sided HF symptoms."}, {"q": "Which finding is typical of right-sided HF?", "opts": ["Ascites and peripheral edema", "Only pulmonary crackles", "Low JVP", "No venous congestion"], "ans": 0, "exp": "Systemic venous congestion causes edema, hepatomegaly and ascites."}, {"q": "HFpEF requires which concept beyond EF ≥50%?", "opts": ["Evidence supporting elevated filling pressure/structural-functional abnormality", "No symptoms", "Only hypertension", "Normal echo in every respect"], "ans": 0, "exp": "Preserved EF alone does not establish HFpEF."}, {"q": "Which lab should often be assessed because deficiency can worsen HF symptoms and has treatment implications?", "opts": ["Iron studies", "Amylase only", "PSA only", "Vitamin A only"], "ans": 0, "exp": "Iron deficiency is common in HF and is clinically relevant."}], "acutehf": [{"q": "A patient with acute pulmonary edema has SpO2 82%. What respiratory step is appropriate?", "opts": ["Supplemental oxygen and consider NIV", "Avoid oxygen always", "Large crystalloid bolus", "Wait for echo before support"], "ans": 0, "exp": "Hypoxemia requires oxygen; NIV is useful in significant respiratory distress when appropriate."}, {"q": "A normoxic patient with acute HF has SpO2 97%. Routine oxygen is?", "opts": ["Not required solely because HF is present", "Mandatory at 15 L/min", "A substitute for diuresis", "Always harmful"], "ans": 0, "exp": "Oxygen is indicated for hypoxemia, not routinely for normoxic acute HF."}, {"q": "Main pharmacologic treatment for clear volume-overloaded acute HF?", "opts": ["IV loop diuretic", "Adenosine", "Atropine", "Thrombolysis in all cases"], "ans": 0, "exp": "IV loop diuresis is standard for congestion."}, {"q": "Hypertensive flash pulmonary edema without shock may benefit rapidly from what?", "opts": ["Nitrates plus NIV when appropriate", "Large saline bolus", "Atropine", "Oral antibiotics only"], "ans": 0, "exp": "Vasodilation and NIV are particularly useful in hypertensive pulmonary edema."}, {"q": "Acute HF with hypotension, cool extremities and oliguria suggests what?", "opts": ["Cardiogenic shock", "Stable HFpEF only", "Simple anxiety", "No urgency"], "ans": 0, "exp": "Hypotension with hypoperfusion/end-organ dysfunction is cardiogenic shock."}, {"q": "Which vasopressor is commonly favored when cardiogenic shock requires pressure support?", "opts": ["Norepinephrine", "Phenylephrine always", "Adenosine", "Atropine"], "ans": 0, "exp": "Norepinephrine is commonly used as first vasopressor support in cardiogenic shock."}, {"q": "Sudden pulmonary edema after MI with a new murmur should prompt concern for what?", "opts": ["Mechanical complication such as acute MR", "Stable chronic hypertension only", "Asthma only", "Pericarditis only"], "ans": 0, "exp": "Papillary muscle rupture can cause acute severe MR, edema and shock."}, {"q": "Which parameter helps judge response to IV diuresis?", "opts": ["Urine output and symptoms", "Only heart rate", "Only temperature", "Only troponin"], "ans": 0, "exp": "Response assessment includes urine output, symptoms, weight, renal function and electrolytes."}, {"q": "A patient with wet lungs and cardiogenic shock receives repeated 2-L crystalloid boluses. Main concern?", "opts": ["Worsening pulmonary congestion", "Guaranteed improvement", "No physiologic effect", "Treats MR definitively"], "ans": 0, "exp": "Indiscriminate fluids can worsen pulmonary edema in cardiogenic shock."}, {"q": "Which acute HF trigger should be actively sought and treated?", "opts": ["Arrhythmia such as AF with RVR", "Only seasonal allergies", "No triggers matter", "Hyperlipidemia only"], "ans": 0, "exp": "Arrhythmia is a frequent decompensation trigger."}], "hfrEF": [{"q": "Which set represents the four foundational HFrEF drug classes?", "opts": ["ARNI/ACEi/ARB + evidence beta-blocker + MRA + SGLT2 inhibitor", "Nitrate + aspirin + statin + digoxin only", "CCB + thiazide + aspirin + warfarin", "Loop diuretic alone"], "ans": 0, "exp": "These are the contemporary four pillars of HFrEF therapy."}, {"q": "Which beta-blocker has evidence for mortality reduction in HFrEF?", "opts": ["Metoprolol succinate", "Short-acting nifedipine", "Diltiazem", "Verapamil"], "ans": 0, "exp": "Carvedilol, metoprolol succinate and bisoprolol are evidence-based HFrEF beta-blockers."}, {"q": "SGLT2 inhibitors in HFrEF are useful in patients without diabetes?", "opts": ["Yes", "No", "Only if HbA1c >10%", "Only after dialysis"], "ans": 0, "exp": "Their HF benefit is independent of diabetes status."}, {"q": "Loop diuretics primarily provide what benefit?", "opts": ["Relief of congestion and symptoms", "They are one of the four mortality-reducing pillars", "Cure arrhythmias", "Prevent every sudden death"], "ans": 0, "exp": "Diuretics are essential for congestion but are not one of the four foundational mortality-reducing classes."}, {"q": "Before starting an MRA, which values need particular attention?", "opts": ["Potassium and renal function", "Only LDL", "Only hemoglobin", "Only troponin"], "ans": 0, "exp": "MRA therapy can cause hyperkalemia and requires adequate renal function."}, {"q": "Which drug pair should generally not be combined routinely in HFrEF?", "opts": ["ACE inhibitor + ARB", "Beta-blocker + SGLT2 inhibitor", "ARNI + evidence beta-blocker", "MRA + SGLT2 inhibitor"], "ans": 0, "exp": "Dual ACEi/ARB blockade increases harm without routine benefit."}, {"q": "Why is a washout needed when switching from ACEi to sacubitril/valsartan?", "opts": ["Reduce angioedema risk", "Prevent hypokalemia only", "Prevent bradycardia only", "No reason"], "ans": 0, "exp": "Overlapping neprilysin inhibition and ACE inhibition increases angioedema risk."}, {"q": "CRT benefit is strongest in selected reduced-EF patients with what ECG feature?", "opts": ["LBBB with markedly wide QRS, especially ≥150 ms", "Short PR only", "Sinus tachycardia 105/min", "Normal QRS"], "ans": 0, "exp": "Wide LBBB, especially ≥150 ms, is the classic high-benefit CRT phenotype."}, {"q": "Which commonly used medication can worsen HFrEF through negative inotropy?", "opts": ["Verapamil", "Dapagliflozin", "Spironolactone", "Sacubitril/valsartan"], "ans": 0, "exp": "Non-DHP CCBs are generally avoided in HFrEF."}, {"q": "The preferred GDMT strategy is generally to?", "opts": ["Introduce all foundational classes early at tolerated doses", "Maximize one drug for months before considering another", "Use diuretics only", "Avoid beta-blockers indefinitely"], "ans": 0, "exp": "Contemporary HF care emphasizes early implementation of the four pillars."}], "hfpef": [{"q": "Which therapy has strong contemporary outcome evidence across HFmrEF/HFpEF?", "opts": ["SGLT2 inhibitor", "Routine digoxin for all", "Class IC antiarrhythmic for all", "Thrombolysis"], "ans": 0, "exp": "SGLT2 inhibitors reduce HF events across mildly reduced and preserved EF ranges."}, {"q": "The cornerstone symptomatic treatment for congested HFpEF is?", "opts": ["Diuretics", "Adenosine", "Atropine", "Fibrinolysis"], "ans": 0, "exp": "Diuretics treat congestion regardless of EF phenotype."}, {"q": "Which comorbidity is strongly associated with HFpEF?", "opts": ["Hypertension", "Hemophilia only", "Appendicitis", "Hyperthyroidism exclusively"], "ans": 0, "exp": "Hypertension, obesity, diabetes, CKD and AF are major HFpEF associations."}, {"q": "Which statement about BNP in obesity is correct?", "opts": ["It may be lower than expected despite HF", "It is always massively elevated", "It cannot be measured", "It proves HFrEF"], "ans": 0, "exp": "Obesity can suppress natriuretic peptide levels."}, {"q": "Raised JVP, hepatomegaly and ascites indicate predominantly what?", "opts": ["Systemic venous/right-sided congestion", "Isolated left upper-lobe pneumonia", "No cardiovascular disease", "Only dehydration"], "ans": 0, "exp": "These are classic right-sided HF findings."}, {"q": "Inferior MI with hypotension, JVP elevation and clear lungs should raise concern for?", "opts": ["RV infarction", "Acute left pulmonary edema only", "Stable angina", "Pericarditis only"], "ans": 0, "exp": "The triad is classic for RV infarction."}, {"q": "Why can nitrates be dangerous in RV infarction with hypotension?", "opts": ["They reduce preload in a preload-dependent ventricle", "They cause hyperkalemia", "They increase preload", "They always induce AF"], "ans": 0, "exp": "RV infarction may be strongly preload dependent."}, {"q": "What establishes HFpEF beyond symptoms and preserved EF?", "opts": ["Objective evidence of abnormal filling pressures/structure or function", "A normal echo only", "Normal BNP always", "No comorbidities"], "ans": 0, "exp": "The syndrome requires objective cardiac evidence."}, {"q": "Which rhythm commonly worsens HFpEF by reducing filling time and atrial contribution?", "opts": ["Atrial fibrillation", "Sinus rhythm", "First-degree AV block always", "PVC once per hour"], "ans": 0, "exp": "AF is both common in and clinically important for HFpEF."}, {"q": "Management of HFpEF should strongly include what?", "opts": ["Aggressive treatment of BP and comorbidities", "Avoid BP treatment", "Avoid exercise advice entirely", "Routine anticoagulation in all patients"], "ans": 0, "exp": "Comorbidity and risk-factor management is central."}], "valves": [{"q": "Crescendo-decrescendo systolic murmur at RUSB radiating to carotids suggests?", "opts": ["Aortic stenosis", "Mitral stenosis", "Aortic regurgitation", "Tricuspid stenosis"], "ans": 0, "exp": "This is the classic AS murmur."}, {"q": "The classic symptom triad of severe aortic stenosis is?", "opts": ["Angina, syncope, dyspnea/HF", "Fever, rash, diarrhea", "Cough, hematuria, tremor", "Polyuria, polydipsia, weight loss"], "ans": 0, "exp": "Angina, syncope and HF symptoms are classic severe-AS symptoms."}, {"q": "Holosystolic apical murmur radiating to the axilla suggests?", "opts": ["Mitral regurgitation", "Aortic stenosis", "Mitral stenosis", "Aortic regurgitation"], "ans": 0, "exp": "MR is classically holosystolic at the apex with axillary radiation."}, {"q": "Opening snap with a low-pitched diastolic rumble at the apex suggests?", "opts": ["Mitral stenosis", "MR", "AS", "TR"], "ans": 0, "exp": "This is the classic MS description."}, {"q": "Early diastolic decrescendo murmur at the left sternal border suggests?", "opts": ["Aortic regurgitation", "AS", "MR", "VSD"], "ans": 0, "exp": "AR is an early diastolic decrescendo murmur."}, {"q": "Which murmur classically becomes louder with inspiration?", "opts": ["Tricuspid regurgitation", "Mitral regurgitation", "Aortic stenosis", "Aortic regurgitation"], "ans": 0, "exp": "Right-sided murmurs such as TR intensify with inspiration."}, {"q": "Which maneuver tends to increase the HCM murmur?", "opts": ["Valsalva/standing", "Squatting", "Passive leg raise", "Handgrip always"], "ans": 0, "exp": "Reduced preload increases dynamic LV outflow obstruction."}, {"q": "A patient after MI develops sudden pulmonary edema and shock with a new apical murmur. Most concerning lesion?", "opts": ["Acute severe MR from papillary muscle rupture", "Chronic MS", "Stable AS", "MVP only"], "ans": 0, "exp": "Papillary muscle rupture causes acute severe MR and hemodynamic collapse."}, {"q": "Which test is central for defining valve severity and ventricular response?", "opts": ["Echocardiography", "Urinalysis", "EEG", "Abdominal ultrasound"], "ans": 0, "exp": "Echo is the central diagnostic test for valvular disease."}, {"q": "Fever, positive blood cultures and a new regurgitant murmur should prompt concern for?", "opts": ["Infective endocarditis", "Stable degenerative AS only", "Benign flow murmur", "Sinus tachycardia only"], "ans": 0, "exp": "A new regurgitant murmur plus bacteremia/systemic signs is a classic endocarditis concern."}]};
+const sourceData={"tachy": [{"title": "American Heart Association — 2025 Adult Tachyarrhythmia With a Pulse Algorithm", "desc": "Current ACLS tachyarrhythmia pathway, including instability, QRS width and cardioversion.", "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/algorithms/", "kind": "intl"}], "af": [{"title": "2024 ESC Guidelines for the Management of Atrial Fibrillation", "desc": "AF-CARE framework, stroke prevention, rate/rhythm control and reassessment.", "url": "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/atrial-fibrillation/", "kind": "intl"}], "brady": [{"title": "American Heart Association — 2025 Adult Bradycardia With a Pulse Algorithm", "desc": "Atropine dose, pacing, dopamine/epinephrine infusions and reversible causes.", "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/algorithms/", "kind": "intl"}], "hfdiag": [{"title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure", "desc": "Foundational diagnosis, EF classification and chronic HF management.", "url": "https://www.acc.org/guidelines/guidelines/2022/03/30/16/38/2022-heart-failure", "kind": "intl"}, {"title": "2023 ESC Focused Update — Acute and Chronic Heart Failure", "desc": "Contemporary treatment updates including SGLT2 inhibitors across EF ranges.", "url": "https://www.escardio.org/education/content-collections/focus/heart-failure/", "kind": "intl"}], "acutehf": [{"title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure", "desc": "Acute HF evaluation, decongestion and shock concepts.", "url": "https://www.acc.org/guidelines/guidelines/2022/03/30/16/38/2022-heart-failure", "kind": "intl"}, {"title": "2023 ESC Focused Update — Acute and Chronic Heart Failure", "desc": "Updated acute/chronic HF recommendations.", "url": "https://www.escardio.org/education/content-collections/focus/heart-failure/", "kind": "intl"}], "hfrEF": [{"title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure", "desc": "Four foundational HFrEF drug classes, devices and follow-up.", "url": "https://www.acc.org/guidelines/guidelines/2022/03/30/16/38/2022-heart-failure", "kind": "intl"}, {"title": "2023 ESC Focused Update — Acute and Chronic Heart Failure", "desc": "Contemporary HF pharmacotherapy updates.", "url": "https://www.escardio.org/education/content-collections/focus/heart-failure/", "kind": "intl"}], "hfpef": [{"title": "2023 ESC Focused Update — Acute and Chronic Heart Failure", "desc": "Current HFmrEF/HFpEF recommendations including SGLT2 inhibitors.", "url": "https://www.escardio.org/education/content-collections/focus/heart-failure/", "kind": "intl"}, {"title": "2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure", "desc": "HFpEF diagnosis, comorbidity management and phenotype framework.", "url": "https://www.acc.org/guidelines/guidelines/2022/03/30/16/38/2022-heart-failure", "kind": "intl"}], "valves": [{"title": "2025 ESC/EACTS Guidelines for the Management of Valvular Heart Disease", "desc": "Current evaluation, imaging and intervention guidance for AS, AR, MR, MS and TR.", "url": "https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/valvular-heart-disease/", "kind": "intl"}]};
+
+function showTopic(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+  document.querySelector('[data-topic="'+t+'"]').classList.add('active');
+  localStorage.setItem('day3_active_topic',t);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleAlgorithm(id){
+  const b=document.getElementById('algo-body-'+id);
+  const btn=b.previousElementSibling.querySelector('.algorithm-toggle');
+  b.classList.toggle('open');
+  btn.textContent=b.classList.contains('open')?'Close visual ▲':'Open visual ▼';
+}
+function saveAddition(t){
+  localStorage.setItem('day3_add_'+t,document.getElementById('add-'+t).value);
+  const s=document.getElementById('saved-'+t); s.textContent='Saved ✓'; setTimeout(()=>s.textContent='',1500);
+}
+function renderQuiz(t){
+  const root=document.getElementById('quiz-'+t), qs=quizData[t];
+  let h='<div class="quiz-shell">';
+  h+='<div class="quiz-summary">';
+  h+='<div class="quiz-summary-left"><div><h3>📝 10 Original Practice Questions</h3><p>Clinical-vignette level for physician review.</p></div></div>';
+  h+='<div class="quiz-summary-actions"><span id="score-'+t+'" class="score-pill"></span>';
+  h+='<button id="toggle-'+t+'" class="quiz-toggle" onclick="toggleQuiz(\''+t+'\')">Open test <span class="quiz-chevron">▼</span></button></div>';
+  h+='</div><div id="quiz-body-'+t+'" class="quiz-body">';
+  qs.forEach((q,i)=>{
+    h+='<div class="question"><b>Q'+(i+1)+'. '+q.q+'</b>';
+    q.opts.forEach((o,j)=>{h+='<label><input type="radio" name="'+t+'q'+i+'" value="'+j+'"> '+o+'</label>'});
+    h+='<div id="'+t+'fb'+i+'" class="feedback"></div></div>';
+  });
+  h+='<button class="btn" onclick="gradeQuiz(\''+t+'\')">Grade test</button></div></div>';
+  root.innerHTML=h;
+  const saved=localStorage.getItem('day3_score_'+t);
+  if(saved) document.getElementById('score-'+t).textContent='Last score: '+saved+'%';
+}
+function toggleQuiz(t){
+  const body=document.getElementById('quiz-body-'+t);
+  const btn=document.getElementById('toggle-'+t);
+  body.classList.toggle('open');
+  btn.classList.toggle('open',body.classList.contains('open'));
+  btn.innerHTML=body.classList.contains('open')?'Close test <span class="quiz-chevron">▼</span>':'Open test <span class="quiz-chevron">▼</span>';
+}
+function gradeQuiz(t){
+  let n=0; quizData[t].forEach((q,i)=>{const a=document.querySelector('input[name="'+t+'q'+i+'"]:checked'); const fb=document.getElementById(t+'fb'+i);
+  if(a&&Number(a.value)===q.ans){n++;fb.className='feedback good';fb.innerHTML='<b>Correct.</b> '+q.exp}
+  else{fb.className='feedback bad';fb.innerHTML='<b>Correct answer:</b> '+q.opts[q.ans]+'<br>'+q.exp}});
+  const sc=Math.round(n/quizData[t].length*100);localStorage.setItem('day3_score_'+t,sc);document.getElementById('score-'+t).textContent='Score: '+sc+'% ('+n+'/10)';
+}
+function renderSources(t){
+  const box=document.getElementById('sources-'+t);let h='<h3>📚 Guidelines & Academic Sources</h3>';
+  sourceData[t].forEach(s=>{h+='<a class="source" target="_blank" rel="noopener" href="'+s.url+'"><b>'+s.title+'</b><span>'+s.desc+'</span></a>'});box.innerHTML=h;
+}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function saveGeneralNote(){
+ const arr=JSON.parse(localStorage.getItem('study_notes')||'[]');arr.push({title:noteTitle.value,body:noteBody.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_notes',JSON.stringify(arr));closeModal('noteModal');alert('Note saved in this browser.');
+}
+function saveMistake(){
+ const arr=JSON.parse(localStorage.getItem('study_mistakes')||'[]');arr.push({topic:mTopic.value,clue:mClue.value,answer:mAnswer.value,rule:mRule.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_mistakes',JSON.stringify(arr));closeModal('mistakeModal');alert('Mistake saved in this browser.');
+}
+function saveTracker(){localStorage.setItem('day3_tracker',JSON.stringify({q:trackQuestions.value,s:trackScore.value}));trackSaved.textContent='Saved ✓'}
+function toggleComplete(){
+ const v=localStorage.getItem('day3_complete')==='1';localStorage.setItem('day3_complete',v?'0':'1');paintComplete();
+}
+function paintComplete(){const done=localStorage.getItem('day3_complete')==='1';completeBtn.textContent=done?'✓ Day 3 Complete':'Mark Day 3 Complete';completeBtn.classList.toggle('done',done)}
+window.addEventListener('DOMContentLoaded',()=>{
+ topics.forEach(t=>{renderQuiz(t);renderSources(t);document.getElementById('add-'+t).value=localStorage.getItem('day3_add_'+t)||''});
+ const t=localStorage.getItem('day3_active_topic'); if(t&&topics.includes(t))showTopic(t);
+ const tr=JSON.parse(localStorage.getItem('day3_tracker')||'{}');trackQuestions.value=tr.q||'';trackScore.value=tr.s||'';paintComplete();
+});
+</script></body></html>
