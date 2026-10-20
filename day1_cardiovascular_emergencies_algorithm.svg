@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1630" viewBox="0 0 1200 1630">
+<defs><style>
+.title{font:700 48px Arial,Helvetica,sans-serif;fill:#102033}
+.sub{font:400 23px Arial,Helvetica,sans-serif;fill:#52677f}
+.h{font:700 26px Arial,Helvetica,sans-serif;fill:#102033}
+.p{font:400 19px Arial,Helvetica,sans-serif;fill:#243752}
+.num{font:700 21px Arial,Helvetica,sans-serif;fill:white}
+</style></defs>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<rect x="40" y="35" width="1120" height="135" rx="28" fill="#eaf3ff"/>
+<text x="70" y="96" class="title">Cardiovascular Emergencies</text>
+<text x="70" y="138" class="sub">Rapid recognition and first priorities</text>
+<rect x="140" y="220" width="920" height="165" rx="24" fill="#fff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="262" r="25" fill="#1769e0"/>
+<text x="182" y="270" text-anchor="middle" class="num">1</text>
+<text x="222" y="268" class="h">Unstable patient with cardiovascular symptoms</text>
+<text x="170" y="310" class="p">• ABCDE, monitor, IV access, ECG and bedside glucose</text>
+<text x="170" y="348" class="p">• Treat shock, hypoxemia or malignant arrhythmia immediately</text><line x1="600" y1="385" x2="600" y2="440" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,422 610,422 600,440" fill="#7aa0c7"/><rect x="140" y="445" width="920" height="190" rx="24" fill="#fff8e8" stroke="#ffe6b0" stroke-width="2"/>
+<circle cx="182" cy="487" r="25" fill="#b96c00"/>
+<text x="182" y="495" text-anchor="middle" class="num">2</text>
+<text x="222" y="493" class="h">Pattern recognition</text>
+<text x="170" y="535" class="p">• Tearing chest/back pain + pulse or BP asymmetry → acute</text>
+<text x="170" y="565" class="p">  aortic syndrome</text>
+<text x="170" y="603" class="p">• Shock + raised JVP + clear lungs / pericardial effusion →</text>
+<text x="170" y="633" class="p">  tamponade</text>
+<text x="170" y="671" class="p">• Sudden dyspnea, syncope, hypotension + RV strain →</text>
+<text x="170" y="701" class="p">  high-risk pulmonary embolism</text>
+<text x="170" y="739" class="p">• Flash pulmonary edema / shock after MI → consider</text>
+<text x="170" y="769" class="p">  mechanical complication</text><line x1="600" y1="635" x2="600" y2="695" stroke="#7aa0c7" stroke-width="5"/><polygon points="590,677 610,677 600,695" fill="#7aa0c7"/><rect x="60" y="700" width="525" height="310" rx="24" fill="#fff1f2" stroke="#ffd7da" stroke-width="2"/>
+<circle cx="102" cy="742" r="25" fill="#d9363e"/>
+<text x="102" y="750" text-anchor="middle" class="num">3A</text>
+<text x="142" y="748" class="h">Acute aortic syndrome</text>
+<text x="90" y="790" class="p">• Urgent aortic imaging when stable;</text>
+<text x="90" y="820" class="p">  surgical pathway if type A</text>
+<text x="90" y="858" class="p">• Analgesia and anti-impulse therapy</text>
+<text x="90" y="896" class="p">• IV beta-blocker first when not</text>
+<text x="90" y="926" class="p">  contraindicated</text>
+<text x="90" y="964" class="p">• Target SBP &lt;120 mmHg or lowest</text>
+<text x="90" y="994" class="p">  pressure that maintains perfusion;</text>
+<text x="90" y="1024" class="p">  HR about 60–80 bpm</text>
+<text x="90" y="1062" class="p">• Avoid anticoagulation or</text>
+<text x="90" y="1092" class="p">  thrombolysis when dissection is</text>
+<text x="90" y="1122" class="p">  strongly suspected</text><rect x="615" y="700" width="525" height="310" rx="24" fill="#edf4ff" stroke="#d4e5ff" stroke-width="2"/>
+<circle cx="657" cy="742" r="25" fill="#1769e0"/>
+<text x="657" y="750" text-anchor="middle" class="num">3B</text>
+<text x="697" y="748" class="h">Cardiac tamponade</text>
+<text x="645" y="790" class="p">• Clinical shock pattern:</text>
+<text x="645" y="820" class="p">  hypotension, JVP elevation,</text>
+<text x="645" y="850" class="p">  tachycardia; Beck triad may be</text>
+<text x="645" y="880" class="p">  incomplete</text>
+<text x="645" y="918" class="p">• POCUS/echo: pericardial effusion</text>
+<text x="645" y="948" class="p">  with chamber collapse and</text>
+<text x="645" y="978" class="p">  plethoric IVC</text>
+<text x="645" y="1016" class="p">• Unstable tamponade → urgent</text>
+<text x="645" y="1046" class="p">  drainage</text>
+<text x="645" y="1084" class="p">• Avoid delaying definitive</text>
+<text x="645" y="1114" class="p">  decompression for prolonged</text>
+<text x="645" y="1144" class="p">  diagnostic work-up</text><rect x="60" y="1040" width="525" height="310" rx="24" fill="#f6f0ff" stroke="#e6d8ff" stroke-width="2"/>
+<circle cx="102" cy="1082" r="25" fill="#6e3ac4"/>
+<text x="102" y="1090" text-anchor="middle" class="num">4A</text>
+<text x="142" y="1088" class="h">High-risk pulmonary embolism</text>
+<text x="90" y="1130" class="p">• Shock or sustained hypotension</text>
+<text x="90" y="1160" class="p">  suggests high-risk PE</text>
+<text x="90" y="1198" class="p">• Bedside echo may show RV strain</text>
+<text x="90" y="1228" class="p">  when the patient is too unstable</text>
+<text x="90" y="1258" class="p">  for CT</text>
+<text x="90" y="1296" class="p">• Give supportive care and</text>
+<text x="90" y="1326" class="p">  anticoagulation when appropriate</text>
+<text x="90" y="1364" class="p">• Reperfusion therapy may be</text>
+<text x="90" y="1394" class="p">  required in hemodynamic</text>
+<text x="90" y="1424" class="p">  instability</text><rect x="615" y="1040" width="525" height="310" rx="24" fill="#effaf4" stroke="#d6efdf" stroke-width="2"/>
+<circle cx="657" cy="1082" r="25" fill="#138a54"/>
+<text x="657" y="1090" text-anchor="middle" class="num">4B</text>
+<text x="697" y="1088" class="h">Post-MI mechanical complications</text>
+<text x="645" y="1130" class="p">• Papillary muscle rupture → acute</text>
+<text x="645" y="1160" class="p">  severe MR + pulmonary edema</text>
+<text x="645" y="1198" class="p">• Ventricular septal rupture → new</text>
+<text x="645" y="1228" class="p">  harsh systolic murmur + shock</text>
+<text x="645" y="1266" class="p">• Free-wall rupture →</text>
+<text x="645" y="1296" class="p">  hemopericardium, tamponade or</text>
+<text x="645" y="1326" class="p">  sudden collapse</text>
+<text x="645" y="1364" class="p">• These require urgent</text>
+<text x="645" y="1394" class="p">  cardiology/cardiothoracic</text>
+<text x="645" y="1424" class="p">  evaluation</text><rect x="140" y="1390" width="920" height="180" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<text x="168" y="1438" class="h">Key rule</text>
+<text x="170" y="1480" class="p">• When a dangerous alternative diagnosis can mimic ACS, do</text>
+<text x="170" y="1510" class="p">  not reflexively give thrombolysis or full anticoagulation</text>
+<text x="170" y="1540" class="p">  before excluding that diagnosis.</text>
+<text x="170" y="1578" class="p">• Reassess repeatedly; deterioration may be the clue to the</text>
+<text x="170" y="1608" class="p">  emergency.</text>
+</svg>

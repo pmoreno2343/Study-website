@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Study Website</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="shell"><aside class="sidebar">
+<div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
+<div class="nav-label">Navigation</div><nav class="nav">
+<a class="active" href="index.html">🏠 Home</a>
+<a href="index.html#plan">📅 Study Plan</a>
+<a  href="day1.html">🚨 Day 1 — Emergency</a><a href="day2.html">❤️ Day 2 — Cardiology I</a>
+<a href="index.html#subjects">📖 Notes by Subject</a>
+<a href="index.html#mistakes">⚠️ My Mistakes</a>
+<a href="index.html#resources">🔗 Resources</a>
+</nav></aside><main class="main">
+<div class="top"><input class="search" placeholder="Search your study website..."><button class="btn" onclick="openModal('noteModal')">+ Add Note</button></div>
+<section class="hero"><h1>Study Smarter, One Topic at a Time.</h1><p>Keep your notes, questions, mistakes, videos, infographics, and daily progress in one place.</p><div class="quote">“Small steps every day lead to big results.”</div></section>
+<section class="kpis"><div class="card"><div class="kpirow"><div class="badge b1">📅</div><div><div>Study Progress</div><div class="big"><span data-days>0</span>/30 days</div></div></div><div class="progress"><div data-progress></div></div></div><div class="card"><div class="kpirow"><div class="badge b2">❓</div><div><div>Questions Completed</div><div class="big" data-questions>0</div></div></div></div><div class="card"><div class="kpirow"><div class="badge b3">⚠️</div><div><div>Total Mistakes</div><div class="big" data-mistakes>0</div></div></div></div><div class="card"><div class="kpirow"><div class="badge b4">📘</div><div><div>Notes Created</div><div class="big" data-notes>0</div></div></div></div></section>
+
+
+<section id="subjects" class="section card"><div class="sectionhead"><h2>📖 Study by Subject</h2><span class="muted">These buttons now work</span></div><div class="subjects"><a class="subject" href="day1.html"><span>🚨</span><div><strong>Emergency Medicine</strong><div class="muted">Day 1–2</div></div></a>
+<a class="subject" href="day2.html"><span>❤️</span><div><strong>Cardiology</strong><div class="muted">Day 2–3</div></div></a>
+<a class="subject" href="subject.html?name=Respiratory"><span>🫁</span><div><strong>Respiratory</strong><div class="muted">Day 10–11</div></div></a>
+<a class="subject" href="subject.html?name=Endocrinology"><span>🦋</span><div><strong>Endocrinology</strong><div class="muted">Day 5–8</div></div></a>
+<a class="subject" href="subject.html?name=Renal%20%26%20Electrolytes"><span>🫘</span><div><strong>Renal & Electrolytes</strong><div class="muted">Day 8–9</div></div></a>
+<a class="subject" href="subject.html?name=Infectious%20Diseases"><span>🦠</span><div><strong>Infectious Diseases</strong><div class="muted">Day 12–13</div></div></a>
+<a class="subject" href="subject.html?name=Gastroenterology"><span>🩺</span><div><strong>Gastroenterology</strong><div class="muted">Day 14</div></div></a>
+<a class="subject" href="subject.html?name=Hematology%20%26%20Oncology"><span>🩸</span><div><strong>Hematology & Oncology</strong><div class="muted">Day 15–16</div></div></a>
+<a class="subject" href="subject.html?name=Neurology"><span>🧠</span><div><strong>Neurology</strong><div class="muted">Day 17–18</div></div></a>
+<a class="subject" href="subject.html?name=Pediatrics"><span>🧸</span><div><strong>Pediatrics</strong><div class="muted">Day 19–20</div></div></a>
+<a class="subject" href="subject.html?name=OB%20%2F%20GYN"><span>🌸</span><div><strong>OB / GYN</strong><div class="muted">Day 21–22</div></div></a>
+<a class="subject" href="subject.html?name=Dermatology"><span>🧴</span><div><strong>Dermatology</strong><div class="muted">Day 23</div></div></a>
+<a class="subject" href="subject.html?name=Rheumatology%20%26%20MSK"><span>🦴</span><div><strong>Rheumatology & MSK</strong><div class="muted">Day 26</div></div></a></div></section>
+<section id="plan" class="section card"><div class="sectionhead"><h2>30-Day Plan</h2></div><div class="day-list"><a class="day-card active" href="day1.html"><b>Day 1</b><br>Emergency Medicine I<br><small>9 complete topics</small></a><a class="day-card active" href="day2.html><b>Day 2</b><br>Cardiology I<br><small>8 complete topics</small></a><div class="day-card"><b>Day 3</b><br>Cardiology II<br><small>Coming next</small></div></div></section>
+<section class="section grid3"><div class="card"><h2 style="margin-top:0">Today's Focus</h2><p>Continue Day 2 and work through one cardiology topic at a time.</p><a class="btn" style="display:inline-block" href="day2.html">Open Day 2 →</a></div><div id="mistakes" class="card"><h2 style="margin-top:0">My Mistakes</h2><p class="muted">Save ExamCure mistakes as clue → answer → rule.</p><button class="btn secondary" onclick="openModal('mistakeModal')">Add mistake</button></div><div id="resources" class="card">
+<h2 style="margin-top:0">Resources</h2>
+<div class="list">
+  <div class="row"><span>ExamCure</span><span class="tag">Questions</span></div>
+  <div class="row"><span>Videos</span><span class="tag">Learning</span></div>
+  <a class="row" href="infographics.html" style="text-decoration:none;color:inherit">
+    <span>🖼️ Infographics</span><span class="tag">Open →</span>
+  </a>
+  <a class="row" href="algorithms.html" style="text-decoration:none;color:inherit">
+    <span>🧭 Clinical Algorithms</span><span class="tag">Open →</span>
+  </a>
+</div>
+</div></section>
+</main></div><div id="noteModal" class="modal"><div class="modalbox"><h2>Add Note</h2><label class="muted">Subject</label><select id="noteSubject"><option>Emergency Medicine</option><option>Cardiology</option><option>Respiratory</option><option>Endocrinology</option><option>Renal & Electrolytes</option><option>Infectious Diseases</option><option>Gastroenterology</option><option>Hematology & Oncology</option><option>Neurology</option><option>Pediatrics</option><option>OB/GYN</option></select><br><br><label class="muted">Title</label><input id="noteTitle" type="text"><br><br><label class="muted">Notes</label><textarea id="noteBody" rows="10"></textarea><div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveNote()">Save</button></div></div></div>
+<div id="mistakeModal" class="modal"><div class="modalbox"><h2>Add Mistake</h2><label class="muted">Topic</label><input id="mTopic" type="text"><br><br><label class="muted">Question clue</label><input id="mClue" type="text"><br><br><label class="muted">Correct answer</label><input id="mAnswer" type="text"><br><br><label class="muted">One-line rule</label><input id="mRule" type="text"><div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div></div></div><script src="script.js"></script></body></html>
