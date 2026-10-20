@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1660" viewBox="0 0 1200 1660">
+<defs>
+<style>
+.title{font:700 48px Arial,Helvetica,sans-serif;fill:#102033}
+.sub{font:400 23px Arial,Helvetica,sans-serif;fill:#52677f}
+.h{font:700 26px Arial,Helvetica,sans-serif;fill:#102033}
+.p{font:400 19px Arial,Helvetica,sans-serif;fill:#243752}
+.num{font:700 21px Arial,Helvetica,sans-serif;fill:white}
+</style>
+</defs>
+
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<rect x="40" y="35" width="1120" height="135" rx="28" fill="#eaf3ff"/>
+<text x="70" y="96" class="title">Cardiovascular Emergencies</text>
+<text x="70" y="138" class="sub">Rapid recognition and first priorities</text>
+
+<!-- Box 1 -->
+<rect x="140" y="220" width="920" height="165" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<circle cx="182" cy="262" r="25" fill="#1769e0"/>
+<text x="182" y="270" text-anchor="middle" class="num">1</text>
+<text x="222" y="268" class="h">Initial stabilization</text>
+<text x="170" y="310" class="p">• ABCDE, monitor, IV access, ECG, bedside glucose</text>
+<text x="170" y="348" class="p">• Treat shock, hypoxemia, or malignant arrhythmia immediately</text>
+
+<line x1="600" y1="385" x2="600" y2="440" stroke="#7aa0c7" stroke-width="5"/>
+<polygon points="590,422 610,422 600,440" fill="#7aa0c7"/>
+
+<!-- Box 2 -->
+<rect x="140" y="445" width="920" height="220" rx="24" fill="#fff8e8" stroke="#ffe6b0" stroke-width="2"/>
+<circle cx="182" cy="487" r="25" fill="#b96c00"/>
+<text x="182" y="495" text-anchor="middle" class="num">2</text>
+<text x="222" y="493" class="h">Pattern recognition</text>
+<text x="170" y="535" class="p">• Abrupt tearing chest/back pain + pulse/BP asymmetry → dissection</text>
+<text x="170" y="573" class="p">• Shock + raised JVP + clear lungs / effusion → tamponade</text>
+<text x="170" y="611" class="p">• Sudden dyspnea, syncope, hypotension + RV strain → high-risk PE</text>
+<text x="170" y="649" class="p">• Pulmonary edema or shock after MI → think mechanical complication</text>
+
+<line x1="600" y1="665" x2="600" y2="720" stroke="#7aa0c7" stroke-width="5"/>
+<polygon points="590,702 610,702 600,720" fill="#7aa0c7"/>
+
+<!-- Box 3A -->
+<rect x="60" y="725" width="525" height="325" rx="24" fill="#fff1f2" stroke="#ffd7da" stroke-width="2"/>
+<circle cx="102" cy="767" r="25" fill="#d9363e"/>
+<text x="102" y="775" text-anchor="middle" class="num">3A</text>
+<text x="142" y="773" class="h">Acute aortic syndrome</text>
+<text x="90" y="815" class="p">• Urgent aortic imaging if stable</text>
+<text x="90" y="853" class="p">• Type A involvement → surgical pathway</text>
+<text x="90" y="891" class="p">• Give analgesia + anti-impulse therapy</text>
+<text x="90" y="929" class="p">• IV beta-blocker first if not contraindicated</text>
+<text x="90" y="967" class="p">• Aim SBP &lt;120 mmHg and HR about 60–80/min</text>
+<text x="90" y="1005" class="p">• Avoid anticoagulation / thrombolysis if strongly suspected</text>
+
+<!-- Box 3B -->
+<rect x="615" y="725" width="525" height="325" rx="24" fill="#edf4ff" stroke="#d4e5ff" stroke-width="2"/>
+<circle cx="657" cy="767" r="25" fill="#1769e0"/>
+<text x="657" y="775" text-anchor="middle" class="num">3B</text>
+<text x="697" y="773" class="h">Cardiac tamponade</text>
+<text x="645" y="815" class="p">• Hypotension, raised JVP, tachycardia</text>
+<text x="645" y="853" class="p">• Beck triad may be incomplete</text>
+<text x="645" y="891" class="p">• POCUS/echo: effusion + chamber collapse + plethoric IVC</text>
+<text x="645" y="929" class="p">• Unstable patient → urgent pericardial drainage</text>
+<text x="645" y="967" class="p">• Do not delay decompression for prolonged work-up</text>
+
+<!-- Box 4A -->
+<rect x="60" y="1085" width="525" height="305" rx="24" fill="#f6f0ff" stroke="#e6d8ff" stroke-width="2"/>
+<circle cx="102" cy="1127" r="25" fill="#6e3ac4"/>
+<text x="102" y="1135" text-anchor="middle" class="num">4A</text>
+<text x="142" y="1133" class="h">High-risk pulmonary embolism</text>
+<text x="90" y="1175" class="p">• Shock or sustained hypotension = high risk</text>
+<text x="90" y="1213" class="p">• Bedside echo may show RV strain if too unstable for CT</text>
+<text x="90" y="1251" class="p">• Give supportive care and anticoagulation when appropriate</text>
+<text x="90" y="1289" class="p">• Reperfusion may be needed in hemodynamic instability</text>
+
+<!-- Box 4B -->
+<rect x="615" y="1085" width="525" height="305" rx="24" fill="#effaf4" stroke="#d6efdf" stroke-width="2"/>
+<circle cx="657" cy="1127" r="25" fill="#138a54"/>
+<text x="657" y="1135" text-anchor="middle" class="num">4B</text>
+<text x="697" y="1133" class="h">Post-MI mechanical complications</text>
+<text x="645" y="1175" class="p">• Papillary muscle rupture → acute MR + pulmonary edema</text>
+<text x="645" y="1213" class="p">• VSD rupture → new harsh systolic murmur + shock</text>
+<text x="645" y="1251" class="p">• Free-wall rupture → hemopericardium / tamponade / collapse</text>
+<text x="645" y="1289" class="p">• Urgent cardiology / cardiothoracic evaluation</text>
+
+<!-- Key rule -->
+<rect x="140" y="1425" width="920" height="170" rx="24" fill="#ffffff" stroke="#d8e4f4" stroke-width="2"/>
+<text x="168" y="1473" class="h">Key rule</text>
+<text x="170" y="1515" class="p">• Dangerous ACS mimics require different first actions</text>
+<text x="170" y="1553" class="p">• Do not reflexively give thrombolysis or full anticoagulation</text>
+<text x="170" y="1583" class="p">  until dissection has been reasonably excluded when suspected</text>
+</svg>
