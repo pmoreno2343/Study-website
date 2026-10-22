@@ -1,0 +1,420 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 5 — Endocrinology I</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e4e8ef;--blue:#1769e0;--blue-soft:#edf4ff;--nav:#102033;--green:#138a54;--green-soft:#effaf4;--red:#d9363e;--red-soft:#fff1f2;--amber:#b96c00;--amber-soft:#fff8e8;--purple:#6e3ac4;--purple-soft:#f6f0ff;--shadow:0 10px 30px rgba(16,32,51,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}button,input,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.sidebar{background:var(--nav);color:#fff;padding:20px 14px;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;margin:2px 8px 22px}.brand .logo{font-size:34px}.brand b{font-size:20px}.brand small{display:block;color:#b7c3d1;font-size:12px}
+.nav-label{font-size:11px;color:#8fa3b7;text-transform:uppercase;letter-spacing:.08em;margin:17px 9px 7px}.nav a{display:flex;gap:10px;align-items:center;padding:10px 11px;border-radius:10px;margin:4px 0;color:#e6edf5}.nav a:hover,.nav a.active{background:#1e4f84}
+.main{padding:22px 26px 44px;max-width:1500px;width:100%}.topbar{display:flex;align-items:center;gap:12px;margin-bottom:16px}.search{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.btn{border:0;border-radius:10px;padding:10px 14px;background:var(--blue);color:#fff}.btn.secondary{background:#eef2ff;color:#3143a5}
+.breadcrumb{font-size:13px;color:#4d6682;margin-bottom:9px}.page-title{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}.page-title h1{font-size:34px;margin:0}.page-title p{margin:5px 0 0;color:var(--muted)}.day-badge{background:#eaf3ff;color:#245aa5;padding:10px 16px;border-radius:12px;font-weight:700}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}.topic-menu{margin-top:16px}.topic-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.topic-btn{border:1px solid var(--line);background:#fff;color:var(--text);padding:14px 12px;border-radius:13px;font-weight:800}.topic-btn:hover{border-color:#a9c7f4}.topic-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+.panel{display:none;margin-top:18px}.panel.active{display:block}.panel-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:12px}.panel-head h2{margin:0;font-size:29px}.panel-head p{margin:5px 0 0;color:var(--muted)}.tag{background:#eef5ff;color:#2f63ac;border-radius:999px;padding:5px 9px;font-size:12px;white-space:nowrap}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin:10px 0}.box h3{margin:0 0 8px;font-size:18px}.box p,.box li{line-height:1.56}.box ul,.box ol{margin:6px 0 0 20px;padding:0}
+.blue{background:var(--blue-soft);border-color:#d4e5ff}.green{background:var(--green-soft);border-color:#d6efdf}.red{background:var(--red-soft);border-color:#ffd7da}.amber{background:var(--amber-soft);border-color:#ffe6b0}.purple{background:var(--purple-soft);border-color:#e6d8ff}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f8fafc}
+code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.kv{display:grid;grid-template-columns:190px 1fr;gap:7px 12px}.kv b{color:#243752}
+.additions{margin-top:15px;border:1px dashed #b8c6d5;background:#fbfcfe;border-radius:13px;padding:14px}.additions textarea{width:100%;min-height:105px;border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}.save-row{display:flex;gap:10px;align-items:center;margin-top:8px}.save-status{font-size:12px;color:var(--green)}
+.visual-shell,.quiz-shell{border:1px solid #d8e4f4;background:#f8fbff;border-radius:14px;margin:14px 0;overflow:hidden}.visual-head,.quiz-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:#eef6ff}.visual-head h3,.quiz-summary h3{margin:0;font-size:18px}.visual-head small,.quiz-summary p{display:block;color:var(--muted);font-size:12px;margin:3px 0 0}
+.visual-toggle,.quiz-toggle{border:0;border-radius:10px;padding:9px 12px;background:var(--blue);color:#fff;font-weight:800}.visual-body,.quiz-body{display:none;padding:14px;background:#fff}.visual-body.open,.quiz-body.open{display:block}
+.flow{display:grid;gap:9px;max-width:900px;margin:auto}.flowstep{border:1px solid #cfe0f5;border-radius:12px;padding:12px;background:#f9fcff;display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:start}.flowstep .num{width:34px;height:34px;border-radius:50%;background:#1769e0;color:#fff;display:grid;place-items:center;font-weight:800}.arrow{text-align:center;color:#7a9bbf;font-size:20px}
+.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.info-tile{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fbfcfe}.info-tile b{display:block;margin-bottom:5px}
+.quiz-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}.quiz-card h4{margin:0 0 10px;font-size:17px;line-height:1.4}.option{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 10px;margin:7px 0;background:#fbfcfe}.option:hover{border-color:#a9c7f4;background:#f7fbff}.option input{margin-right:8px}.answer-box{display:none;margin-top:10px;padding:11px;border-radius:10px;background:var(--green-soft);border:1px solid #d6efdf;line-height:1.5}.answer-box.wrong{background:var(--red-soft);border-color:#ffd7da}.quiz-toolbar{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:12px 0}.score-pill{font-weight:800;background:#eef5ff;color:#2f63ac;padding:9px 12px;border-radius:999px}
+.sources-list{display:grid;gap:9px}.source-link{display:block;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff}.source-link:hover{border-color:#a9c7f4;background:#f8fbff}.source-link b{display:block;margin-bottom:3px}.source-link span{font-size:13px;color:var(--muted)}.local-source{border-left:5px solid var(--green)}.international-source{border-left:5px solid var(--blue)}.disclaimer{font-size:12px;color:var(--muted);line-height:1.45}
+.rapid{margin-top:18px}.rapid-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.rapid-item{background:#fff;border:1px solid var(--line);border-radius:11px;padding:11px;display:flex;justify-content:space-between;gap:12px}.tracker{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tracker input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px}.note-line{font-size:12px;color:var(--muted);margin-top:6px}.footer-actions{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:16px}
+@media(max-width:1050px){.topic-grid{grid-template-columns:repeat(2,1fr)}.tracker{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto;gap:5px}.nav-label{display:none}.nav a{white-space:nowrap}.main{padding:14px}.topic-grid,.rapid-grid,.tracker,.info-grid{grid-template-columns:1fr}.page-title{flex-direction:column}.kv{grid-template-columns:1fr}.visual-head,.quiz-summary{align-items:flex-start;flex-direction:column}}
+
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.42);display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.modal.open{display:flex}.modalbox{background:#fff;border-radius:18px;padding:20px;width:min(720px,96vw);max-height:88vh;overflow:auto}
+.modalbox input,.modalbox textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.modalbox textarea{min-height:120px}
+.actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+
+
+@media print{
+  .sidebar,.topics,.quiz-shell,.additions,.tracker,.complete-card,.algorithm-head button{display:none!important}
+  .app{display:block!important}.main{padding:0!important}.panel{display:block!important;page-break-after:always}
+  .algorithm-body{display:block!important}.algorithm-body img{max-height:none!important}
+  .card,.box,.algorithm-shell{box-shadow:none!important}
+}
+
+
+html,body{min-height:100%}
+.app{min-height:100vh;align-items:stretch}
+.sidebar{align-self:stretch;min-height:100vh}
+@media(max-width:760px){.sidebar{min-height:auto}}
+
+
+.algorithm-shell{border:1px solid #cfe0f5;background:#f7fbff;border-radius:14px;margin:14px 0;overflow:hidden}
+.algorithm-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px;background:#eef6ff}
+.algorithm-head h3{margin:0;font-size:18px}
+.algorithm-head small{display:block;color:var(--muted);margin-top:3px}
+.algorithm-toggle{border:0;border-radius:10px;padding:9px 12px;background:#1769e0;color:#fff;font-weight:800;cursor:pointer}
+.algorithm-toggle:hover{filter:brightness(.96)}
+.algorithm-body{display:none;padding:14px;background:#fff}
+.algorithm-body.open{display:block}
+.algorithm-body img{display:block;width:min(100%,900px);height:auto;margin:0 auto;border-radius:12px;border:1px solid var(--line)}
+.algorithm-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.algorithm-links a{display:inline-block;padding:8px 11px;border-radius:9px;background:#eef5ff;color:#245aa5;font-weight:700}
+
+.quiz-shell{border:1px solid #e6d8ff;background:var(--purple-soft);border-radius:14px;margin:12px 0;overflow:hidden}
+.quiz-summary{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:#fbf8ff;border-bottom:1px solid #eadfff}
+.quiz-summary-left{display:flex;align-items:center;gap:10px;min-width:0}
+.quiz-summary h3{margin:0;font-size:18px}
+.quiz-summary p{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.quiz-summary-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.quiz-toggle{border:0;border-radius:10px;padding:9px 12px;background:var(--blue);color:#fff;font-weight:700;cursor:pointer}
+.quiz-toggle:hover{filter:brightness(.96)}
+.quiz-body{display:none;padding:14px 16px 16px}
+.quiz-body.open{display:block}
+.quiz-chevron{display:inline-block;transition:transform .18s ease;margin-left:5px}
+.quiz-toggle.open .quiz-chevron{transform:rotate(180deg)}
+.score-pill{font-weight:800;background:#eef5ff;color:#2f63ac;padding:9px 12px;border-radius:999px}
+@media(max-width:760px){
+  .algorithm-head{align-items:flex-start;flex-direction:column}
+  .quiz-summary{align-items:flex-start;flex-direction:column}
+  .quiz-summary-actions{justify-content:flex-start}
+}
+
+
+@media print{
+.sidebar,.topics,.quiz-shell,.additions,.tracker,.complete-card,.algorithm-head button{display:none!important}
+.app{display:block!important}.main{padding:0!important}.panel{display:block!important;page-break-after:always}
+.algorithm-body{display:block!important}.algorithm-body img{max-height:none!important}
+.card,.box,.algorithm-shell{box-shadow:none!important}
+}
+
+html,body{min-height:100%}.app{min-height:100vh;align-items:stretch}.sidebar{align-self:stretch;min-height:100vh}
+@media(max-width:760px){.sidebar{min-height:auto}}
+
+
+@media print{
+.sidebar,.topics,.quiz-shell,.additions,.tracker,.complete-card,.algorithm-head button{display:none!important}
+.app{display:block!important}.main{padding:0!important}.panel{display:block!important;page-break-after:always}
+.algorithm-body{display:block!important}.algorithm-body img{max-height:none!important}
+.card,.box,.algorithm-shell{box-shadow:none!important}
+}
+
+html,body{min-height:100%}.app{min-height:100vh;align-items:stretch}.sidebar{align-self:stretch;min-height:100vh}
+@media(max-width:760px){.sidebar{min-height:auto}}
+</style></head>
+<body><div class="app">
+<aside class="sidebar">
+<div class="brand"><div class="logo">🧠</div><div><strong>Study<br>Website</strong><small>Study smarter. One step at a time.</small></div></div>
+<div class="nav-label">Navigation</div><nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="index.html#plan">📅 Study Plan</a>
+<a href="day1.html">🚨 Day 1 — Emergency</a>
+<a href="day2.html">❤️ Day 2 — Cardiology I</a>
+<a href="day3.html">💓 Day 3 — Cardiology II</a>
+<a href="day4.html">🫁 Day 4 — Respiratory</a>
+<a class="active" href="day5.html">🦋 Day 5 — Endocrinology I</a>
+<a href="index.html#subjects">📖 Notes by Subject</a>
+<a href="index.html#mistakes">⚠️ My Mistakes</a>
+<a href="index.html#resources">🔗 Resources</a>
+</nav>
+<div class="nav-label">Quick Access</div><nav class="nav">
+<a href="#" onclick="openModal('noteModal');return false">➕ Add Note</a>
+<a href="#" onclick="openModal('mistakeModal');return false">⚠️ Add Mistake</a>
+</nav></aside>
+<main class="main">
+<header class="day-header"><div><span class="eyebrow">DAY 5 · ENDOCRINOLOGY I</span><h1>🦋 Diabetes & Endocrine Emergencies</h1><p>Deep guideline-based diabetes care and high-yield endocrine emergencies with approved visuals and physician-level clinical vignettes.</p></div><div class="day-badge">8 topics<br><b>80 questions</b></div></header>
+<div class="topics"><button class="topic-btn active" data-topic="dx" onclick="showTopic('dx')">1. Diabetes Diagnosis & Monitoring</button>
+<button class="topic-btn" data-topic="t2dm" onclick="showTopic('t2dm')">2. Type 2 Diabetes Medication Strategy</button>
+<button class="topic-btn" data-topic="insulin" onclick="showTopic('insulin')">3. Insulin Basics & Hypoglycemia</button>
+<button class="topic-btn" data-topic="dka" onclick="showTopic('dka')">4. Diabetic Ketoacidosis</button>
+<button class="topic-btn" data-topic="hhs" onclick="showTopic('hhs')">5. HHS & Euglycemic DKA</button>
+<button class="topic-btn" data-topic="thyroid" onclick="showTopic('thyroid')">6. Thyroid Storm & Myxedema Coma</button>
+<button class="topic-btn" data-topic="adrenal" onclick="showTopic('adrenal')">7. Adrenal Insufficiency & Adrenal Crisis</button>
+<button class="topic-btn" data-topic="calcium" onclick="showTopic('calcium')">8. Hypercalcemia</button></div>
+
+<section id="panel-dx" class="panel active">
+<div class="panel-head"><div><h2>1. Diabetes Diagnosis & Long-Term Monitoring</h2><p>Know the diagnostic thresholds, confirm appropriately, and screen systematically for complications.</p></div><span class="tag">ADA 2026</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Diagnostic criteria — nonpregnant adults</h3>
+<div class="table-wrap"><table>
+<tr><th>Test</th><th>Diabetes threshold</th></tr>
+<tr><td>A1C</td><td><b>≥6.5%</b></td></tr>
+<tr><td>Fasting plasma glucose</td><td><b>≥126 mg/dL</b> (7.0 mmol/L)</td></tr>
+<tr><td>2-h glucose after 75-g OGTT</td><td><b>≥200 mg/dL</b> (11.1 mmol/L)</td></tr>
+<tr><td>Random plasma glucose</td><td><b>≥200 mg/dL</b> with classic symptoms or hyperglycemic crisis</td></tr>
+</table></div>
+<p>Without unequivocal hyperglycemia, confirm with a second abnormal result from the same or a different test.</p></div>
+<div class="box"><h3>Prediabetes</h3><ul><li>A1C <b>5.7–6.4%</b></li><li>Fasting glucose <b>100–125 mg/dL</b></li><li>2-h OGTT glucose <b>140–199 mg/dL</b></li></ul></div>
+<div class="box purple"><h3>A1C interpretation traps</h3><p>A1C may be misleading with altered red-cell turnover, hemoglobin variants, recent transfusion, pregnancy, advanced kidney disease, or certain anemias. When A1C and glucose are discordant, investigate the reason rather than automatically trusting one value.</p></div>
+</div><div>
+<div class="box green"><h3>Monitoring & complication prevention</h3><ul><li>A1C usually every <b>3–6 months</b> depending on control and therapy changes.</li><li>Annual urine albumin-to-creatinine ratio and eGFR in appropriate patients.</li><li>Retinal screening, foot assessment, blood pressure and lipid management.</li><li>Vaccination, smoking cessation, nutrition, physical activity and weight management.</li></ul></div>
+<div class="box"><h3>Microvascular vs macrovascular disease</h3><ul><li><b>Microvascular:</b> retinopathy, nephropathy, neuropathy.</li><li><b>Macrovascular:</b> coronary disease, stroke, peripheral arterial disease.</li></ul></div>
+<div class="box amber"><h3>Classic presentation that changes urgency</h3><p>Polyuria, polydipsia, weight loss, dehydration, ketotic symptoms, marked hyperglycemia or catabolic features may require immediate treatment rather than routine outpatient confirmation.</p></div>
+<div class="box red"><h3>Common wrong-answer trap</h3><p><b>One borderline abnormal screening test in an asymptomatic patient does not automatically establish diabetes.</b> Confirmation is generally required unless hyperglycemia is unequivocal.</p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>📊 Diabetes Mellitus: Diagnosis, Monitoring & Long-Term Targets</h3><small>Approved Day 5 infographic</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_diabetes_infographic.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_diabetes_infographic.png" class="algorithm-body">
+    <img src="day5_diabetes_infographic.png" alt="📊 Diabetes Mellitus: Diagnosis, Monitoring & Long-Term Targets">
+    <div class="algorithm-links"><a href="day5_diabetes_infographic.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-dx"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('dx')">Save my addition</button><span id="saved-dx" class="save-status"></span></div></div>
+<div id="quiz-dx"></div><div id="sources-dx" class="box"></div>
+</section>
+<section id="panel-t2dm" class="panel">
+<div class="panel-head"><div><h2>2. Type 2 Diabetes Medication Strategy</h2><p>Choose therapy by comorbidity, hypoglycemia risk, weight goals and degree of hyperglycemia.</p></div><span class="tag">ADA 2026</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Core principle</h3><p>Treatment is <b>individualized</b>. Do not think “metformin first for everyone” without considering ASCVD, heart failure, CKD, obesity, hypoglycemia risk, cost, side effects and patient preferences.</p></div>
+<div class="box"><h3>When cardiorenal disease drives the choice</h3><ul><li><b>ASCVD/high cardiovascular risk:</b> prioritize a GLP-1 receptor agonist and/or SGLT2 inhibitor with proven benefit.</li><li><b>Heart failure:</b> prioritize an SGLT2 inhibitor when appropriate.</li><li><b>CKD:</b> SGLT2 inhibitor and/or GLP-1 RA depending on eGFR, albuminuria and comorbidity.</li></ul></div>
+<div class="box purple"><h3>Weight-centered therapy</h3><p>GLP-1–based therapies, including dual GIP/GLP-1 agents, can provide major glucose and weight benefit. If weight goals are not met, ADA 2026 recommends intensifying lifestyle, pharmacologic or metabolic-surgery strategies as appropriate.</p></div>
+<div class="box amber"><h3>Hypoglycemia risk</h3><p>Insulin and sulfonylureas have higher hypoglycemia risk. When adding newer agents, reassess whether those medications need dose reduction.</p></div>
+</div><div>
+<div class="box green"><h3>When insulin becomes important</h3><p>Consider insulin regardless of background therapy when there is symptomatic hyperglycemia, catabolism, or very high glucose—e.g. <b>A1C &gt;10%</b> or glucose <b>≥300 mg/dL</b>.</p></div>
+<div class="box"><h3>When insulin is not mandatory</h3><p>In type 2 diabetes without severe hyperglycemia or crisis, ADA 2026 generally prefers <b>GLP-1–based therapy before insulin</b> for initial or add-on injectable treatment.</p></div>
+<div class="box red"><h3>Medication traps</h3><ul><li>Do not combine a <b>DPP-4 inhibitor</b> with a GLP-1 RA/dual GIP-GLP-1 agent—little added benefit.</li><li>Metformin: consider renal function, GI effects and B12 deficiency risk.</li><li>SGLT2 inhibitors: genital infections, volume depletion and <b>euglycemic DKA</b> risk.</li><li>TZDs: edema/weight gain; avoid or use caution in symptomatic HF.</li></ul></div>
+<div class="box green"><h3>Memory line</h3><p><b>Choose the diabetes drug for the patient—not only for the A1C.</b></p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>📊 Diabetes Mellitus Clinical Management Guide</h3><small>Shared Day 5 infographic</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_diabetes_infographic.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_diabetes_infographic.png" class="algorithm-body">
+    <img src="day5_diabetes_infographic.png" alt="📊 Diabetes Mellitus Clinical Management Guide">
+    <div class="algorithm-links"><a href="day5_diabetes_infographic.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-t2dm"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('t2dm')">Save my addition</button><span id="saved-t2dm" class="save-status"></span></div></div>
+<div id="quiz-t2dm"></div><div id="sources-t2dm" class="box"></div>
+</section>
+<section id="panel-insulin" class="panel">
+<div class="panel-head"><div><h2>3. Insulin Basics & Hypoglycemia</h2><p>Recognize insulin patterns and treat low glucose before neurologic injury occurs.</p></div><span class="tag">Emergency glucose</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Insulin categories</h3><ul><li><b>Rapid acting:</b> lispro, aspart, glulisine — mealtime/correction.</li><li><b>Short acting:</b> regular insulin — slower onset; also used IV in DKA/HHS.</li><li><b>Intermediate:</b> NPH.</li><li><b>Long/ultralong:</b> glargine, detemir, degludec — basal coverage.</li></ul></div>
+<div class="box"><h3>Basal-bolus concept</h3><p>Basal insulin covers fasting hepatic glucose production. Prandial insulin covers meals. Correction insulin treats unexpected hyperglycemia. “Sliding scale alone” is generally a poor long-term strategy.</p></div>
+<div class="box purple"><h3>Hypoglycemia recognition</h3><ul><li>Autonomic: sweating, tremor, hunger, palpitations.</li><li>Neuroglycopenic: confusion, behavior change, focal deficit, seizure, coma.</li><li>Glucose <b>&lt;70 mg/dL</b> is the alert threshold.</li></ul></div>
+</div><div>
+<div class="box green"><h3>Conscious and able to swallow</h3><p>Give <b>15 g fast-acting carbohydrate</b>, recheck in <b>15 minutes</b>, and repeat if glucose remains ≤70 mg/dL. Once recovered, provide longer-acting carbohydrate if the next meal is not imminent.</p></div>
+<div class="box red"><h3>Severe hypoglycemia</h3><p>If altered, seizing, unconscious or unable to swallow: give <b>IV dextrose</b> when access is available or <b>glucagon</b> if it is not. Protect the airway and identify the cause.</p></div>
+<div class="box amber"><h3>Persistent/recurrent hypoglycemia</h3><ul><li>Long-acting insulin or sulfonylurea exposure</li><li>CKD or liver failure</li><li>Alcohol use</li><li>Sepsis/critical illness</li><li>Adrenal insufficiency</li></ul><p>Sulfonylurea-related recurrent hypoglycemia may require prolonged observation and specialist/toxicology-guided treatment.</p></div>
+<div class="box red"><h3>Trap</h3><p>Hypoglycemia can mimic stroke or seizure disorders. <b>Check glucose early in any unexplained neurologic presentation.</b></p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>🧭 Hypoglycemia Emergency Treatment Algorithm</h3><small>Approved Day 5 algorithm</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_hypoglycemia_algorithm.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_hypoglycemia_algorithm.png" class="algorithm-body">
+    <img src="day5_hypoglycemia_algorithm.png" alt="🧭 Hypoglycemia Emergency Treatment Algorithm">
+    <div class="algorithm-links"><a href="day5_hypoglycemia_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-insulin"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('insulin')">Save my addition</button><span id="saved-insulin" class="save-status"></span></div></div>
+<div id="quiz-insulin"></div><div id="sources-insulin" class="box"></div>
+</section>
+<section id="panel-dka" class="panel">
+<div class="panel-head"><div><h2>4. Diabetic Ketoacidosis</h2><p>Current diagnostic criteria, potassium-first safety and controlled insulin therapy.</p></div><span class="tag">2024 consensus</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Current adult DKA diagnostic criteria</h3><ul><li><b>Diabetes/hyperglycemia:</b> glucose ≥200 mg/dL <i>or</i> prior history of diabetes</li><li><b>Ketosis:</b> β-hydroxybutyrate ≥3.0 mmol/L or urine ketones ≥2+</li><li><b>Acidosis:</b> pH &lt;7.3 and/or bicarbonate &lt;18 mmol/L</li></ul><p>All three components are required. The lower glucose threshold is an important update from older teaching.</p></div>
+<div class="box"><h3>Classic presentation</h3><p>Polyuria, polydipsia, dehydration, nausea/vomiting, abdominal pain, Kussmaul respirations and altered mental status. Triggers include infection, insulin omission, MI/stroke, pancreatitis, medication effects and new-onset diabetes.</p></div>
+<div class="box purple"><h3>Fluids first</h3><p>For adults without cardiac/renal compromise, current consensus supports isotonic saline or balanced crystalloid, often <b>500–1000 mL/h for the first 2–4 hours</b>, then individualize by hemodynamics, sodium, urine output and comorbidity.</p></div>
+</div><div>
+<div class="box red"><h3>🔥 Potassium determines when insulin can start</h3><ul><li>If K <b>3.5 mmol/L</b>: replace potassium and <b>delay insulin</b> until K &gt;3.5.</li><li>When K falls below 5.0, add potassium to fluids to maintain ~4–5 mmol/L.</li><li>Check K frequently during therapy because insulin/acidosis correction can rapidly lower it.</li></ul></div>
+<div class="box green"><h3>Insulin</h3><p>Moderate/severe DKA is typically treated with IV regular insulin around <b>0.1 units/kg/h</b>. Mild uncomplicated DKA may be eligible for protocolized subcutaneous rapid-acting insulin in appropriate monitored settings.</p></div>
+<div class="box"><h3>Dextrose & transition</h3><p>Add dextrose when glucose falls below about <b>250 mg/dL</b> so insulin can continue until ketosis/acidosis resolves. Give basal subcutaneous insulin <b>before</b> stopping IV insulin to prevent rebound DKA.</p></div>
+<div class="box amber"><h3>Do not routinely give</h3><p><b>Bicarbonate</b> is not routine and is reserved for severe acidosis (generally pH &lt;7.0 in current consensus). Routine phosphate replacement is also unnecessary unless severe deficiency causes clinically important weakness/cardiopulmonary problems.</p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>🧭 DKA / HHS Initial Assessment & Management</h3><small>Approved Day 5 algorithm — updated to current criteria</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_dka_hhs_algorithm.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_dka_hhs_algorithm.png" class="algorithm-body">
+    <img src="day5_dka_hhs_algorithm.png" alt="🧭 DKA / HHS Initial Assessment & Management">
+    <div class="algorithm-links"><a href="day5_dka_hhs_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-dka"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('dka')">Save my addition</button><span id="saved-dka" class="save-status"></span></div></div>
+<div id="quiz-dka"></div><div id="sources-dka" class="box"></div>
+</section>
+<section id="panel-hhs" class="panel">
+<div class="panel-head"><div><h2>5. HHS & Euglycemic DKA</h2><p>Hyperosmolarity, neurologic dysfunction and the SGLT2-inhibitor trap.</p></div><span class="tag">Hyperglycemic crisis</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>HHS diagnostic pattern</h3><ul><li>Plasma glucose <b>≥600 mg/dL</b></li><li>Effective osmolality <b>&gt;300 mOsm/kg</b> or total osmolality &gt;320</li><li>β-hydroxybutyrate &lt;3.0 mmol/L / no significant ketonemia</li><li>pH ≥7.3 and bicarbonate ≥15 mmol/L</li></ul><p>Severe dehydration and neurologic changes are often more prominent than abdominal/Kussmaul features.</p></div>
+<div class="box"><h3>HHS management principles</h3><ul><li>Careful but substantial fluid replacement over 24–48 hours.</li><li>Correct osmolality/glucose gradually to reduce neurologic risk.</li><li>Potassium monitoring/replacement remains essential.</li><li>IV insulin is used at a lower rate than DKA when there is no major ketosis; mixed DKA/HHS is treated as DKA.</li></ul></div>
+<div class="box red"><h3>Neurologic trap</h3><p>Marked hyperosmolarity can cause confusion, focal deficits, seizures or coma and can mimic primary neurologic disease.</p></div>
+</div><div>
+<div class="box purple"><h3>Euglycemic DKA</h3><p>DKA can occur with glucose below classic thresholds. Important associations include <b>SGLT2 inhibitors</b>, fasting/low-carbohydrate intake, pregnancy, alcohol use and reduced insulin.</p></div>
+<div class="box amber"><h3>SGLT2 inhibitor pearl</h3><p>Do not exclude DKA because glucose is only 150–250 mg/dL in a symptomatic patient taking an SGLT2 inhibitor. Check ketones and acid-base status.</p></div>
+<div class="box"><h3>Mixed DKA/HHS</h3><p>Overlap is common. If significant ketosis/acidosis accompanies hyperosmolarity, manage using the DKA insulin approach while carefully correcting fluids/osmolality.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>DKA = ketones + acidosis. HHS = osmolality + dehydration. Glucose alone does not define either emergency.</b></p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>🧭 DKA / HHS Initial Assessment & Management</h3><small>Updated Day 5 algorithm</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_dka_hhs_algorithm.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_dka_hhs_algorithm.png" class="algorithm-body">
+    <img src="day5_dka_hhs_algorithm.png" alt="🧭 DKA / HHS Initial Assessment & Management">
+    <div class="algorithm-links"><a href="day5_dka_hhs_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-hhs"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('hhs')">Save my addition</button><span id="saved-hhs" class="save-status"></span></div></div>
+<div id="quiz-hhs"></div><div id="sources-hhs" class="box"></div>
+</section>
+<section id="panel-thyroid" class="panel">
+<div class="panel-head"><div><h2>6. Thyroid Storm & Myxedema Coma</h2><p>Two opposite endocrine emergencies with multi-organ decompensation.</p></div><span class="tag">ICU emergency</span></div>
+<div class="columns"><div>
+<div class="box red"><h3>Thyroid storm — classic pattern</h3><ul><li>High fever, marked tachycardia/AF</li><li>Agitation, delirium, psychosis or coma</li><li>Heart failure/shock</li><li>GI/hepatic dysfunction</li></ul><p>Triggers include infection, surgery, acute illness, iodine exposure and abrupt withdrawal of antithyroid therapy.</p></div>
+<div class="box"><h3>Thyroid storm treatment sequence</h3><ol><li>Supportive care/cooling + treat trigger</li><li><b>Beta-blocker</b> if appropriate</li><li><b>Thionamide</b> (PTU or methimazole)</li><li><b>Iodine after thionamide</b> to block hormone release</li><li><b>Glucocorticoid</b></li></ol><p>Do not wait for confirmatory labs if the syndrome is clinically convincing.</p></div>
+<div class="box amber"><h3>Beta-blocker caution</h3><p>Patients with severe decompensated heart failure or shock require individualized beta-blocker selection/dosing and close monitoring.</p></div>
+</div><div>
+<div class="box purple"><h3>Myxedema coma — classic pattern</h3><ul><li>Hypothermia</li><li>Bradycardia and hypotension</li><li>Hypoventilation/hypercapnia</li><li>Hyponatremia and hypoglycemia</li><li>Altered mental status</li></ul></div>
+<div class="box"><h3>Myxedema coma treatment principles</h3><ul><li>ICU support, airway/ventilation if needed</li><li>IV levothyroxine (± liothyronine in selected specialist-managed cases)</li><li><b>Empiric hydrocortisone</b> until concomitant adrenal insufficiency is excluded</li><li>Gentle/passive warming rather than aggressive peripheral rewarming</li><li>Correct glucose/electrolytes and treat trigger</li></ul></div>
+<div class="box red"><h3>Trap</h3><p>Despite the name, myxedema coma does not require literal coma; severe decompensated hypothyroidism with altered mentation is enough to raise concern.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>Storm = hot, fast, agitated. Myxedema = cold, slow, hypoventilating.</b></p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>📊 Thyroid Storm & Myxedema Coma: Rapid Recognition</h3><small>Approved Day 5 infographic</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_thyroid_emergencies_infographic.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_thyroid_emergencies_infographic.png" class="algorithm-body">
+    <img src="day5_thyroid_emergencies_infographic.png" alt="📊 Thyroid Storm & Myxedema Coma: Rapid Recognition">
+    <div class="algorithm-links"><a href="day5_thyroid_emergencies_infographic.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-thyroid"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('thyroid')">Save my addition</button><span id="saved-thyroid" class="save-status"></span></div></div>
+<div id="quiz-thyroid"></div><div id="sources-thyroid" class="box"></div>
+</section>
+<section id="panel-adrenal" class="panel">
+<div class="panel-head"><div><h2>7. Adrenal Insufficiency & Adrenal Crisis</h2><p>Think cortisol deficiency in unexplained shock, hyponatremia and GI symptoms.</p></div><span class="tag">Do not delay steroids</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Primary adrenal insufficiency clues</h3><ul><li>Fatigue, weight loss, GI symptoms</li><li>Orthostatic hypotension</li><li>Hyponatremia ± hyperkalemia</li><li>Hyperpigmentation in primary disease</li><li>Hypoglycemia can occur</li></ul><p>Primary disease has high ACTH and may require mineralocorticoid replacement; secondary disease does not usually cause hyperkalemia because aldosterone is preserved.</p></div>
+<div class="box purple"><h3>Diagnosis when stable</h3><p>Morning cortisol + ACTH can screen; the standard <b>250-µg cosyntropin stimulation test</b> confirms adrenal insufficiency when the patient is stable enough for testing. Measure renin/aldosterone when primary disease is suspected.</p></div>
+<div class="box red"><h3>🔥 Adrenal crisis</h3><p>Shock/hypotension, vomiting/abdominal pain, dehydration, hyponatremia, hyperkalemia or hypoglycemia in a patient with known/suspected adrenal insufficiency or recent chronic-steroid withdrawal should trigger immediate treatment.</p></div>
+</div><div>
+<div class="box green"><h3>Emergency treatment</h3><div class="kv"><b>Hydrocortisone</b><span><code class="dose">100 mg IV/IM immediately</code></span></div><div class="kv"><b>Then</b><span><code class="dose">200 mg/24 h</code> continuous or divided q6h</span></div><p>Give rapid isotonic crystalloid resuscitation and dextrose if hypoglycemic. Treat precipitating infection/illness.</p></div>
+<div class="box amber"><h3>Do not wait for cortisol results</h3><p>If feasible, draw cortisol/ACTH first—but <b>never delay hydrocortisone</b> in a patient with suspected adrenal crisis.</p></div>
+<div class="box"><h3>Prevention</h3><ul><li>Sick-day steroid rules</li><li>Emergency injectable glucocorticoid kit</li><li>Medical alert identification</li><li>Patient/family education</li></ul></div>
+<div class="box red"><h3>Common trap</h3><p>Stopping chronic glucocorticoids abruptly can produce secondary adrenal insufficiency even without hyperkalemia or hyperpigmentation.</p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>🧭 Adrenal Crisis Management Algorithm</h3><small>Approved Day 5 algorithm</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_adrenal_crisis_algorithm.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_adrenal_crisis_algorithm.png" class="algorithm-body">
+    <img src="day5_adrenal_crisis_algorithm.png" alt="🧭 Adrenal Crisis Management Algorithm">
+    <div class="algorithm-links"><a href="day5_adrenal_crisis_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-adrenal"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('adrenal')">Save my addition</button><span id="saved-adrenal" class="save-status"></span></div></div>
+<div id="quiz-adrenal"></div><div id="sources-adrenal" class="box"></div>
+</section>
+<section id="panel-calcium" class="panel">
+<div class="panel-head"><div><h2>8. Hypercalcemia: Evaluation & Initial Management</h2><p>Confirm the calcium, then let PTH divide the differential.</p></div><span class="tag">Calcium</span></div>
+<div class="columns"><div>
+<div class="box blue"><h3>Clinical presentation</h3><p>“Stones, bones, abdominal groans and psychiatric overtones”: nephrolithiasis, bone pain, constipation/abdominal symptoms, polyuria/polydipsia, weakness and confusion. ECG may show a <b>shortened QT</b>.</p></div>
+<div class="box"><h3>Step 1 — confirm true hypercalcemia</h3><p>Repeat calcium. Correct total calcium for albumin when appropriate, or obtain ionized calcium when protein abnormalities/critical illness make total calcium unreliable.</p></div>
+<div class="box purple"><h3>Step 2 — check PTH</h3><ul><li><b>High/inappropriately normal PTH:</b> primary hyperparathyroidism, familial hypocalciuric hypercalcemia, lithium.</li><li><b>Suppressed PTH:</b> malignancy/PTHrP, vitamin D excess, granulomatous disease, medications, thyrotoxicosis and other non-PTH causes.</li></ul></div>
+<div class="box amber"><h3>Severity matters more than one number</h3><p>Rapidly rising calcium, severe symptoms, dehydration, renal failure, arrhythmia or altered mental status increase urgency. Calcium <b>&gt;14 mg/dL</b> is generally severe.</p></div>
+</div><div>
+<div class="box green"><h3>Initial treatment of severe symptomatic hypercalcemia</h3><ul><li>Restore volume with <b>IV isotonic fluid</b> when not contraindicated.</li><li>Stop contributing calcium/vitamin D, thiazides or other relevant drugs.</li><li><b>Calcitonin</b> can lower calcium rapidly but should be limited to ~48–72 h because of tachyphylaxis.</li><li>Use an IV bisphosphonate or <b>denosumab</b> when indicated, especially in hypercalcemia of malignancy.</li></ul></div>
+<div class="box"><h3>Hypercalcemia of malignancy</h3><p>Current Endocrine Society guidance recommends an IV bisphosphonate or denosumab, with denosumab suggested over IV bisphosphonate in many adults. Severe HCM (&gt;14 mg/dL) may use calcitonin plus antiresorptive therapy initially.</p></div>
+<div class="box red"><h3>Loop diuretic trap</h3><p>Do not reflexively give furosemide to every hypercalcemic patient. Correct volume depletion first; loop diuretics are reserved for selected patients with fluid overload.</p></div>
+<div class="box green"><h3>Memory line</h3><p><b>Hypercalcemia → confirm → PTH → cause → hydrate/treat severity.</b></p></div>
+</div></div>
+
+<div class="algorithm-shell">
+  <div class="algorithm-head">
+    <div><h3>📊 Hypercalcemia: Evaluation & Initial Management</h3><small>Approved Day 5 infographic</small></div>
+    <button class="algorithm-toggle" onclick="toggleAlgorithm('day5_hypercalcemia_infographic.png')">Open visual ▼</button>
+  </div>
+  <div id="algo-body-day5_hypercalcemia_infographic.png" class="algorithm-body">
+    <img src="day5_hypercalcemia_infographic.png" alt="📊 Hypercalcemia: Evaluation & Initial Management">
+    <div class="algorithm-links"><a href="day5_hypercalcemia_infographic.png" target="_blank" rel="noopener">Open full size ↗</a></div>
+  </div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamPear pearls</b><textarea id="add-calcium"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('calcium')">Save my addition</button><span id="saved-calcium" class="save-status"></span></div></div>
+<div id="quiz-calcium"></div><div id="sources-calcium" class="box"></div>
+</section>
+
+<section class="card rapid">
+<h2>🔥 Day 5 Rapid Review</h2><p>These should become automatic.</p>
+<div class="rapid-item"><span>Diabetes diagnosis</span><b>A1C ≥6.5% / FPG ≥126 / 2-h OGTT ≥200</b></div>
+<div class="rapid-item"><span>Hypoglycemia</span><b>15 g glucose → recheck in 15 min</b></div>
+<div class="rapid-item"><span>DKA diagnosis</span><b>Diabetes/glucose ≥200 + ketones + acidosis</b></div>
+<div class="rapid-item"><span>DKA potassium</span><b>K &lt;3.5 → replace first, delay insulin</b></div>
+<div class="rapid-item"><span>HHS</span><b>Glucose ≥600 + hyperosmolarity + minimal ketosis/acidosis</b></div>
+<div class="rapid-item"><span>Thyroid storm</span><b>Beta-blocker + thionamide → iodine + steroid</b></div>
+<div class="rapid-item"><span>Adrenal crisis</span><b>Hydrocortisone 100 mg IV/IM immediately</b></div>
+<div class="rapid-item"><span>Hypercalcemia</span><b>Confirm → PTH → cause → hydrate/treat severity</b></div>
+<div class="tracker"><label>Questions <input id="trackQuestions" type="number" min="0"></label><label>Score % <input id="trackScore" type="number" min="0" max="100"></label><button class="btn" onclick="saveTracker()">Save Day 5 tracker</button><span id="trackSaved"></span></div>
+</section>
+<section class="card complete-card"><h3>Finished Day 5?</h3><p>Mark complete only after you review all 8 topics and practice questions.</p><button id="completeBtn" class="btn" onclick="toggleComplete()">Mark Day 5 Complete</button></section>
+
+</main></div>
+<div id="noteModal" class="modal"><div class="modalbox"><h2>Add Note</h2><label>Title</label><input id="noteTitle" type="text"><br><br><label>Notes</label><textarea id="noteBody"></textarea><div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div></div></div>
+<div id="mistakeModal" class="modal"><div class="modalbox"><h2>Add ExamPear Mistake</h2><label>Topic</label><input id="mTopic" type="text"><br><br><label>Question clue</label><input id="mClue" type="text"><br><br><label>Correct answer</label><input id="mAnswer" type="text"><br><br><label>One-line rule</label><input id="mRule" type="text"><div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div></div></div>
+<script>
+const topics=["dx", "t2dm", "insulin", "dka", "hhs", "thyroid", "adrenal", "calcium"];
+const quizData={"dx": [{"q": "An asymptomatic 52-year-old has A1C 6.7% on routine screening with no prior abnormal glucose. Best next step?", "opts": ["Confirm with repeat A1C or another diagnostic test promptly", "Diagnose diabetes from one result with no confirmation", "Start IV insulin immediately", "Ignore because A1C is unreliable in everyone"], "ans": 0, "exp": "Without unequivocal hyperglycemia, diagnosis generally requires a second abnormal result."}, {"q": "Which fasting plasma glucose meets the diagnostic threshold for diabetes?", "opts": ["126 mg/dL", "110 mg/dL", "99 mg/dL", "118 mg/dL"], "ans": 0, "exp": "FPG ≥126 mg/dL is diagnostic when confirmed appropriately."}, {"q": "A symptomatic patient has polyuria, polydipsia and random plasma glucose 245 mg/dL. What is true?", "opts": ["This can establish diabetes without a separate confirmatory test", "A1C must always be repeated twice first", "Only OGTT can diagnose diabetes", "This is only prediabetes"], "ans": 0, "exp": "Classic symptoms plus random plasma glucose ≥200 mg/dL establish diabetes."}, {"q": "Which A1C range defines prediabetes?", "opts": ["5.7–6.4%", "4.0–4.9%", "6.5–7.4%", "≥8%"], "ans": 0, "exp": "ADA prediabetes A1C range is 5.7–6.4%."}, {"q": "A patient with recent major blood loss has A1C 5.8% but repeated plasma glucose values are markedly high. Best interpretation?", "opts": ["A1C may be misleading because red-cell turnover is altered", "The glucose meters must be wrong", "Diabetes is excluded", "Diagnose hypoglycemia"], "ans": 0, "exp": "Conditions affecting RBC lifespan can make A1C unreliable."}, {"q": "Which is a microvascular complication?", "opts": ["Diabetic retinopathy", "Myocardial infarction", "Stroke", "Peripheral arterial disease"], "ans": 0, "exp": "Retinopathy, nephropathy and neuropathy are microvascular complications."}, {"q": "Which is a macrovascular complication?", "opts": ["Coronary artery disease", "Retinopathy", "Nephropathy", "Peripheral neuropathy"], "ans": 0, "exp": "ASCVD including coronary disease is macrovascular."}, {"q": "A1C in a patient whose therapy was recently changed and who is not at goal is commonly checked how often?", "opts": ["About every 3 months", "Every 5 years", "Daily", "Only once ever"], "ans": 0, "exp": "More frequent A1C monitoring—often every 3 months—is appropriate after treatment change or when not at goal."}, {"q": "Which urine test screens for diabetic kidney disease?", "opts": ["Urine albumin-to-creatinine ratio", "Urine ketones only", "Urine sodium only", "24-h catecholamines"], "ans": 0, "exp": "UACR with eGFR are key kidney screening measures."}, {"q": "A random glucose of 205 mg/dL in an asymptomatic patient is best interpreted as?", "opts": ["Needs confirmation rather than automatic diagnosis", "Always diagnostic with no confirmation", "Normal", "Hypoglycemia"], "ans": 0, "exp": "Random ≥200 mg/dL is diagnostic without confirmation only when accompanied by classic symptoms or crisis."}], "t2dm": [{"q": "A patient with type 2 diabetes and HFrEF needs intensification. Which class has specific HF benefit?", "opts": ["SGLT2 inhibitor", "Sulfonylurea", "DPP-4 inhibitor as mandatory first choice", "Short-acting insulin only"], "ans": 0, "exp": "SGLT2 inhibitors have strong HF outcome benefit."}, {"q": "A patient with T2DM and obesity has no severe hyperglycemia and needs an injectable medication. ADA 2026 generally prefers what before insulin?", "opts": ["GLP-1–based therapy", "NPH insulin in every case", "Sulfonylurea injection", "No medication"], "ans": 0, "exp": "GLP-1–based therapy is preferred to insulin when severe hyperglycemia/crisis is absent."}, {"q": "Which finding strongly supports initiating insulin promptly?", "opts": ["A1C 12% with weight loss and symptomatic hyperglycemia", "A1C 6.8% with no symptoms", "Normal fasting glucose", "Prediabetes only"], "ans": 0, "exp": "Catabolism, symptoms, A1C >10% or glucose ≥300 mg/dL favor insulin."}, {"q": "Which combination is generally not recommended because it adds little glucose lowering?", "opts": ["DPP-4 inhibitor + GLP-1 RA", "SGLT2 inhibitor + metformin", "GLP-1 RA + metformin", "Basal insulin + GLP-1 RA"], "ans": 0, "exp": "Concurrent DPP-4 inhibitor and GLP-1-based therapy is not recommended."}, {"q": "Which medication class is associated with euglycemic DKA risk?", "opts": ["SGLT2 inhibitor", "DPP-4 inhibitor", "Metformin only", "Acarbose"], "ans": 0, "exp": "SGLT2 inhibitors increase DKA risk, sometimes with only modest glucose elevation."}, {"q": "Which class commonly causes hypoglycemia and weight gain?", "opts": ["Sulfonylureas", "SGLT2 inhibitors", "GLP-1 RAs", "DPP-4 inhibitors"], "ans": 0, "exp": "Sulfonylureas increase insulin secretion independent of glucose and can cause hypoglycemia/weight gain."}, {"q": "Which medication class is especially useful when major weight loss is desired?", "opts": ["GLP-1–based therapy", "Sulfonylurea", "TZD", "Regular insulin alone"], "ans": 0, "exp": "GLP-1/dual GIP-GLP-1 agents can produce substantial weight loss."}, {"q": "TZDs should be used cautiously or avoided in which setting?", "opts": ["Symptomatic heart failure", "Seasonal allergies", "Migraine", "Iron deficiency"], "ans": 0, "exp": "TZDs can cause sodium/fluid retention and worsen HF."}, {"q": "When adding a potent glucose-lowering agent to a patient using insulin or sulfonylurea, what should be reassessed?", "opts": ["Dose of high-hypoglycemia-risk medications", "Need for antibiotics", "Need for warfarin", "Need for oxygen"], "ans": 0, "exp": "ADA recommends reassessing insulin/sulfonylurea doses to reduce hypoglycemia risk."}, {"q": "Which statement best describes modern T2DM therapy?", "opts": ["Comorbidities and outcomes can determine drug choice independent of A1C", "Metformin is the only acceptable first drug", "All patients need insulin immediately", "Weight has no role"], "ans": 0, "exp": "Cardiorenal and weight goals often drive drug selection."}], "insulin": [{"q": "A conscious patient has glucose 54 mg/dL and can swallow. Best first treatment?", "opts": ["15 g fast-acting carbohydrate", "Long-acting insulin", "IV bicarbonate", "Warfarin"], "ans": 0, "exp": "Treat alert hypoglycemia with 15 g glucose/carbohydrate."}, {"q": "After oral treatment of hypoglycemia, when should glucose generally be rechecked?", "opts": ["15 minutes", "6 hours", "24 hours", "1 week"], "ans": 0, "exp": "The classic rule is treat and recheck in 15 minutes."}, {"q": "A patient with severe hypoglycemia is unconscious and has no IV access. Best immediate medication?", "opts": ["Glucagon", "Metformin", "Furosemide", "Adenosine"], "ans": 0, "exp": "Glucagon is appropriate when IV glucose cannot be given promptly."}, {"q": "Which insulin is commonly used for IV infusion in DKA?", "opts": ["Regular insulin", "Degludec", "NPH only", "Glargine only"], "ans": 0, "exp": "Regular insulin is the standard IV insulin."}, {"q": "Which insulin component primarily covers fasting hepatic glucose production?", "opts": ["Basal insulin", "Prandial insulin only", "Correction insulin only", "Glucagon"], "ans": 0, "exp": "Basal insulin suppresses fasting hepatic glucose output."}, {"q": "Which drug exposure commonly causes prolonged recurrent hypoglycemia?", "opts": ["Sulfonylurea", "SGLT2 inhibitor", "Metformin alone", "Statin"], "ans": 0, "exp": "Sulfonylureas can cause recurrent/prolonged hypoglycemia."}, {"q": "Confusion and focal weakness occur in an insulin-treated diabetic. What should be checked early?", "opts": ["Capillary glucose", "Only troponin", "Only TSH", "Only D-dimer"], "ans": 0, "exp": "Hypoglycemia can mimic stroke and should be checked immediately."}, {"q": "A patient improves after IV dextrose but then becomes hypoglycemic again. What is the key next step?", "opts": ["Search for long-acting drug effect or underlying illness and continue monitoring", "Discharge immediately", "Give insulin", "Ignore recurrence"], "ans": 0, "exp": "Recurrent hypoglycemia requires cause evaluation and often prolonged observation."}, {"q": "Which symptom is neuroglycopenic rather than autonomic?", "opts": ["Confusion", "Sweating", "Tremor", "Palpitations"], "ans": 0, "exp": "Confusion reflects inadequate brain glucose delivery."}, {"q": "ADA 2026 recommends glucagon prescription for whom?", "opts": ["Individuals using insulin or at high risk of hypoglycemia", "Only people with hypertension", "Everyone with prediabetes", "Only hospitalized patients"], "ans": 0, "exp": "People using insulin or at high hypoglycemia risk should have glucagon available."}], "dka": [{"q": "Which glucose criterion is part of the current adult DKA definition?", "opts": ["Glucose ≥200 mg/dL or prior diabetes history", "Glucose must always exceed 600 mg/dL", "Glucose must exceed 400 mg/dL", "Glucose level is irrelevant even without diabetes history"], "ans": 0, "exp": "The 2024 consensus lowered the hyperglycemia threshold to ≥200 mg/dL or prior diabetes."}, {"q": "Which ketone value supports DKA?", "opts": ["β-hydroxybutyrate ≥3.0 mmol/L", "β-hydroxybutyrate 0.2 mmol/L", "No ketones", "Only urine glucose"], "ans": 0, "exp": "β-hydroxybutyrate ≥3.0 mmol/L is a current diagnostic criterion."}, {"q": "DKA patient has K 3.1 mmol/L. What should happen before insulin?", "opts": ["Replace potassium and delay insulin until K >3.5", "Start insulin immediately without potassium", "Give bicarbonate only", "Give calcium gluconate"], "ans": 0, "exp": "Current consensus delays insulin for K <3.5 mmol/L."}, {"q": "Which initial fluid is appropriate for most adults with DKA without major cardiac/renal limitation?", "opts": ["Isotonic saline or balanced crystalloid", "D5W alone", "Hypertonic saline routinely", "No fluid"], "ans": 0, "exp": "Current consensus allows isotonic saline or balanced crystalloid."}, {"q": "Why is dextrose added once glucose falls during DKA treatment?", "opts": ["To allow insulin to continue clearing ketones without causing hypoglycemia", "To stop insulin permanently", "To increase ketone production", "To correct hyperkalemia only"], "ans": 0, "exp": "Insulin must continue until ketoacidosis resolves."}, {"q": "Routine bicarbonate in DKA is?", "opts": ["Not recommended; consider only in severe acidosis such as pH <7.0", "Mandatory for all DKA", "Given before fluids", "Used when glucose >200 only"], "ans": 0, "exp": "Fluids and insulin usually correct acidosis; bicarbonate is reserved for severe cases."}, {"q": "Which precipitant should be actively sought in DKA?", "opts": ["Infection or insulin omission", "Only seasonal allergy", "No precipitant matters", "Hypercalcemia only"], "ans": 0, "exp": "Infection, insulin omission and acute vascular events are common triggers."}, {"q": "Which feature is classic for DKA?", "opts": ["Kussmaul respirations", "Profound bradycardia only", "Absent ketones", "Alkalemia"], "ans": 0, "exp": "Compensatory deep respirations occur with metabolic acidosis."}, {"q": "When transitioning off IV insulin after DKA, basal insulin should generally be given?", "opts": ["Before the infusion stops", "Several days after stopping", "Never", "Only if glucose >600"], "ans": 0, "exp": "Overlap reduces rebound hyperglycemia and recurrent DKA."}, {"q": "A patient with DKA has normal serum potassium at presentation. What does that mean about total-body potassium?", "opts": ["Total-body potassium is usually depleted despite normal/high serum K", "Potassium stores are always high", "No monitoring is needed", "Potassium cannot fall with insulin"], "ans": 0, "exp": "Osmotic diuresis causes substantial total-body K deficit even if extracellular K initially appears normal/high."}], "hhs": [{"q": "Which glucose value is part of current HHS criteria?", "opts": ["≥600 mg/dL", "≥126 mg/dL", "≥200 mg/dL only", "Any glucose with ketones"], "ans": 0, "exp": "HHS requires marked hyperglycemia ≥600 mg/dL."}, {"q": "Which feature distinguishes HHS from classic DKA?", "opts": ["Marked hyperosmolarity with minimal ketosis/acidosis", "Kussmaul breathing from severe acidosis", "β-hydroxybutyrate ≥3 by definition", "pH <7.0 always"], "ans": 0, "exp": "HHS is primarily an extreme hyperosmolar/dehydration state."}, {"q": "A patient on an SGLT2 inhibitor has nausea, abdominal pain, glucose 180 mg/dL, bicarbonate 12 and positive ketones. Most likely diagnosis?", "opts": ["Euglycemic DKA", "HHS", "Simple gastritis", "No diabetes emergency"], "ans": 0, "exp": "SGLT2-associated DKA can occur with modest glucose levels."}, {"q": "How should mixed DKA/HHS generally be treated?", "opts": ["Use the DKA insulin approach while correcting hyperosmolarity carefully", "No insulin", "Only oral fluids", "Treat as isolated hypoglycemia"], "ans": 0, "exp": "Significant ketosis/acidosis makes DKA therapy necessary."}, {"q": "Why must osmolality fall gradually in HHS?", "opts": ["Rapid shifts may cause neurologic complications", "To preserve ketones", "To induce acidosis", "No reason"], "ans": 0, "exp": "Controlled correction reduces the risk of harmful osmotic shifts."}, {"q": "Which symptom is particularly common in HHS?", "opts": ["Altered mental status", "Severe ketotic abdominal pain in every patient", "Kussmaul respirations always", "Hyperpigmentation"], "ans": 0, "exp": "Neurologic dysfunction is common as osmolality rises."}, {"q": "Which medication class is a classic trigger for euglycemic DKA?", "opts": ["SGLT2 inhibitors", "Calcium-channel blockers", "PPIs", "Statins"], "ans": 0, "exp": "SGLT2 inhibitors are a major modern cause of euglycemic DKA."}, {"q": "Which finding argues against pure HHS and toward mixed DKA/HHS?", "opts": ["β-hydroxybutyrate 5 mmol/L with acidosis", "Glucose 700 mg/dL", "High osmolality", "Dehydration"], "ans": 0, "exp": "Substantial ketonemia/acidosis indicates DKA overlap."}, {"q": "A patient with HHS needs insulin before adequate fluid replacement. What is the concern?", "opts": ["Rapid osmotic/hemodynamic shifts; fluids are a major initial priority", "Insulin is never used in HHS", "Fluids worsen HHS", "Potassium is irrelevant"], "ans": 0, "exp": "Fluid replacement is fundamental and insulin timing/rate must be cautious."}, {"q": "Best memory distinction?", "opts": ["DKA = ketosis/acidosis; HHS = hyperosmolar dehydration", "DKA = only high glucose; HHS = only ketones", "They are identical", "HHS always has severe acidosis"], "ans": 0, "exp": "That distinction is the core diagnostic framework."}], "thyroid": [{"q": "Which pattern most strongly suggests thyroid storm?", "opts": ["Fever, marked tachycardia, agitation and heart failure", "Hypothermia and bradycardia", "Only mild tremor", "Isolated high T4 with no illness"], "ans": 0, "exp": "Storm is severe thyrotoxicosis with systemic decompensation."}, {"q": "In thyroid storm, iodine should generally be given when relative to thionamide?", "opts": ["After thionamide", "Before thionamide", "Instead of thionamide", "Never"], "ans": 0, "exp": "Giving thionamide first blocks new hormone synthesis before iodine blocks release."}, {"q": "Which medication class rapidly controls adrenergic symptoms in thyroid storm?", "opts": ["Beta-blocker", "Calcium supplement", "Insulin", "Loop diuretic only"], "ans": 0, "exp": "Beta-blockade controls tachycardia/tremor, with caution in shock/HF."}, {"q": "Which finding is classic for myxedema coma?", "opts": ["Hypothermia and hypoventilation", "Hyperthermia and diarrhea", "Severe tachycardia", "Marked agitation only"], "ans": 0, "exp": "Myxedema crisis is a cold, slow, hypoventilating state."}, {"q": "Why is empiric hydrocortisone given in myxedema coma?", "opts": ["Possible concurrent adrenal insufficiency", "To directly replace T4", "To treat hypercalcemia", "To induce fever"], "ans": 0, "exp": "Adrenal insufficiency may coexist and thyroid replacement can precipitate crisis if cortisol is inadequate."}, {"q": "Should treatment of convincing thyroid storm wait for thyroid labs?", "opts": ["No", "Yes, always", "Only if febrile", "Only in older adults"], "ans": 0, "exp": "It is a clinical emergency; do not delay treatment."}, {"q": "Which is a common thyroid-storm trigger?", "opts": ["Infection", "Vitamin C deficiency", "Simple constipation", "Cerumen"], "ans": 0, "exp": "Infection is a common precipitant."}, {"q": "Which statement about myxedema coma is true?", "opts": ["Literal coma is not required", "It always presents with hyperthermia", "It never causes hyponatremia", "It is treated with antithyroid drugs"], "ans": 0, "exp": "Severe decompensated hypothyroidism with altered mentation can meet the clinical syndrome."}, {"q": "Aggressive external rewarming in myxedema coma is generally?", "opts": ["Avoided in favor of gentle/passive warming", "Mandatory", "Used to induce vasodilation rapidly", "The only treatment"], "ans": 0, "exp": "Aggressive peripheral warming may worsen hypotension."}, {"q": "Which organ complication can occur in thyroid storm?", "opts": ["Acute heart failure", "Only nephrolithiasis", "Only anemia", "No cardiovascular complications"], "ans": 0, "exp": "High-output HF, AF and shock are important complications."}], "adrenal": [{"q": "Known Addison disease patient presents with vomiting, hypotension and confusion. Best immediate treatment?", "opts": ["Hydrocortisone 100 mg IV/IM + isotonic fluids", "Wait for cortisol result", "Give insulin", "Give levothyroxine only"], "ans": 0, "exp": "Suspected adrenal crisis requires immediate stress-dose hydrocortisone and fluids."}, {"q": "Should hydrocortisone be delayed until cortisol/ACTH return?", "opts": ["No", "Yes, always", "Only if hypotensive", "Only if sodium is normal"], "ans": 0, "exp": "Testing can be drawn first if feasible, but therapy should not be delayed."}, {"q": "Which electrolyte pattern favors primary adrenal insufficiency?", "opts": ["Hyponatremia + hyperkalemia", "Hypernatremia + hypokalemia", "Hypercalcemia only", "Hyperphosphatemia only"], "ans": 0, "exp": "Aldosterone deficiency causes sodium loss and potassium retention."}, {"q": "Why may secondary adrenal insufficiency lack hyperkalemia?", "opts": ["Aldosterone is usually preserved", "ACTH raises potassium excretion directly", "Cortisol controls all potassium", "Kidneys stop filtering potassium"], "ans": 0, "exp": "RAAS rather than ACTH primarily regulates aldosterone."}, {"q": "Which test confirms adrenal insufficiency when the patient is stable?", "opts": ["250-µg cosyntropin stimulation test", "OGTT", "D-dimer", "BNP"], "ans": 0, "exp": "Cosyntropin testing is the standard confirmatory test."}, {"q": "What is the usual ongoing adult crisis hydrocortisone dose after the initial bolus?", "opts": ["200 mg/24 h", "5 mg/day", "1 mg/week", "No further steroid"], "ans": 0, "exp": "Guidelines recommend 200 mg hydrocortisone per 24 hours."}, {"q": "Which is an important adrenal-crisis trigger?", "opts": ["Abrupt glucocorticoid withdrawal", "Starting a statin", "Seasonal allergies", "Mild myopia"], "ans": 0, "exp": "Chronic steroid suppression followed by abrupt withdrawal can precipitate crisis."}, {"q": "Hyperpigmentation points more toward which type?", "opts": ["Primary adrenal insufficiency", "Secondary pituitary insufficiency", "Hyperthyroidism", "SIADH"], "ans": 0, "exp": "High ACTH/MSH activity in primary disease causes hyperpigmentation."}, {"q": "Which prevention strategy is appropriate for known adrenal insufficiency?", "opts": ["Emergency steroid kit and sick-day rules", "Avoid medical alert identification", "Stop steroid during infection", "No dose changes for surgery"], "ans": 0, "exp": "Stress dosing and emergency preparedness prevent crisis."}, {"q": "Hypoglycemia in adrenal crisis results partly from deficiency of which hormone?", "opts": ["Cortisol", "Aldosterone only", "Calcitonin", "PTH"], "ans": 0, "exp": "Cortisol supports gluconeogenesis and stress glucose homeostasis."}], "calcium": [{"q": "After confirming hypercalcemia, the best first etiologic blood test is?", "opts": ["PTH", "Troponin", "D-dimer", "ACTH"], "ans": 0, "exp": "PTH divides hypercalcemia into PTH-mediated and non-PTH-mediated causes."}, {"q": "High calcium with inappropriately normal/high PTH most strongly suggests?", "opts": ["Primary hyperparathyroidism", "PTHrP malignancy", "Vitamin D intoxication only", "Sarcoidosis only"], "ans": 0, "exp": "PTH should be suppressed by high calcium; nonsuppression implies PTH-mediated disease."}, {"q": "Suppressed PTH with marked hypercalcemia should prompt concern for?", "opts": ["Malignancy or other non-PTH causes", "Primary hyperparathyroidism only", "FHH only", "No pathology"], "ans": 0, "exp": "Suppressed PTH points away from primary hyperparathyroidism."}, {"q": "Which ECG change is classically associated with hypercalcemia?", "opts": ["Shortened QT", "Prolonged QT only", "Delta wave", "Saw-tooth waves"], "ans": 0, "exp": "Hypercalcemia shortens ventricular repolarization/QT."}, {"q": "Severe symptomatic hypercalcemia is initially treated with what supportive measure?", "opts": ["IV isotonic fluids if tolerated", "Fluid restriction in everyone", "Hypertonic saline", "No hydration"], "ans": 0, "exp": "Volume expansion corrects dehydration and enhances renal calcium excretion."}, {"q": "Why is calcitonin usually limited to 48–72 hours?", "opts": ["Tachyphylaxis", "Permanent renal failure", "It causes DKA", "It has no onset of action"], "ans": 0, "exp": "Its effect diminishes rapidly with repeated dosing."}, {"q": "Which antiresorptive therapies are used in hypercalcemia of malignancy?", "opts": ["IV bisphosphonate or denosumab", "Aspirin only", "Insulin only", "Hydrochlorothiazide"], "ans": 0, "exp": "Endocrine Society guidance recommends IV bisphosphonate or denosumab."}, {"q": "Which medication can worsen hypercalcemia?", "opts": ["Thiazide diuretic", "Loop diuretic after rehydration", "Bisphosphonate", "Calcitonin"], "ans": 0, "exp": "Thiazides reduce urinary calcium excretion."}, {"q": "A hypercalcemic patient is severely volume depleted. Should furosemide be given immediately?", "opts": ["No; correct volume first and reserve loop diuretic for selected overload states", "Yes, always", "Yes, before fluids", "It is definitive therapy for malignancy"], "ans": 0, "exp": "Routine loop diuresis in dehydrated hypercalcemia can worsen volume depletion."}, {"q": "Which symptom mnemonic is classic for hypercalcemia?", "opts": ["Stones, bones, abdominal groans, psychiatric overtones", "FAST", "BE-FAST", "OPQRST"], "ans": 0, "exp": "The mnemonic summarizes renal, skeletal, GI and neuropsychiatric effects."}]};
+const sourceData={"dx": [{"title": "ADA Standards of Care in Diabetes — 2026: Diagnosis & Classification", "desc": "Current diagnostic thresholds, confirmation and classification.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S27/163926/2-Diagnosis-and-Classification-of-Diab", "kind": "intl"}, {"title": "ADA Standards of Care in Diabetes — 2026", "desc": "Comprehensive current diabetes standards.", "url": "https://diabetes.org/health-wellness/diabetes-and-your-health/standards-of-care-in-diabetes", "kind": "intl"}], "t2dm": [{"title": "ADA Standards of Care in Diabetes — 2026: Pharmacologic Approaches", "desc": "Comorbidity-based medication selection, insulin thresholds and GLP-1/SGLT2 guidance.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S183/163934/9-Pharmacologic-Approaches-to-Glycemic-Treatment", "kind": "intl"}], "insulin": [{"title": "ADA Standards of Care in Diabetes — 2026: Glycemic Goals & Hypoglycemia", "desc": "Current hypoglycemia recognition and treatment recommendations.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S132/163927/6-Glycemic-Goals-Hypoglycemia-and-Hyperglycemic", "kind": "intl"}, {"title": "ADA Standards of Care — 2026: Pharmacologic Approaches", "desc": "Insulin, glucagon and glucose-lowering medication principles.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S183/163934/9-Pharmacologic-Approaches-to-Glycemic-Treatment", "kind": "intl"}], "dka": [{"title": "Hyperglycemic Crises in Adults With Diabetes — 2024 Consensus Report", "desc": "Current DKA/HHS criteria, potassium thresholds, fluids, insulin and resolution principles.", "url": "https://doi.org/10.2337/dci24-0032", "kind": "intl"}, {"title": "ADA Standards of Care — 2026: Diabetes Care in the Hospital", "desc": "Current inpatient hyperglycemic-crisis management.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S339/163925/16-Diabetes-Care-in-the-Hospital-Standards-of-Care", "kind": "intl"}], "hhs": [{"title": "Hyperglycemic Crises in Adults With Diabetes — 2024 Consensus Report", "desc": "Current HHS criteria, osmolality, fluid/insulin strategy and mixed crises.", "url": "https://doi.org/10.2337/dci24-0032", "kind": "intl"}, {"title": "ADA Standards of Care — 2026: Glycemic Goals, Hypoglycemia & Hyperglycemic Crises", "desc": "Euglycemic DKA and SGLT2-related risk.", "url": "https://diabetesjournals.org/care/article/49/Supplement_1/S132/163927/6-Glycemic-Goals-Hypoglycemia-and-Hyperglycemic", "kind": "intl"}], "thyroid": [{"title": "American Thyroid Association — Hyperthyroidism/Thyrotoxicosis Guidelines", "desc": "Evidence-based thyroid storm management framework.", "url": "https://www.thyroid.org/professionals/ata-professional-guidelines/", "kind": "intl"}, {"title": "American Thyroid Association — Hypothyroidism Guidance", "desc": "Authoritative thyroid hormone replacement guidance and thyroid resources.", "url": "https://www.thyroid.org/professionals/ata-professional-guidelines/", "kind": "intl"}], "adrenal": [{"title": "Endocrine Society — Primary Adrenal Insufficiency Guideline", "desc": "Diagnosis, chronic replacement, adrenal-crisis treatment and stress dosing.", "url": "https://www.endocrine.org/clinical-practice-guidelines/primary-adrenal-insufficiency", "kind": "intl"}], "calcium": [{"title": "Endocrine Society — Hypercalcemia of Malignancy Guideline", "desc": "Antiresorptive treatment, denosumab/bisphosphonate and calcitonin recommendations.", "url": "https://www.endocrine.org/clinical-practice-guidelines/hypercalcemia", "kind": "intl"}]};
+
+function showTopic(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+t).classList.add('active');
+  document.querySelector('[data-topic="'+t+'"]').classList.add('active');
+  localStorage.setItem('day5_active_topic',t);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleAlgorithm(id){
+  const b=document.getElementById('algo-body-'+id);
+  const btn=b.previousElementSibling.querySelector('.algorithm-toggle');
+  b.classList.toggle('open');
+  btn.textContent=b.classList.contains('open')?'Close visual ▲':'Open visual ▼';
+}
+function saveAddition(t){
+  localStorage.setItem('day5_add_'+t,document.getElementById('add-'+t).value);
+  const s=document.getElementById('saved-'+t);s.textContent='Saved ✓';setTimeout(()=>s.textContent='',1500);
+}
+function renderQuiz(t){
+  const root=document.getElementById('quiz-'+t),qs=quizData[t];
+  let h='<div class="quiz-shell"><div class="quiz-summary"><div class="quiz-summary-left"><div><h3>📝 10 Original Practice Questions</h3><p>Clinical-vignette level for physician review.</p></div></div><div class="quiz-summary-actions"><span id="score-'+t+'" class="score-pill"></span><button id="toggle-'+t+'" class="quiz-toggle" onclick="toggleQuiz(\''+t+'\')">Open test <span class="quiz-chevron">▼</span></button></div></div><div id="quiz-body-'+t+'" class="quiz-body">';
+  qs.forEach((q,i)=>{h+='<div class="question"><b>Q'+(i+1)+'. '+q.q+'</b>';q.opts.forEach((o,j)=>{h+='<label><input type="radio" name="'+t+'q'+i+'" value="'+j+'"> '+o+'</label>'});h+='<div id="'+t+'fb'+i+'" class="feedback"></div></div>'});
+  h+='<button class="btn" onclick="gradeQuiz(\''+t+'\')">Grade test</button></div></div>';root.innerHTML=h;
+  const saved=localStorage.getItem('day5_score_'+t);if(saved!==null)document.getElementById('score-'+t).textContent='Last score: '+saved+'%';
+}
+function toggleQuiz(t){
+  const body=document.getElementById('quiz-body-'+t),btn=document.getElementById('toggle-'+t);
+  body.classList.toggle('open');btn.classList.toggle('open',body.classList.contains('open'));
+  btn.innerHTML=body.classList.contains('open')?'Close test <span class="quiz-chevron">▼</span>':'Open test <span class="quiz-chevron">▼</span>';
+}
+function gradeQuiz(t){
+  let n=0;quizData[t].forEach((q,i)=>{const a=document.querySelector('input[name="'+t+'q'+i+'"]:checked'),fb=document.getElementById(t+'fb'+i);if(a&&Number(a.value)===q.ans){n++;fb.className='feedback good';fb.innerHTML='<b>Correct.</b> '+q.exp}else{fb.className='feedback bad';fb.innerHTML='<b>Correct answer:</b> '+q.opts[q.ans]+'<br>'+q.exp}});
+  const sc=Math.round(n/quizData[t].length*100);localStorage.setItem('day5_score_'+t,sc);document.getElementById('score-'+t).textContent='Score: '+sc+'% ('+n+'/10)';
+}
+function renderSources(t){
+ const box=document.getElementById('sources-'+t);let h='<h3>📚 Guidelines & Academic Sources</h3>';sourceData[t].forEach(s=>{h+='<a class="source" target="_blank" rel="noopener" href="'+s.url+'"><b>'+s.title+'</b><span>'+s.desc+'</span></a>'});box.innerHTML=h;
+}
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function saveGeneralNote(){const arr=JSON.parse(localStorage.getItem('study_notes')||'[]');arr.push({title:noteTitle.value,body:noteBody.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_notes',JSON.stringify(arr));closeModal('noteModal');alert('Note saved in this browser.');}
+function saveMistake(){const arr=JSON.parse(localStorage.getItem('study_mistakes')||'[]');arr.push({topic:mTopic.value,clue:mClue.value,answer:mAnswer.value,rule:mRule.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_mistakes',JSON.stringify(arr));closeModal('mistakeModal');alert('Mistake saved in this browser.');}
+function saveTracker(){localStorage.setItem('day5_tracker',JSON.stringify({q:trackQuestions.value,s:trackScore.value}));trackSaved.textContent='Saved ✓'}
+function toggleComplete(){const v=localStorage.getItem('day5_complete')==='1';localStorage.setItem('day5_complete',v?'0':'1');paintComplete()}
+function paintComplete(){const d=localStorage.getItem('day5_complete')==='1';completeBtn.textContent=d?'✓ Day 5 Complete':'Mark Day 5 Complete';completeBtn.classList.toggle('done',d)}
+window.addEventListener('DOMContentLoaded',()=>{topics.forEach(t=>{renderQuiz(t);renderSources(t);document.getElementById('add-'+t).value=localStorage.getItem('day5_add_'+t)||''});const t=localStorage.getItem('day5_active_topic');if(t&&topics.includes(t))showTopic(t);const tr=JSON.parse(localStorage.getItem('day5_tracker')||'{}');trackQuestions.value=tr.q||'';trackScore.value=tr.s||'';paintComplete();});
+</script></body></html>
