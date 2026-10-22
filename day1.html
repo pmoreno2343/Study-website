@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Day 1 — Emergency Medicine</title>
 <style>
 :root{
@@ -149,733 +150,671 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <body>
 <div class="app">
 <aside class="sidebar">
-  <div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
-  <div class="nav-label">Navigation</div>
-  <nav class="nav">
-    <a href="index.html">🏠 Home</a>
-    <a href="index.html#plan">📅 Study Plan</a>
-    <a class='active' href="day1.html">🚨 Day 1 — Emergency</a>
-    <a  href="day2.html">❤️ Day 2 — Cardiology I</a>
-    <a href="day3.html">💓 Day 3 — Cardiology II</a>
-    <a href="index.html#subjects">📖 Notes by Subject</a>
-    <a href="index.html#mistakes">⚠️ My Mistakes</a>
-    <a href="index.html#resources">🔗 Resources</a>
-  </nav>
-  <div class="nav-label">Quick access</div>
-  <nav class="nav">
-    <a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
-    <a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
-  </nav>
+<div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
+<div class="nav-label">Navigation</div>
+<nav class="nav">
+<a href="index.html">🏠 Home</a>
+<a href="index.html#plan">📅 Study Plan</a>
+<a class="active" href="day1.html">🚨 Day 1 — Emergency</a>
+<a href="day2.html">❤️ Day 2 — Cardiology I</a>
+<a href="day3.html">💓 Day 3 — Cardiology II</a><a href="day4.html">🫁 Day 4 — Respiratory</a>
+<a href="index.html#subjects">📖 Notes by Subject</a>
+<a href="index.html#mistakes">⚠️ My Mistakes</a>
+<a href="index.html#resources">🔗 Resources</a>
+</nav>
+<div class="nav-label">Quick access</div>
+<nav class="nav">
+<a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
+<a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
+</nav>
 </aside>
-
 <main class="main">
-  <div class="topbar">
-    <input class="search" id="searchBox" placeholder="Search within Day 1...">
-    <button class="btn" onclick="openModal('noteModal')">+ Add Note</button>
-  </div>
-
-  <div class="breadcrumb">Emergency Medicine › Day 1</div>
-  <div class="page-title">
-    <div><h1>Day 1 — Emergency Medicine</h1><p>Press a topic button to open the full high-yield DOH review.</p></div>
-    <div class="day-badge">📅 Day 1</div>
-  </div>
-
-  <section class="card topic-menu">
-    <div class="topic-grid">
-      <button class="topic-btn active" data-topic="abcde" onclick="showTopic('abcde')">1. ABCDE Approach</button>
-      <button class="topic-btn" data-topic="shock" onclick="showTopic('shock')">2. Shock</button>
-      <button class="topic-btn" data-topic="sepsis" onclick="showTopic('sepsis')">3. Sepsis</button>
-      <button class="topic-btn" data-topic="anaphylaxis" onclick="showTopic('anaphylaxis')">4. Anaphylaxis</button>
-      <button class="topic-btn" data-topic="ams" onclick="showTopic('ams')">5. AMS / Hypoglycemia</button>
-      <button class="topic-btn" data-topic="heat" onclick="showTopic('heat')">6. Heat Illness</button>
-      <button class="topic-btn" data-topic="burns" onclick="showTopic('burns')">7. Burns</button>
-      <button class="topic-btn" data-topic="trauma" onclick="showTopic('trauma')">8. Trauma Basics</button>
-      <button class="topic-btn" data-topic="cardioem" onclick="showTopic('cardioem')">9. Cardiovascular Emergencies</button>
-    </div>
-  </section>
-
-  <section id="panel-abcde" class="panel active">
-    <div class="panel-head"><div><h2>1. ABCDE Approach</h2><p>Universal first approach to an unstable patient.</p></div><span class="tag">Foundation</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Definition & exam principle</h3><p>ABCDE is a structured primary assessment designed to identify immediately reversible life threats. <b>Treat the problem as soon as you identify it; do not finish the whole survey first.</b></p></div>
-        <div class="box"><h3>A — Airway</h3><ul><li>Ask if the patient can speak clearly; inability to speak normally can indicate airway compromise.</li><li>Look/listen for stridor, gurgling, snoring, foreign body, facial/neck trauma, blood/vomit, soot, hoarseness.</li><li>Immediate actions may include positioning, suction, visible foreign-body removal, airway adjuncts, bag-mask ventilation, and definitive airway if needed.</li><li>Trauma: maintain cervical-spine protection while managing the airway.</li></ul></div>
-        <div class="box"><h3>B — Breathing</h3><ul><li>Assess RR, SpO₂, chest expansion, respiratory effort, breath sounds, cyanosis and tracheal position.</li><li>Life threats: tension pneumothorax, massive hemothorax, severe asthma, pulmonary edema, severe hypoxemia.</li><li><b>Tension pneumothorax is a clinical emergency: decompress immediately; do not delay for CXR.</b></li></ul></div>
-        <div class="box"><h3>C — Circulation</h3><ul><li>HR, BP, pulses, capillary refill, skin temperature, JVP, ECG and major bleeding.</li><li>Control catastrophic external hemorrhage immediately.</li><li>Obtain IV/IO access, send relevant labs/crossmatch, and resuscitate according to the cause.</li><li>Normal BP does not exclude early shock.</li></ul></div>
-        <div class="box"><h3>D — Disability / E — Exposure</h3><ul><li>D: AVPU/GCS, pupils, focal deficit, seizures, bedside glucose.</li><li>E: expose sufficiently to find rash, bleeding, burns, trauma, infection source; maintain dignity and prevent hypothermia.</li></ul></div>
-      </div>
-      <div>
-        <div class="box green"><h3>🔥 Must memorize</h3><p><b>Airway → Breathing → Circulation → Brain → Body</b></p><p>Find a life threat → treat it → continue ABCDE.</p></div>
-        <div class="box red"><h3>Common wrong-answer traps</h3><ul><li>CT brain before checking glucose in a confused unstable patient.</li><li>Chest X-ray before treating tension pneumothorax.</li><li>Ignoring C-spine precautions in trauma.</li><li>Completing the entire exam before intervening.</li></ul></div>
-        <div class="box amber"><h3>Don't confuse with</h3><p><b>Primary survey</b> = immediate life threats. <b>Secondary survey</b> = detailed head-to-toe examination after stabilization.</p></div>
-      </div>
-    </div>
-    
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 ABCDE Approach Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-abcde" class="algorithm-toggle" onclick="toggleAlgorithm('abcde')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-abcde" class="algorithm-body">
-        <img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach clinical algorithm">
-        <div class="algorithm-links">
-          <a href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#abcde">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-abcde"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('abcde')">Save my addition</button><span id="saved-abcde" class="save-status"></span></div></div>
-    <div id="quiz-abcde"></div>
-    <div id="sources-abcde" class="box"></div>
-  </section>
-
-  <section id="panel-shock" class="panel">
-    <div class="panel-head"><div><h2>2. Shock</h2><p>Recognize the type from the vignette and know the first priorities.</p></div><span class="tag">Very high yield</span></div>
-    <div class="box blue"><h3>Definition</h3><p>Shock is inadequate tissue perfusion causing cellular hypoxia and organ dysfunction. Hypotension is common but may be absent early.</p></div>
-    <div class="box table-wrap"><h3>Compare the 4 major shock patterns</h3><table>
-      <tr><th>Type</th><th>Classic clues</th><th>JVP / lungs</th><th>Immediate priorities</th></tr>
-      <tr><td><b>Hypovolemic</b></td><td>Hemorrhage, vomiting/diarrhea, dehydration; tachycardia, cool clammy skin</td><td>Low JVP, usually clear lungs</td><td>Stop losses/bleeding; crystalloid for nonhemorrhagic loss; blood-based resuscitation for major hemorrhage</td></tr>
-      <tr><td><b>Cardiogenic</b></td><td>MI, severe HF, myocarditis; chest pain, cool skin</td><td>Raised JVP, crackles/pulmonary edema</td><td>Treat cardiac cause; avoid indiscriminate large fluid boluses; vasoactive support if needed</td></tr>
-      <tr><td><b>Distributive</b></td><td>Sepsis, anaphylaxis, neurogenic; warm extremities may occur early</td><td>Variable</td><td>Fluids + cause-specific treatment ± vasopressor</td></tr>
-      <tr><td><b>Obstructive</b></td><td>Massive PE, tension pneumothorax, tamponade</td><td>Often raised JVP; lungs depend on cause</td><td>Relieve obstruction urgently</td></tr>
-    </table></div>
-    <div class="columns">
-      <div>
-        <div class="box"><h3>Clinical signs of impaired perfusion</h3><ul><li>Altered mental status</li><li>Oliguria</li><li>Tachycardia</li><li>Cool/mottled peripheries, except early distributive shock may be warm</li><li>Prolonged capillary refill</li><li>Elevated lactate can support hypoperfusion but is not specific.</li></ul></div>
-        <div class="box"><h3>General initial approach</h3><ul><li>ABCDE, monitoring, ECG, IV/IO access.</li><li>Oxygen if hypoxemic.</li><li>Identify the cause and use cause-specific resuscitation.</li><li>Repeated reassessment is essential.</li></ul></div>
-      </div>
-      <div>
-        <div class="box green"><h3>Pattern shortcuts</h3><p><b>Dry + flat neck veins</b> → hypovolemia.</p><p><b>Wet lungs + high JVP</b> → cardiogenic.</p><p><b>Warm + infection</b> → septic/distributive.</p><p><b>High JVP + sudden collapse</b> → obstructive until proven otherwise.</p></div>
-        <div class="box red"><h3>Traps</h3><ul><li>Normal BP = no shock ❌</li><li>Large fluid bolus for every shock type ❌</li><li>Missing PE/tamponade/tension PTX in sudden deterioration ❌</li></ul></div>
-      </div>
-    </div>
-    
-    
-    <div class="box purple"><h3>Academic depth — bedside hemodynamics</h3>
-      <div class="table-wrap"><table>
-        <tr><th>Pattern</th><th>Preload/JVP</th><th>Lungs</th><th>Typical physiology</th><th>Useful bedside clue</th></tr>
-        <tr><td><b>Hypovolemic</b></td><td>Low</td><td>Usually clear</td><td>↓ preload → ↓ stroke volume/CO; compensatory ↑ SVR</td><td>Small/collapsible IVC, hyperdynamic LV may support the diagnosis</td></tr>
-        <tr><td><b>Cardiogenic</b></td><td>Often high</td><td>Crackles/B-lines common</td><td>Primary pump failure → ↓ CO; SVR often rises</td><td>Reduced LV function or mechanical complication on echo</td></tr>
-        <tr><td><b>Distributive</b></td><td>Variable</td><td>Often clear early</td><td>Marked vasodilation → ↓ SVR; CO may be high early</td><td>Warm extremities, bounding pulse, wide pulse pressure early</td></tr>
-        <tr><td><b>Obstructive</b></td><td>Often high</td><td>Depends on cause</td><td>Mechanical block to filling/outflow → ↓ CO</td><td>RV strain (PE), pericardial effusion/collapse (tamponade), absent lung sliding (PTX)</td></tr>
-      </table></div>
-      <p class="disclaimer">POCUS findings support—but do not replace—the clinical picture. A single IVC measurement should not be used alone to decide fluid responsiveness.</p>
-    </div>
-
-    <div class="box"><h3>Cause-directed management details</h3>
-      <ul>
-        <li><b>Hemorrhagic shock:</b> control bleeding immediately; activate a major-hemorrhage/massive-transfusion pathway when indicated. Avoid replacing ongoing major blood loss with liters of crystalloid.</li>
-        <li><b>Nonhemorrhagic hypovolemia:</b> balanced isotonic crystalloid is appropriate, with repeated assessment of perfusion and ongoing losses.</li>
-        <li><b>Cardiogenic shock:</b> treat the cause (e.g., urgent reperfusion for MI, rhythm correction, mechanical complication). Use fluids cautiously. <b>Norepinephrine</b> is commonly used when severe hypotension requires pressure support; an inotrope such as <b>dobutamine</b> may be considered when low cardiac output persists after perfusion pressure is supported.</li>
-        <li><b>Obstructive shock:</b> tension pneumothorax → immediate decompression; tamponade → urgent drainage; high-risk PE → reperfusion strategy when appropriate.</li>
-      </ul>
-    </div>
-
-    <div class="box amber"><h3>Dynamic reassessment — more useful than a single number</h3>
-      <p>Follow mental status, capillary refill, urine output, BP/MAP, lactate trend, skin perfusion and bedside ultrasound. A falling lactate can support improving perfusion, but lactate is <b>not specific</b> for shock and should never be interpreted in isolation.</p>
-    </div>
-
-    <div class="box red"><h3>Higher-level traps</h3>
-      <ul>
-        <li><b>Normal BP does not exclude shock.</b> Compensated shock may present with tachycardia, cool skin, oliguria or altered mentation before hypotension appears.</li>
-        <li><b>Do not give the same fluid strategy to every shock state.</b> Large indiscriminate boluses can worsen cardiogenic shock and some obstructive states.</li>
-        <li><b>Raised JVP + shock</b> should make you actively think cardiogenic or obstructive shock rather than reflexively giving more fluid.</li>
-      </ul>
-    </div>
-
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Shock Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-shock" class="algorithm-toggle" onclick="toggleAlgorithm('shock')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-shock" class="algorithm-body">
-        <img src="shock_recognition_and_management_guide.png" alt="Shock clinical algorithm">
-        <div class="algorithm-links">
-          <a href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#shock">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-shock"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('shock')">Save my addition</button><span id="saved-shock" class="save-status"></span></div></div>
-    <div id="quiz-shock"></div>
-    <div id="sources-shock" class="box"></div>
-  </section>
-
-  <section id="panel-sepsis" class="panel">
-    <div class="panel-head"><div><h2>3. Sepsis & Septic Shock</h2><p>Current 2026 Surviving Sepsis Campaign principles.</p></div><span class="tag">Emergency</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Recognition</h3><p>Sepsis is life-threatening organ dysfunction caused by a dysregulated response to infection. Sepsis is a <b>clinical diagnosis</b>; no single biomarker rules it in or out.</p><ul><li>Possible clues: hypotension, tachypnea, altered mentation, oliguria, AKI, hypoxemia, thrombocytopenia, rising bilirubin, lactate elevation.</li><li>Blood cultures: obtain as soon as possible and ideally before antimicrobials, provided this does not meaningfully delay treatment.</li><li>Measure lactate in suspected sepsis/septic shock.</li></ul></div>
-        <div class="box"><h3>Antibiotics</h3><ul><li><b>Septic shock / probable or definite sepsis:</b> antimicrobials immediately, ideally within 1 hour of recognition.</li><li><b>Possible sepsis without shock:</b> rapid diagnostic assessment; if infection concern persists, antibiotics within 3 hours.</li><li>Use local antibiogram/source/risk factors to select empiric therapy; de-escalate when cultures clarify the diagnosis.</li></ul></div>
-        <div class="box"><h3>Fluids</h3><ul><li>Crystalloids are first-line; balanced crystalloids are generally preferred over 0.9% saline during initial resuscitation.</li><li>For sepsis-induced hypoperfusion or septic shock, 2026 SSC suggests <b>at least 30 mL/kg IV crystalloid in the first 3 hours</b>, individualized to the patient.</li><li>Reassess frequently to avoid under- or over-resuscitation, especially in HF/renal disease.</li></ul></div>
-        <div class="box"><h3>Vasopressors</h3><ul><li><b>Norepinephrine = first-line vasopressor.</b></li><li>Initial MAP target: <b>65 mmHg</b>.</li><li>If norepinephrine dose escalates, vasopressin may be added; epinephrine may be added if MAP remains inadequate.</li><li>In unstable septic shock, vasopressors may be started concurrently with fluids; peripheral initiation can be appropriate rather than delaying for central access.</li></ul></div>
-        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
-          <div class="kv"><b>Initial crystalloid</b><span><code class="dose">≥30 mL/kg IV</code> within the first 3 h for sepsis-induced hypoperfusion/septic shock, then reassess</span></div>
-          <div class="kv"><b>MAP target</b><span><code class="dose">65 mmHg</code></span></div>
-          <div class="kv"><b>Antibiotics</b><span>Septic shock / high-likelihood sepsis: immediately, ideally within <code class="dose">1 hour</code></span></div>
-        </div>
-        <div class="box"><h3>Source control</h3><p>Drain abscesses, remove infected devices, decompress obstructed systems, and address the anatomic source as soon as feasible.</p></div>
-      </div>
-      <div>
-        <div class="box green"><h3>🔥 Must memorize</h3><p>Sepsis + hypoperfusion → <b>crystalloid + antibiotics + source control</b>.</p><p>Persistent hypotension → <b>norepinephrine</b>.</p><p>MAP → <b>65 mmHg</b>.</p></div>
-        <div class="box red"><h3>Exam traps</h3><ul><li>Waiting for every culture before treating septic shock.</li><li>Using qSOFA as the only screening tool.</li><li>Giving endless fluids without reassessment.</li><li>Forgetting source control.</li></ul></div>
-        <div class="box amber"><h3>Important nuance</h3><p>Fluid volume is not a fixed “blind bolus.” The guideline suggests 30 mL/kg initially for sepsis-induced hypoperfusion/septic shock, but patient factors and response must guide ongoing resuscitation.</p></div>
-      </div>
-    </div>
-    
-    
-    <div class="score-shell">
-      <div class="score-head">
-        <div>
-          <h3>📊 SOFA & qSOFA</h3>
-          <small>Open the score tables and quick qSOFA calculator</small>
-        </div>
-        <button id="score-btn-sepsis" class="score-toggle" onclick="toggleSepsisScores()">View SOFA / qSOFA ▼</button>
-      </div>
-      <div id="score-body-sepsis" class="score-body">
-        <div class="score-grid">
-          <div class="score-card">
-            <h4>qSOFA — bedside risk prompt</h4>
-            <table class="score-table">
-              <tr><th>Criterion</th><th>Point</th></tr>
-              <tr><td>Respiratory rate ≥ 22/min</td><td>1</td></tr>
-              <tr><td>Altered mentation (GCS &lt; 15)</td><td>1</td></tr>
-              <tr><td>Systolic BP ≤ 100 mmHg</td><td>1</td></tr>
-            </table>
-            <div class="calc-row"><label><input id="q_rr" type="checkbox"> RR ≥22</label></div>
-            <div class="calc-row"><label><input id="q_mental" type="checkbox"> Altered mentation</label></div>
-            <div class="calc-row"><label><input id="q_sbp" type="checkbox"> SBP ≤100</label></div>
-            <button class="btn secondary" onclick="calcQSOFA()">Calculate qSOFA</button>
-            <div id="qsofa-result" class="calc-result">Score: —</div>
-            <p class="disclaimer"><b>Exam pearl:</b> qSOFA is a prognostic bedside prompt, not a stand-alone screening or rule-out test for sepsis.</p>
-          </div>
-
-          <div class="score-card">
-            <h4>SOFA — organ dysfunction domains</h4>
-            <table class="score-table">
-              <tr><th>System</th><th>Variable</th></tr>
-              <tr><td>Respiratory</td><td>PaO₂/FiO₂ ratio</td></tr>
-              <tr><td>Coagulation</td><td>Platelet count</td></tr>
-              <tr><td>Liver</td><td>Bilirubin</td></tr>
-              <tr><td>Cardiovascular</td><td>MAP / vasopressor requirement</td></tr>
-              <tr><td>CNS</td><td>Glasgow Coma Scale</td></tr>
-              <tr><td>Renal</td><td>Creatinine or urine output</td></tr>
-            </table>
-            <p><b>Sepsis-3 concept:</b> an acute increase in SOFA score of ≥2 points in the setting of suspected infection supports organ dysfunction consistent with sepsis.</p>
-            <p class="disclaimer">The full SOFA score requires exact clinical/laboratory values and is more detailed than qSOFA. Use the table as a memory aid; calculate formally when actual values are provided.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="box purple"><h3>Academic depth — Sepsis-3, SOFA and screening</h3>
-      <ul>
-        <li><b>Sepsis:</b> suspected/confirmed infection plus life-threatening organ dysfunction from a dysregulated host response.</li>
-        <li>An acute <b>SOFA increase ≥2</b> supports clinically important organ dysfunction in the Sepsis-3 framework.</li>
-        <li><b>qSOFA is not a stand-alone sepsis screening or rule-out test.</b> Current guidance favors broader early-warning/screening tools plus clinical judgment.</li>
-        <li>Possible organ dysfunction includes encephalopathy, hypoxemia, AKI/oliguria, thrombocytopenia/coagulopathy, hyperbilirubinemia, hypotension or elevated lactate.</li>
-      </ul>
-    </div>
-
-    <div class="box"><h3>Diagnostic work-up without delaying treatment</h3>
-      <ul>
-        <li>Blood cultures as soon as possible and ideally before antibiotics when this does not meaningfully delay therapy.</li>
-        <li>Lactate, CBC, renal/liver function, electrolytes, coagulation profile, urinalysis and source-directed cultures/imaging as clinically indicated.</li>
-        <li><b>Procalcitonin should not be required to decide whether to start antibiotics</b> when clinical suspicion is significant.</li>
-        <li>Think actively about a source that needs a procedure: obstructed infected urinary tract, abscess, infected line/device, ischemic/infected bowel, necrotizing soft-tissue infection, empyema, etc.</li>
-      </ul>
-    </div>
-
-    <div class="box green"><h3>Perfusion reassessment after the initial bolus</h3>
-      <p>Do not continue fluids automatically. Reassess capillary refill, mentation, urine output, MAP, lactate trend and dynamic fluid responsiveness. In patients with HF/CKD or evidence of fluid intolerance, early vasopressor support may be safer than repeated large boluses.</p>
-    </div>
-
-    <div class="box"><h3>Source control & antimicrobial stewardship</h3>
-      <ul>
-        <li>When a definite anatomical source requires intervention, <b>early source control is preferred—ideally within about 6 hours</b> when feasible.</li>
-        <li>Empiric coverage should reflect source, local resistance, prior cultures/colonization, recent broad-spectrum antibiotics and healthcare exposure.</li>
-        <li>Reassess daily and <b>de-escalate</b> once microbiology and clinical data permit.</li>
-      </ul>
-    </div>
-
-    <div class="box red"><h3>Higher-level traps</h3>
-      <ul>
-        <li>Do not wait for a positive culture, procalcitonin result or CT scan before treating septic shock.</li>
-        <li>A lactate elevation is not synonymous with septic shock; interpret it with perfusion and the overall clinical picture.</li>
-        <li>Persistent hypotension after appropriate initial fluid → <b>norepinephrine</b>, not endless fluid.</li>
-        <li>Antibiotics alone are insufficient when an infected obstructed or necrotic source needs drainage/debridement.</li>
-      </ul>
-    </div>
-
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Sepsis &amp; Septic Shock Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-sepsis" class="algorithm-toggle" onclick="toggleAlgorithm('sepsis')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-sepsis" class="algorithm-body">
-        <img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock clinical algorithm">
-        <div class="algorithm-links">
-          <a href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#sepsis">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-sepsis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('sepsis')">Save my addition</button><span id="saved-sepsis" class="save-status"></span></div></div>
-    <div id="quiz-sepsis"></div>
-    <div id="sources-sepsis" class="box"></div>
-  </section>
-
-  <section id="panel-anaphylaxis" class="panel">
-    <div class="panel-head"><div><h2>4. Anaphylaxis</h2><p>Do not delay epinephrine.</p></div><span class="tag">Must memorize</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Classic presentation</h3><p>Rapid systemic hypersensitivity reaction after a likely trigger, with airway, breathing, circulatory and/or skin/mucosal involvement. Severe bronchospasm or hypotension can occur even if rash is absent.</p></div>
-        <div class="box"><h3>First-line treatment</h3><p><b>IM epinephrine in the mid-anterolateral thigh.</b></p><p><code class="dose">0.01 mg/kg of 1 mg/mL (1:1000), max 0.5 mg adult</code></p><p>Repeat every <b>5–15 minutes</b> if symptoms persist.</p></div>
-        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
-          <div class="kv"><b>IM epinephrine</b><span><code class="dose">0.01 mg/kg</code> of 1 mg/mL, adult max <code class="dose">0.5 mg</code></span></div>
-          <div class="kv"><b>Repeat interval</b><span><code class="dose">Every 5–15 min</code> if needed</span></div>
-        </div>
-        <div class="box"><h3>Supportive treatment</h3><ul><li>Call for help; ABC assessment.</li><li>Position appropriately: generally supine unless respiratory distress/vomiting requires modification.</li><li>High-flow oxygen if needed.</li><li>Large-bore IV access; rapid isotonic crystalloid for hypotension.</li><li>Inhaled beta-agonist for persistent bronchospasm.</li><li>Antihistamines/corticosteroids are adjunctive; they do not replace epinephrine.</li></ul></div>
-        <div class="box"><h3>Biphasic reaction</h3><p>Symptoms can recur after initial resolution without re-exposure. Observation duration depends on severity, treatment requirements, comorbidities and access to emergency care.</p></div>
-      </div>
-      <div>
-        <div class="box green"><h3>🔥 Memory line</h3><p><b>Anaphylaxis → IM epinephrine first.</b></p></div>
-        <div class="box red"><h3>Traps</h3><ul><li>Antihistamine before epinephrine.</li><li>Waiting for hypotension.</li><li>Routine IV epinephrine bolus in a non-monitored setting.</li><li>Standing/walking a hypotensive patient.</li></ul></div>
-      </div>
-    </div>
-    
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Anaphylaxis Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-anaphylaxis" class="algorithm-toggle" onclick="toggleAlgorithm('anaphylaxis')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-anaphylaxis" class="algorithm-body">
-        <img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis clinical algorithm">
-        <div class="algorithm-links">
-          <a href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#anaphylaxis">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-anaphylaxis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('anaphylaxis')">Save my addition</button><span id="saved-anaphylaxis" class="save-status"></span></div></div>
-    <div id="quiz-anaphylaxis"></div>
-    <div id="sources-anaphylaxis" class="box"></div>
-  </section>
-
-  <section id="panel-ams" class="panel">
-    <div class="panel-head"><div><h2>5. Altered Mental Status / Hypoglycemia</h2><p>Prioritize reversible causes.</p></div><span class="tag">Common vignette</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Immediate approach</h3><ul><li>ABCDE and vitals.</li><li><b>Bedside glucose early.</b></li><li>Assess oxygenation, temperature, medications/toxins, infection, trauma, seizures and focal neurologic deficits.</li><li>Consider opioid toxicity, stroke, sepsis, CO exposure, electrolyte disorders and endocrine emergencies depending on context.</li></ul></div>
-        <div class="box"><h3>Hypoglycemia clues</h3><p>Autonomic: sweating, tremor, palpitations, hunger. Neuroglycopenic: confusion, behavior change, seizure, focal-like deficit, coma.</p></div>
-        <div class="box"><h3>Treatment</h3><ul><li>Alert and able to swallow: rapid oral glucose/carbohydrate, then recheck.</li><li>Severe/unconscious: IV dextrose when IV access is available.</li><li>No IV access: glucagon is an option.</li><li>Recheck glucose after treatment and give longer-acting carbohydrate when appropriate.</li><li>Identify the cause: insulin/sulfonylurea, missed food, alcohol, sepsis, renal/hepatic failure, adrenal insufficiency.</li></ul></div>
-        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
-          <div class="kv"><b>Conscious adult</b><span><code class="dose">15 g</code> fast-acting carbohydrate, recheck in <code class="dose">15 min</code></span></div>
-          <div class="kv"><b>Repeat</b><span>If still low, repeat fast-acting carbohydrate and recheck</span></div>
-          <div class="kv"><b>Severe / unable to swallow</b><span>Use IV dextrose per local formulation/protocol; glucagon if IV access is unavailable</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="box green"><h3>🔥 Must memorize</h3><p><b>Altered mental status → glucose early.</b></p></div>
-        <div class="box red"><h3>Traps</h3><ul><li>CT first before checking glucose.</li><li>Failing to recheck after treatment.</li><li>Missing prolonged/recurrent hypoglycemia from sulfonylureas or renal impairment.</li></ul></div>
-      </div>
-    </div>
-    
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 AMS &amp; Hypoglycemia Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-ams" class="algorithm-toggle" onclick="toggleAlgorithm('ams')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-ams" class="algorithm-body">
-        <img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia clinical algorithm">
-        <div class="algorithm-links">
-          <a href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#ams">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-ams"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('ams')">Save my addition</button><span id="saved-ams" class="save-status"></span></div></div>
-    <div id="quiz-ams"></div>
-    <div id="sources-ams" class="box"></div>
-  </section>
-
-  <section id="panel-heat" class="panel">
-    <div class="panel-head"><div><h2>6. Heat Illness</h2><p>Heat stroke is defined by CNS dysfunction, not by dry skin.</p></div><span class="tag">Pattern recognition</span></div>
-    <div class="box table-wrap"><h3>Heat exhaustion vs heat stroke</h3><table>
-      <tr><th></th><th>Heat exhaustion</th><th>Heat stroke</th></tr>
-      <tr><td><b>Mental status</b></td><td>No severe CNS dysfunction</td><td><b>Delirium, confusion, seizure or coma</b></td></tr>
-      <tr><td><b>Temperature</b></td><td>Elevated</td><td>Marked hyperthermia, commonly around ≥40°C but clinical diagnosis depends on CNS dysfunction and heat exposure</td></tr>
-      <tr><td><b>Sweating</b></td><td>Usually present</td><td>May be present or absent</td></tr>
-      <tr><td><b>Treatment</b></td><td>Cooling + oral/IV fluid as appropriate</td><td><b>Immediate rapid active cooling + ABC resuscitation</b></td></tr>
-    </table></div>
-    <div class="columns">
-      <div>
-        <div class="box"><h3>Heat stroke complications</h3><ul><li>Rhabdomyolysis</li><li>AKI</li><li>Hepatic injury</li><li>Coagulopathy/DIC</li><li>Electrolyte abnormalities</li><li>Arrhythmia/shock</li></ul></div>
-        <div class="box"><h3>Management priorities</h3><ul><li>ABCDE.</li><li>Rapid active cooling; do not wait for lab results.</li><li>Monitor core temperature, renal function, CK, electrolytes, coagulation and liver injury as indicated.</li></ul></div>
-      </div>
-      <div>
-        <div class="box green"><h3>Memory</h3><p><b>Heat stroke = heat exposure + hyperthermia + CNS dysfunction.</b></p></div>
-        <div class="box red"><h3>Trap</h3><p>Dry skin is not required; exertional heat stroke often has sweating.</p></div>
-      </div>
-    </div>
-    
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Heat Illness Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-heat" class="algorithm-toggle" onclick="toggleAlgorithm('heat')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-heat" class="algorithm-body">
-        <img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness clinical algorithm">
-        <div class="algorithm-links">
-          <a href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#heat">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-heat"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('heat')">Save my addition</button><span id="saved-heat" class="save-status"></span></div></div>
-    <div id="quiz-heat"></div>
-    <div id="sources-heat" class="box"></div>
-  </section>
-
-  <section id="panel-burns" class="panel">
-    <div class="panel-head"><div><h2>7. Burns</h2><p>Airway, burn depth/TBSA, fluid resuscitation, and complications.</p></div><span class="tag">High yield</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Initial approach</h3><ul><li>Stop the burning process; remove hot/wet clothing and constricting jewelry if safe.</li><li>ABCDE.</li><li>Assess burn depth and TBSA.</li><li>Cover with clean dry material after cooling; avoid hypothermia.</li></ul></div>
-        <div class="box"><h3>Inhalation injury</h3><p>Clues: enclosed-space fire, facial burns, singed nasal hair, soot, carbonaceous sputum, hoarseness, stridor, respiratory distress.</p><p><b>Airway edema can progress rapidly → early airway planning.</b></p></div>
-        <div class="box"><h3>TBSA essentials</h3><ul><li>Rule of Nines is a rapid adult estimate.</li><li>Patient palm including fingers ≈ 1% TBSA for scattered small burns.</li><li>Superficial/first-degree erythema is generally not included in TBSA used for formal fluid resuscitation.</li></ul></div>
-        <div class="box"><h3>Burn fluid formulas — exam vs current guideline</h3><p><b>Classic exam formula (Parkland):</b> <code class="dose">4 mL × kg × %TBSA</code> lactated Ringer's in first 24 h; half in first 8 h from time of burn, remainder over next 16 h.</p>
-        <p><b>Current ABA 2024 adult burn-shock guidance:</b> for adults with burns ≥20% TBSA, consider starting around <code class="dose">2 mL/kg/%TBSA</code> to reduce excessive fluid volumes, then titrate to clinical response.</p>
-        <p>For exam questions, follow the formula specifically requested; if asked contemporary management, know the ABA update.</p></div>
-        <div class="box purple"><h3>💊 Key Doses / Numbers</h3>
-          <div class="kv"><b>Classic Parkland</b><span><code class="dose">4 mL × kg × %TBSA</code> over 24 h</span></div>
-          <div class="kv"><b>Timing</b><span>Half in first <code class="dose">8 h</code> from burn time; remainder over next <code class="dose">16 h</code></span></div>
-          <div class="kv"><b>Current ABA adult starting point</b><span><code class="dose">2 mL/kg/%TBSA</code> for ≥20% TBSA, then titrate</span></div>
-        </div>
-        <div class="box"><h3>Monitoring</h3><p>Urine output and overall clinical response guide titration. Watch for under-resuscitation and “fluid creep.”</p></div>
-      </div>
-      <div>
-        <div class="box red"><h3>Red flags / burn-center-type concerns</h3><ul><li>Airway/inhalation injury</li><li>Large TBSA burns</li><li>Electrical or chemical burns</li><li>Circumferential burns</li><li>Face, hands, genitalia/perineum, major joints</li><li>Associated trauma or significant comorbidity</li></ul></div>
-        <div class="box green"><h3>Memory</h3><p><b>Facial burn + soot/hoarseness → inhalation injury → early airway.</b></p></div>
-        <div class="box amber"><h3>Don't forget</h3><p>Electrical injury may cause deep tissue damage, rhabdomyolysis and arrhythmias despite limited skin findings.</p></div>
-      </div>
-    </div>
-    
-    
-    <div class="box purple"><h3>Academic depth — burn depth</h3>
-      <div class="table-wrap"><table>
-        <tr><th>Depth</th><th>Appearance / sensation</th><th>High-yield implication</th></tr>
-        <tr><td>Superficial</td><td>Red, dry, blanching, painful</td><td>Not counted in formal TBSA resuscitation calculations</td></tr>
-        <tr><td>Superficial partial-thickness</td><td>Blistered, moist, very painful, blanching</td><td>Counted in TBSA; often heals without grafting</td></tr>
-        <tr><td>Deep partial-thickness</td><td>Paler/drier, reduced blanching and sensation</td><td>Higher risk of scarring and graft requirement</td></tr>
-        <tr><td>Full-thickness</td><td>Leathery/waxy/charred, nonblanching, reduced or absent pin-prick sensation</td><td>Requires burn-specialist assessment; grafting often needed</td></tr>
-      </table></div>
-    </div>
-
-    <div class="box"><h3>Smoke inhalation, carbon monoxide & cyanide</h3>
-      <ul>
-        <li><b>Upper-airway thermal injury:</b> hoarseness, stridor, facial/oropharyngeal burns, progressive edema → consider early definitive airway before swelling makes intubation difficult.</li>
-        <li><b>Carbon monoxide:</b> standard pulse oximetry can look normal. Diagnose with <b>co-oximetry/carboxyhemoglobin</b> in the appropriate exposure and give high-concentration oxygen while evaluating.</li>
-        <li><b>Cyanide toxicity:</b> consider after an enclosed-space fire with severe lactic acidosis, cardiovascular collapse or altered consciousness. Treatment is protocol/toxicology dependent; hydroxocobalamin is commonly used when strongly suspected.</li>
-      </ul>
-    </div>
-
-    <div class="box"><h3>Fluid resuscitation — how to use the formulas correctly</h3>
-      <ul>
-        <li>The calculated volume is a <b>starting estimate, not a fixed prescription</b>.</li>
-        <li>Adult urine-output target is commonly about <b>0.5 mL/kg/hr</b>; adjust fluids to perfusion and urine output while avoiding fluid creep.</li>
-        <li>Remember that the first 8-hour clock starts at the <b>time of injury</b>, not hospital arrival.</li>
-        <li>Electrical injury, rhabdomyolysis and special populations may require individualized targets and specialist guidance.</li>
-      </ul>
-    </div>
-
-    <div class="box amber"><h3>Burn-center consultation / transfer clues</h3>
-      <ul>
-        <li>Full-thickness burns, partial-thickness burns ≥10% TBSA, deep burns involving face/hands/feet/genitalia/perineum/major joints.</li>
-        <li>Suspected inhalation injury, high-voltage electrical injury, chemical injury, significant comorbidity, associated trauma or poorly controlled pain.</li>
-      </ul>
-    </div>
-
-    <div class="box red"><h3>Higher-level traps</h3>
-      <ul>
-        <li>Do not use ice directly on significant burns; it can worsen tissue injury and hypothermia.</li>
-        <li>Do not rely on normal pulse oximetry to exclude carbon-monoxide poisoning.</li>
-        <li>Routine prophylactic systemic antibiotics are <b>not</b> recommended for uncomplicated acute burns.</li>
-        <li>Circumferential full-thickness burns compromising limb perfusion or ventilation may require <b>escharotomy</b>.</li>
-      </ul>
-    </div>
-
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Burns Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-burns" class="algorithm-toggle" onclick="toggleAlgorithm('burns')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-burns" class="algorithm-body">
-        <img src="burn_initial_assessment_algorithm.png" alt="Burns clinical algorithm">
-        <div class="algorithm-links">
-          <a href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#burns">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-burns"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('burns')">Save my addition</button><span id="saved-burns" class="save-status"></span></div></div>
-    <div id="quiz-burns"></div>
-    <div id="sources-burns" class="box"></div>
-  </section>
-
-  <section id="panel-trauma" class="panel">
-    <div class="panel-head"><div><h2>8. Trauma Basics</h2><p>Primary survey, hemorrhage control and secondary survey.</p></div><span class="tag">ABCDE + C-spine</span></div>
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Primary survey</h3><ul><li><b>A:</b> Airway with cervical-spine protection.</li><li><b>B:</b> Breathing; immediately treat chest life threats.</li><li><b>C:</b> Circulation with hemorrhage control.</li><li><b>D:</b> Disability — GCS/pupils/neurologic status.</li><li><b>E:</b> Exposure/environment; prevent hypothermia.</li></ul></div>
-        <div class="box"><h3>Catastrophic hemorrhage</h3><ul><li>Direct pressure and appropriate hemorrhage-control measures.</li><li>In major hemorrhage, prioritize blood-product-based resuscitation and definitive bleeding control rather than large-volume crystalloid.</li><li>Consider pelvic bleeding, chest/abdomen/retroperitoneum and long-bone sources when external bleeding is absent.</li></ul></div>
-        <div class="box"><h3>Chest trauma life threats</h3><ul><li>Tension pneumothorax</li><li>Massive hemothorax</li><li>Open pneumothorax</li><li>Cardiac tamponade</li></ul></div>
-        <div class="box"><h3>Secondary survey</h3><p>After immediate threats are controlled: AMPLE history, head-to-toe exam, focused imaging/labs, reassessment and definitive disposition.</p></div>
-      </div>
-      <div>
-        <div class="box green"><h3>Memory</h3><p><b>Primary survey saves life; secondary survey finds the rest.</b></p></div>
-        <div class="box red"><h3>Traps</h3><ul><li>Detailed history before stabilizing ABCs.</li><li>Sending an unstable patient to CT before addressing shock.</li><li>Forgetting hypothermia prevention.</li><li>Missing repeated reassessment after an intervention.</li></ul></div>
-      </div>
-    </div>
-    
-    
-    <div class="box purple"><h3>Academic depth — xABCDE and damage-control priorities</h3>
-      <ul>
-        <li>Many trauma systems use <b>xABCDE</b>: control exsanguinating external hemorrhage before the traditional airway step.</li>
-        <li>Primary survey and resuscitation occur <b>simultaneously</b>. Treat each immediate threat when found rather than waiting to finish the survey.</li>
-        <li>In major hemorrhage, early definitive bleeding control and a <b>major-hemorrhage / massive-transfusion protocol</b> are more important than repeated crystalloid boluses.</li>
-      </ul>
-    </div>
-
-    <div class="box"><h3>Hemorrhagic shock & resuscitation strategy</h3>
-      <ul>
-        <li>Use direct pressure, wound packing/hemostatic dressing and tourniquet for appropriate life-threatening extremity hemorrhage.</li>
-        <li>Balanced blood-component resuscitation is commonly used in major hemorrhage; many protocols approximate a <b>1:1:1</b> strategy for RBC:plasma:platelets early in massive transfusion.</li>
-        <li><b>Permissive hypotension</b> may be used in selected actively bleeding adults until hemorrhage control, but it is generally <b>not appropriate when traumatic brain injury requires preservation of cerebral perfusion</b>; pregnancy and other special states also need individualized targets.</li>
-        <li>Prevent hypothermia aggressively: warmed blood/fluids, blankets and environmental warming.</li>
-      </ul>
-    </div>
-
-    <div class="box purple"><h3>💊 Tranexamic acid (TXA)</h3>
-      <div class="kv"><b>Who</b><span>Trauma patient who is bleeding or at risk of significant bleeding</span></div>
-      <div class="kv"><b>When</b><span>As early as possible and <code class="dose">within 3 hours</code> of injury</span></div>
-      <div class="kv"><b>Common regimen</b><span><code class="dose">1 g IV over 10 min</code>, then <code class="dose">1 g IV over 8 h</code></span></div>
-      <p class="disclaimer">Follow the trauma system/local protocol. Benefit is time-sensitive; do not wait for viscoelastic-test results when TXA is otherwise indicated.</p>
-    </div>
-
-    <div class="box"><h3>eFAST — what it can and cannot do</h3>
-      <ul>
-        <li>Rapid bedside assessment for pericardial fluid, intraperitoneal free fluid and pneumothorax/hemothorax depending on the protocol.</li>
-        <li>A positive eFAST in an unstable patient can accelerate definitive intervention.</li>
-        <li><b>A negative eFAST does not exclude major injury</b>, including retroperitoneal bleeding, early/limited intraperitoneal bleeding or many hollow-viscus injuries.</li>
-      </ul>
-    </div>
-
-    <div class="box"><h3>Chest threats that should be treated during the primary survey</h3>
-      <ul>
-        <li><b>Tension pneumothorax:</b> decompress immediately when clinically suspected in an unstable patient—do not wait for CT.</li>
-        <li><b>Open pneumothorax:</b> vented/appropriate occlusive dressing plus definitive chest drainage according to trauma protocol.</li>
-        <li><b>Massive hemothorax:</b> chest tube + hemorrhage resuscitation + urgent surgical evaluation when output/physiology warrants.</li>
-        <li><b>Tamponade:</b> shock + elevated JVP; POCUS can support rapid recognition.</li>
-      </ul>
-    </div>
-
-    <div class="box red"><h3>Higher-level traps</h3>
-      <ul>
-        <li>Do not send an unstable patient to CT simply because the diagnosis is uncertain.</li>
-        <li>Do not let a negative FAST falsely reassure you when physiology still suggests hemorrhage.</li>
-        <li>Do not normalize BP aggressively before hemorrhage control in every bleeding patient; context—including TBI—changes the target.</li>
-        <li>Hypothermia, acidosis and coagulopathy amplify one another; prevention is part of resuscitation, not an afterthought.</li>
-      </ul>
-    </div>
-
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div>
-          <h3>🧭 Trauma Algorithm</h3>
-          <small>Step-by-step DOH exam review</small>
-        </div>
-        <button id="algo-btn-trauma" class="algorithm-toggle" onclick="toggleAlgorithm('trauma')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-trauma" class="algorithm-body">
-        <img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma clinical algorithm">
-        <div class="algorithm-links">
-          <a href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#trauma">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-trauma"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('trauma')">Save my addition</button><span id="saved-trauma" class="save-status"></span></div></div>
-    <div id="quiz-trauma"></div>
-    <div id="sources-trauma" class="box"></div>
-  </section>
-
-  
-  <section id="panel-cardioem" class="panel">
-    <div class="panel-head"><div><h2>9. Cardiovascular Emergencies</h2><p>Recognition of immediately dangerous cardiovascular syndromes and the safest first action.</p></div><span class="tag">Time-critical</span></div>
-
-    <div class="columns">
-      <div>
-        <div class="box blue"><h3>Core principle</h3>
-          <p>These conditions often present as <b>chest pain, dyspnea, syncope or shock</b> and may initially resemble ACS. The exam-level skill is to recognize the dangerous pattern and choose the action that prevents harm.</p>
-        </div>
-
-        <div class="box"><h3>Acute aortic syndrome / aortic dissection</h3>
-          <ul>
-            <li><b>Classic pattern:</b> abrupt severe chest or back pain, often maximal at onset; tearing/ripping quality is helpful but not required.</li>
-            <li><b>Red flags:</b> pulse deficit or inter-arm BP difference, focal neurologic deficit, syncope, new aortic-regurgitation murmur, shock, known aortic disease or connective-tissue disorder.</li>
-            <li><b>Imaging:</b> CTA is commonly used in a stable patient; TEE is useful when unstable or when CT is impractical.</li>
-            <li><b>Immediate management:</b> analgesia plus anti-impulse therapy. IV beta-blockade is generally first when not contraindicated, followed by vasodilator therapy if BP remains high.</li>
-            <li><b>Key target:</b> SBP <b>&lt;120 mmHg</b> or the lowest BP that preserves organ perfusion; HR about <b>60–80/min</b>.</li>
-            <li><b>Type A</b> (ascending aorta involvement) is a surgical emergency.</li>
-          </ul>
-        </div>
-
-        <div class="box red"><h3>🔥 Safety trap: dissection vs ACS</h3>
-          <p><b>Abrupt tearing/back-radiating pain + asymmetric pulses/BP or neurologic findings = think dissection before giving thrombolysis or full anticoagulation.</b> Antithrombotic treatment can be catastrophic if acute aortic dissection is the true diagnosis.</p>
-        </div>
-
-        <div class="box"><h3>Cardiac tamponade</h3>
-          <ul>
-            <li><b>Pattern:</b> hypotension/shock + elevated JVP + tachycardia; muffled heart sounds may occur, but the complete Beck triad is not always present.</li>
-            <li><b>Pulsus paradoxus:</b> exaggerated inspiratory fall in systolic BP can be a clue.</li>
-            <li><b>POCUS/echo:</b> pericardial effusion, right-atrial/right-ventricular diastolic collapse, plethoric IVC.</li>
-            <li><b>Unstable tamponade:</b> urgent pericardial drainage is the definitive life-saving treatment.</li>
-            <li>Temporary supportive fluids may help selected preload-dependent patients while definitive drainage is arranged, but should not delay it.</li>
-          </ul>
-        </div>
-
-        <div class="box"><h3>High-risk pulmonary embolism</h3>
-          <ul>
-            <li><b>Red flags:</b> sudden dyspnea/chest pain, syncope, hypoxemia, hypotension or shock, recent surgery/immobility, prior VTE.</li>
-            <li>In an unstable patient who cannot safely go to CT, bedside echo may show <b>RV dilation/strain</b> and support urgent management.</li>
-            <li><b>High-risk PE = hemodynamic instability.</b> Reperfusion therapy may be required when there is shock or persistent hypotension and no prohibitive contraindication.</li>
-            <li>Do not delay stabilization while pursuing a perfect diagnostic work-up in a crashing patient.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div>
-        <div class="box"><h3>Acute cardiogenic pulmonary edema</h3>
-          <ul>
-            <li>Severe dyspnea, hypoxemia, crackles, diaphoresis; BP may be very high or very low depending on the cause.</li>
-            <li>Support oxygenation/ventilation as needed; non-invasive ventilation can be useful in appropriate patients.</li>
-            <li>Nitrates may be useful in hypertensive pulmonary edema when there is no contraindication.</li>
-            <li>Look for the trigger: ACS, acute MR, hypertensive crisis, arrhythmia, fluid overload.</li>
-          </ul>
-        </div>
-
-        <div class="box"><h3>Mechanical complications after MI</h3>
-          <div class="table-wrap"><table>
-            <tr><th>Complication</th><th>Classic clue</th></tr>
-            <tr><td>Papillary muscle rupture</td><td>Acute severe MR → sudden pulmonary edema/shock; new systolic murmur may be soft if shock is profound</td></tr>
-            <tr><td>Ventricular septal rupture</td><td>New harsh holosystolic murmur ± thrill + cardiogenic shock</td></tr>
-            <tr><td>Free-wall rupture</td><td>Sudden collapse, PEA, hemopericardium/tamponade</td></tr>
-          </table></div>
-          <p><b>Memory:</b> recent MI + sudden new murmur, pulmonary edema or shock = think mechanical complication.</p>
-        </div>
-
-        <div class="box amber"><h3>Don't confuse with</h3>
-          <ul>
-            <li><b>Tamponade:</b> obstructive shock, high JVP, usually clear lungs.</li>
-            <li><b>Cardiogenic pulmonary edema:</b> crackles and pulmonary congestion.</li>
-            <li><b>Massive PE:</b> obstructive shock + RV strain, often clear lungs.</li>
-            <li><b>Aortic dissection:</b> abrupt pain + pulse/BP/neuro clues.</li>
-          </ul>
-        </div>
-
-        <div class="box green"><h3>Memory lines</h3>
-          <p><b>Dissection:</b> sudden tearing/back pain + asymmetry = protect the aorta before treating “ACS.”</p>
-          <p><b>Tamponade:</b> shock + high JVP + clear lungs = think compressed heart.</p>
-          <p><b>Post-MI rupture:</b> new murmur + shock = mechanical complication until proven otherwise.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="algorithm-shell">
-      <div class="algorithm-head">
-        <div><h3>🧭 Cardiovascular Emergencies Algorithm</h3><small>Pattern → immediate priority → major trap</small></div>
-        <button id="algo-btn-cardioem" class="algorithm-toggle" onclick="toggleAlgorithm('cardioem')">View algorithm ▼</button>
-      </div>
-      <div id="algo-body-cardioem" class="algorithm-body">
-        <img src="day1_cardiovascular_emergencies_algorithm.svg" alt="Cardiovascular emergencies algorithm">
-        <div class="algorithm-links">
-          <a href="day1_cardiovascular_emergencies_algorithm.svg" target="_blank" rel="noopener">Open full size ↗</a>
-          <a href="algorithms.html#cardioem">Open in Algorithms Library →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-cardioem"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('cardioem')">Save my addition</button><span id="saved-cardioem" class="save-status"></span></div></div>
-    <div id="quiz-cardioem"></div>
-    <div id="sources-cardioem" class="box"></div>
-  </section>
-
+<div class="topbar">
+<input class="search" id="searchBox" placeholder="Search within Day 1..."/>
+<button class="btn" onclick="openModal('noteModal')">+ Add Note</button>
+</div>
+<div class="breadcrumb">Emergency Medicine › Day 1</div>
+<div class="page-title">
+<div><h1>Day 1 — Emergency Medicine</h1><p>Press a topic button to open the full high-yield DOH review.</p></div>
+<div class="day-badge">📅 Day 1</div>
+</div>
+<section class="card topic-menu">
+<div class="topic-grid">
+<button class="topic-btn active" data-topic="abcde" onclick="showTopic('abcde')">1. ABCDE Approach</button>
+<button class="topic-btn" data-topic="shock" onclick="showTopic('shock')">2. Shock</button>
+<button class="topic-btn" data-topic="sepsis" onclick="showTopic('sepsis')">3. Sepsis</button>
+<button class="topic-btn" data-topic="anaphylaxis" onclick="showTopic('anaphylaxis')">4. Anaphylaxis</button>
+<button class="topic-btn" data-topic="ams" onclick="showTopic('ams')">5. AMS / Hypoglycemia</button>
+<button class="topic-btn" data-topic="heat" onclick="showTopic('heat')">6. Heat Illness</button>
+<button class="topic-btn" data-topic="burns" onclick="showTopic('burns')">7. Burns</button>
+<button class="topic-btn" data-topic="trauma" onclick="showTopic('trauma')">8. Trauma Basics</button>
+<button class="topic-btn" data-topic="cardioem" onclick="showTopic('cardioem')">9. Cardiovascular Emergencies</button>
+</div>
+</section>
+<section class="panel active" id="panel-abcde">
+<div class="panel-head"><div><h2>1. ABCDE Approach</h2><p>Universal first approach to an unstable patient.</p></div><span class="tag">Foundation</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Definition &amp; exam principle</h3><p>ABCDE is a structured primary assessment designed to identify immediately reversible life threats. <b>Treat the problem as soon as you identify it; do not finish the whole survey first.</b></p></div>
+<div class="box"><h3>A — Airway</h3><ul><li>Ask if the patient can speak clearly; inability to speak normally can indicate airway compromise.</li><li>Look/listen for stridor, gurgling, snoring, foreign body, facial/neck trauma, blood/vomit, soot, hoarseness.</li><li>Immediate actions may include positioning, suction, visible foreign-body removal, airway adjuncts, bag-mask ventilation, and definitive airway if needed.</li><li>Trauma: maintain cervical-spine protection while managing the airway.</li></ul></div>
+<div class="box"><h3>B — Breathing</h3><ul><li>Assess RR, SpO₂, chest expansion, respiratory effort, breath sounds, cyanosis and tracheal position.</li><li>Life threats: tension pneumothorax, massive hemothorax, severe asthma, pulmonary edema, severe hypoxemia.</li><li><b>Tension pneumothorax is a clinical emergency: decompress immediately; do not delay for CXR.</b></li></ul></div>
+<div class="box"><h3>C — Circulation</h3><ul><li>HR, BP, pulses, capillary refill, skin temperature, JVP, ECG and major bleeding.</li><li>Control catastrophic external hemorrhage immediately.</li><li>Obtain IV/IO access, send relevant labs/crossmatch, and resuscitate according to the cause.</li><li>Normal BP does not exclude early shock.</li></ul></div>
+<div class="box"><h3>D — Disability / E — Exposure</h3><ul><li>D: AVPU/GCS, pupils, focal deficit, seizures, bedside glucose.</li><li>E: expose sufficiently to find rash, bleeding, burns, trauma, infection source; maintain dignity and prevent hypothermia.</li></ul></div>
+</div>
+<div>
+<div class="box green"><h3>🔥 Must memorize</h3><p><b>Airway → Breathing → Circulation → Brain → Body</b></p><p>Find a life threat → treat it → continue ABCDE.</p></div>
+<div class="box red"><h3>Common wrong-answer traps</h3><ul><li>CT brain before checking glucose in a confused unstable patient.</li><li>Chest X-ray before treating tension pneumothorax.</li><li>Ignoring C-spine precautions in trauma.</li><li>Completing the entire exam before intervening.</li></ul></div>
+<div class="box amber"><h3>Don't confuse with</h3><p><b>Primary survey</b> = immediate life threats. <b>Secondary survey</b> = detailed head-to-toe examination after stabilization.</p></div>
+</div>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 ABCDE Approach Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-abcde" onclick="toggleAlgorithm('abcde')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-abcde">
+<img alt="ABCDE Approach clinical algorithm" src="abcde_emergency_assessment_guide.png"/>
+<div class="algorithm-links">
+<a href="abcde_emergency_assessment_guide.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#abcde">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-abcde"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('abcde')">Save my addition</button><span class="save-status" id="saved-abcde"></span></div></div>
+<div id="quiz-abcde"></div>
+<div class="box" id="sources-abcde"></div>
+</section>
+<section class="panel" id="panel-shock">
+<div class="panel-head"><div><h2>2. Shock</h2><p>Recognize the type from the vignette and know the first priorities.</p></div><span class="tag">Very high yield</span></div>
+<div class="box blue"><h3>Definition</h3><p>Shock is inadequate tissue perfusion causing cellular hypoxia and organ dysfunction. Hypotension is common but may be absent early.</p></div>
+<div class="box table-wrap"><h3>Compare the 4 major shock patterns</h3><table>
+<tr><th>Type</th><th>Classic clues</th><th>JVP / lungs</th><th>Immediate priorities</th></tr>
+<tr><td><b>Hypovolemic</b></td><td>Hemorrhage, vomiting/diarrhea, dehydration; tachycardia, cool clammy skin</td><td>Low JVP, usually clear lungs</td><td>Stop losses/bleeding; crystalloid for nonhemorrhagic loss; blood-based resuscitation for major hemorrhage</td></tr>
+<tr><td><b>Cardiogenic</b></td><td>MI, severe HF, myocarditis; chest pain, cool skin</td><td>Raised JVP, crackles/pulmonary edema</td><td>Treat cardiac cause; avoid indiscriminate large fluid boluses; vasoactive support if needed</td></tr>
+<tr><td><b>Distributive</b></td><td>Sepsis, anaphylaxis, neurogenic; warm extremities may occur early</td><td>Variable</td><td>Fluids + cause-specific treatment ± vasopressor</td></tr>
+<tr><td><b>Obstructive</b></td><td>Massive PE, tension pneumothorax, tamponade</td><td>Often raised JVP; lungs depend on cause</td><td>Relieve obstruction urgently</td></tr>
+</table></div>
+<div class="columns">
+<div>
+<div class="box"><h3>Clinical signs of impaired perfusion</h3><ul><li>Altered mental status</li><li>Oliguria</li><li>Tachycardia</li><li>Cool/mottled peripheries, except early distributive shock may be warm</li><li>Prolonged capillary refill</li><li>Elevated lactate can support hypoperfusion but is not specific.</li></ul></div>
+<div class="box"><h3>General initial approach</h3><ul><li>ABCDE, monitoring, ECG, IV/IO access.</li><li>Oxygen if hypoxemic.</li><li>Identify the cause and use cause-specific resuscitation.</li><li>Repeated reassessment is essential.</li></ul></div>
+</div>
+<div>
+<div class="box green"><h3>Pattern shortcuts</h3><p><b>Dry + flat neck veins</b> → hypovolemia.</p><p><b>Wet lungs + high JVP</b> → cardiogenic.</p><p><b>Warm + infection</b> → septic/distributive.</p><p><b>High JVP + sudden collapse</b> → obstructive until proven otherwise.</p></div>
+<div class="box red"><h3>Traps</h3><ul><li>Normal BP = no shock ❌</li><li>Large fluid bolus for every shock type ❌</li><li>Missing PE/tamponade/tension PTX in sudden deterioration ❌</li></ul></div>
+</div>
+</div>
+<div class="box purple"><h3>Academic depth — bedside hemodynamics</h3>
+<div class="table-wrap"><table>
+<tr><th>Pattern</th><th>Preload/JVP</th><th>Lungs</th><th>Typical physiology</th><th>Useful bedside clue</th></tr>
+<tr><td><b>Hypovolemic</b></td><td>Low</td><td>Usually clear</td><td>↓ preload → ↓ stroke volume/CO; compensatory ↑ SVR</td><td>Small/collapsible IVC, hyperdynamic LV may support the diagnosis</td></tr>
+<tr><td><b>Cardiogenic</b></td><td>Often high</td><td>Crackles/B-lines common</td><td>Primary pump failure → ↓ CO; SVR often rises</td><td>Reduced LV function or mechanical complication on echo</td></tr>
+<tr><td><b>Distributive</b></td><td>Variable</td><td>Often clear early</td><td>Marked vasodilation → ↓ SVR; CO may be high early</td><td>Warm extremities, bounding pulse, wide pulse pressure early</td></tr>
+<tr><td><b>Obstructive</b></td><td>Often high</td><td>Depends on cause</td><td>Mechanical block to filling/outflow → ↓ CO</td><td>RV strain (PE), pericardial effusion/collapse (tamponade), absent lung sliding (PTX)</td></tr>
+</table></div>
+<p class="disclaimer">POCUS findings support—but do not replace—the clinical picture. A single IVC measurement should not be used alone to decide fluid responsiveness.</p>
+</div>
+<div class="box"><h3>Cause-directed management details</h3>
+<ul>
+<li><b>Hemorrhagic shock:</b> control bleeding immediately; activate a major-hemorrhage/massive-transfusion pathway when indicated. Avoid replacing ongoing major blood loss with liters of crystalloid.</li>
+<li><b>Nonhemorrhagic hypovolemia:</b> balanced isotonic crystalloid is appropriate, with repeated assessment of perfusion and ongoing losses.</li>
+<li><b>Cardiogenic shock:</b> treat the cause (e.g., urgent reperfusion for MI, rhythm correction, mechanical complication). Use fluids cautiously. <b>Norepinephrine</b> is commonly used when severe hypotension requires pressure support; an inotrope such as <b>dobutamine</b> may be considered when low cardiac output persists after perfusion pressure is supported.</li>
+<li><b>Obstructive shock:</b> tension pneumothorax → immediate decompression; tamponade → urgent drainage; high-risk PE → reperfusion strategy when appropriate.</li>
+</ul>
+</div>
+<div class="box amber"><h3>Dynamic reassessment — more useful than a single number</h3>
+<p>Follow mental status, capillary refill, urine output, BP/MAP, lactate trend, skin perfusion and bedside ultrasound. A falling lactate can support improving perfusion, but lactate is <b>not specific</b> for shock and should never be interpreted in isolation.</p>
+</div>
+<div class="box red"><h3>Higher-level traps</h3>
+<ul>
+<li><b>Normal BP does not exclude shock.</b> Compensated shock may present with tachycardia, cool skin, oliguria or altered mentation before hypotension appears.</li>
+<li><b>Do not give the same fluid strategy to every shock state.</b> Large indiscriminate boluses can worsen cardiogenic shock and some obstructive states.</li>
+<li><b>Raised JVP + shock</b> should make you actively think cardiogenic or obstructive shock rather than reflexively giving more fluid.</li>
+</ul>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Shock Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-shock" onclick="toggleAlgorithm('shock')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-shock">
+<img alt="Shock clinical algorithm" src="shock_recognition_and_management_guide.png"/>
+<div class="algorithm-links">
+<a href="shock_recognition_and_management_guide.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#shock">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-shock"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('shock')">Save my addition</button><span class="save-status" id="saved-shock"></span></div></div>
+<div id="quiz-shock"></div>
+<div class="box" id="sources-shock"></div>
+</section>
+<section class="panel" id="panel-sepsis">
+<div class="panel-head"><div><h2>3. Sepsis &amp; Septic Shock</h2><p>Current 2026 Surviving Sepsis Campaign principles.</p></div><span class="tag">Emergency</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Recognition</h3><p>Sepsis is life-threatening organ dysfunction caused by a dysregulated response to infection. Sepsis is a <b>clinical diagnosis</b>; no single biomarker rules it in or out.</p><ul><li>Possible clues: hypotension, tachypnea, altered mentation, oliguria, AKI, hypoxemia, thrombocytopenia, rising bilirubin, lactate elevation.</li><li>Blood cultures: obtain as soon as possible and ideally before antimicrobials, provided this does not meaningfully delay treatment.</li><li>Measure lactate in suspected sepsis/septic shock.</li></ul></div>
+<div class="box"><h3>Antibiotics</h3><ul><li><b>Septic shock / probable or definite sepsis:</b> antimicrobials immediately, ideally within 1 hour of recognition.</li><li><b>Possible sepsis without shock:</b> rapid diagnostic assessment; if infection concern persists, antibiotics within 3 hours.</li><li>Use local antibiogram/source/risk factors to select empiric therapy; de-escalate when cultures clarify the diagnosis.</li></ul></div>
+<div class="box"><h3>Fluids</h3><ul><li>Crystalloids are first-line; balanced crystalloids are generally preferred over 0.9% saline during initial resuscitation.</li><li>For sepsis-induced hypoperfusion or septic shock, 2026 SSC suggests <b>at least 30 mL/kg IV crystalloid in the first 3 hours</b>, individualized to the patient.</li><li>Reassess frequently to avoid under- or over-resuscitation, especially in HF/renal disease.</li></ul></div>
+<div class="box"><h3>Vasopressors</h3><ul><li><b>Norepinephrine = first-line vasopressor.</b></li><li>Initial MAP target: <b>65 mmHg</b>.</li><li>If norepinephrine dose escalates, vasopressin may be added; epinephrine may be added if MAP remains inadequate.</li><li>In unstable septic shock, vasopressors may be started concurrently with fluids; peripheral initiation can be appropriate rather than delaying for central access.</li></ul></div>
+<div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+<div class="kv"><b>Initial crystalloid</b><span><code class="dose">≥30 mL/kg IV</code> within the first 3 h for sepsis-induced hypoperfusion/septic shock, then reassess</span></div>
+<div class="kv"><b>MAP target</b><span><code class="dose">65 mmHg</code></span></div>
+<div class="kv"><b>Antibiotics</b><span>Septic shock / high-likelihood sepsis: immediately, ideally within <code class="dose">1 hour</code></span></div>
+</div>
+<div class="box"><h3>Source control</h3><p>Drain abscesses, remove infected devices, decompress obstructed systems, and address the anatomic source as soon as feasible.</p></div>
+</div>
+<div>
+<div class="box green"><h3>🔥 Must memorize</h3><p>Sepsis + hypoperfusion → <b>crystalloid + antibiotics + source control</b>.</p><p>Persistent hypotension → <b>norepinephrine</b>.</p><p>MAP → <b>65 mmHg</b>.</p></div>
+<div class="box red"><h3>Exam traps</h3><ul><li>Waiting for every culture before treating septic shock.</li><li>Using qSOFA as the only screening tool.</li><li>Giving endless fluids without reassessment.</li><li>Forgetting source control.</li></ul></div>
+<div class="box amber"><h3>Important nuance</h3><p>Fluid volume is not a fixed “blind bolus.” The guideline suggests 30 mL/kg initially for sepsis-induced hypoperfusion/septic shock, but patient factors and response must guide ongoing resuscitation.</p></div>
+</div>
+</div>
+<div class="score-shell">
+<div class="score-head">
+<div>
+<h3>📊 SOFA &amp; qSOFA</h3>
+<small>Open the score tables and quick qSOFA calculator</small>
+</div>
+<button class="score-toggle" id="score-btn-sepsis" onclick="toggleSepsisScores()">View SOFA / qSOFA ▼</button>
+</div>
+<div class="score-body" id="score-body-sepsis">
+<div class="score-grid">
+<div class="score-card">
+<h4>qSOFA — bedside risk prompt</h4>
+<table class="score-table">
+<tr><th>Criterion</th><th>Point</th></tr>
+<tr><td>Respiratory rate ≥ 22/min</td><td>1</td></tr>
+<tr><td>Altered mentation (GCS &lt; 15)</td><td>1</td></tr>
+<tr><td>Systolic BP ≤ 100 mmHg</td><td>1</td></tr>
+</table>
+<div class="calc-row"><label><input id="q_rr" type="checkbox"/> RR ≥22</label></div>
+<div class="calc-row"><label><input id="q_mental" type="checkbox"/> Altered mentation</label></div>
+<div class="calc-row"><label><input id="q_sbp" type="checkbox"/> SBP ≤100</label></div>
+<button class="btn secondary" onclick="calcQSOFA()">Calculate qSOFA</button>
+<div class="calc-result" id="qsofa-result">Score: —</div>
+<p class="disclaimer"><b>Exam pearl:</b> qSOFA is a prognostic bedside prompt, not a stand-alone screening or rule-out test for sepsis.</p>
+</div>
+<div class="score-card">
+<h4>SOFA — organ dysfunction domains</h4>
+<table class="score-table">
+<tr><th>System</th><th>Variable</th></tr>
+<tr><td>Respiratory</td><td>PaO₂/FiO₂ ratio</td></tr>
+<tr><td>Coagulation</td><td>Platelet count</td></tr>
+<tr><td>Liver</td><td>Bilirubin</td></tr>
+<tr><td>Cardiovascular</td><td>MAP / vasopressor requirement</td></tr>
+<tr><td>CNS</td><td>Glasgow Coma Scale</td></tr>
+<tr><td>Renal</td><td>Creatinine or urine output</td></tr>
+</table>
+<p><b>Sepsis-3 concept:</b> an acute increase in SOFA score of ≥2 points in the setting of suspected infection supports organ dysfunction consistent with sepsis.</p>
+<p class="disclaimer">The full SOFA score requires exact clinical/laboratory values and is more detailed than qSOFA. Use the table as a memory aid; calculate formally when actual values are provided.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="box purple"><h3>Academic depth — Sepsis-3, SOFA and screening</h3>
+<ul>
+<li><b>Sepsis:</b> suspected/confirmed infection plus life-threatening organ dysfunction from a dysregulated host response.</li>
+<li>An acute <b>SOFA increase ≥2</b> supports clinically important organ dysfunction in the Sepsis-3 framework.</li>
+<li><b>qSOFA is not a stand-alone sepsis screening or rule-out test.</b> Current guidance favors broader early-warning/screening tools plus clinical judgment.</li>
+<li>Possible organ dysfunction includes encephalopathy, hypoxemia, AKI/oliguria, thrombocytopenia/coagulopathy, hyperbilirubinemia, hypotension or elevated lactate.</li>
+</ul>
+</div>
+<div class="box"><h3>Diagnostic work-up without delaying treatment</h3>
+<ul>
+<li>Blood cultures as soon as possible and ideally before antibiotics when this does not meaningfully delay therapy.</li>
+<li>Lactate, CBC, renal/liver function, electrolytes, coagulation profile, urinalysis and source-directed cultures/imaging as clinically indicated.</li>
+<li><b>Procalcitonin should not be required to decide whether to start antibiotics</b> when clinical suspicion is significant.</li>
+<li>Think actively about a source that needs a procedure: obstructed infected urinary tract, abscess, infected line/device, ischemic/infected bowel, necrotizing soft-tissue infection, empyema, etc.</li>
+</ul>
+</div>
+<div class="box green"><h3>Perfusion reassessment after the initial bolus</h3>
+<p>Do not continue fluids automatically. Reassess capillary refill, mentation, urine output, MAP, lactate trend and dynamic fluid responsiveness. In patients with HF/CKD or evidence of fluid intolerance, early vasopressor support may be safer than repeated large boluses.</p>
+</div>
+<div class="box"><h3>Source control &amp; antimicrobial stewardship</h3>
+<ul>
+<li>When a definite anatomical source requires intervention, <b>early source control is preferred—ideally within about 6 hours</b> when feasible.</li>
+<li>Empiric coverage should reflect source, local resistance, prior cultures/colonization, recent broad-spectrum antibiotics and healthcare exposure.</li>
+<li>Reassess daily and <b>de-escalate</b> once microbiology and clinical data permit.</li>
+</ul>
+</div>
+<div class="box red"><h3>Higher-level traps</h3>
+<ul>
+<li>Do not wait for a positive culture, procalcitonin result or CT scan before treating septic shock.</li>
+<li>A lactate elevation is not synonymous with septic shock; interpret it with perfusion and the overall clinical picture.</li>
+<li>Persistent hypotension after appropriate initial fluid → <b>norepinephrine</b>, not endless fluid.</li>
+<li>Antibiotics alone are insufficient when an infected obstructed or necrotic source needs drainage/debridement.</li>
+</ul>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Sepsis &amp; Septic Shock Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-sepsis" onclick="toggleAlgorithm('sepsis')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-sepsis">
+<img alt="Sepsis &amp; Septic Shock clinical algorithm" src="sepsis_first_hour_management_flowchart.png"/>
+<div class="algorithm-links">
+<a href="sepsis_first_hour_management_flowchart.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#sepsis">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-sepsis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('sepsis')">Save my addition</button><span class="save-status" id="saved-sepsis"></span></div></div>
+<div id="quiz-sepsis"></div>
+<div class="box" id="sources-sepsis"></div>
+</section>
+<section class="panel" id="panel-anaphylaxis">
+<div class="panel-head"><div><h2>4. Anaphylaxis</h2><p>Do not delay epinephrine.</p></div><span class="tag">Must memorize</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Classic presentation</h3><p>Rapid systemic hypersensitivity reaction after a likely trigger, with airway, breathing, circulatory and/or skin/mucosal involvement. Severe bronchospasm or hypotension can occur even if rash is absent.</p></div>
+<div class="box"><h3>First-line treatment</h3><p><b>IM epinephrine in the mid-anterolateral thigh.</b></p><p><code class="dose">0.01 mg/kg of 1 mg/mL (1:1000), max 0.5 mg adult</code></p><p>Repeat every <b>5–15 minutes</b> if symptoms persist.</p></div>
+<div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+<div class="kv"><b>IM epinephrine</b><span><code class="dose">0.01 mg/kg</code> of 1 mg/mL, adult max <code class="dose">0.5 mg</code></span></div>
+<div class="kv"><b>Repeat interval</b><span><code class="dose">Every 5–15 min</code> if needed</span></div>
+</div>
+<div class="box"><h3>Supportive treatment</h3><ul><li>Call for help; ABC assessment.</li><li>Position appropriately: generally supine unless respiratory distress/vomiting requires modification.</li><li>High-flow oxygen if needed.</li><li>Large-bore IV access; rapid isotonic crystalloid for hypotension.</li><li>Inhaled beta-agonist for persistent bronchospasm.</li><li>Antihistamines/corticosteroids are adjunctive; they do not replace epinephrine.</li></ul></div>
+<div class="box"><h3>Biphasic reaction</h3><p>Symptoms can recur after initial resolution without re-exposure. Observation duration depends on severity, treatment requirements, comorbidities and access to emergency care.</p></div>
+</div>
+<div>
+<div class="box green"><h3>🔥 Memory line</h3><p><b>Anaphylaxis → IM epinephrine first.</b></p></div>
+<div class="box red"><h3>Traps</h3><ul><li>Antihistamine before epinephrine.</li><li>Waiting for hypotension.</li><li>Routine IV epinephrine bolus in a non-monitored setting.</li><li>Standing/walking a hypotensive patient.</li></ul></div>
+</div>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Anaphylaxis Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-anaphylaxis" onclick="toggleAlgorithm('anaphylaxis')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-anaphylaxis">
+<img alt="Anaphylaxis clinical algorithm" src="anaphylaxis_rapid_response_algorithm.png"/>
+<div class="algorithm-links">
+<a href="anaphylaxis_rapid_response_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#anaphylaxis">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-anaphylaxis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('anaphylaxis')">Save my addition</button><span class="save-status" id="saved-anaphylaxis"></span></div></div>
+<div id="quiz-anaphylaxis"></div>
+<div class="box" id="sources-anaphylaxis"></div>
+</section>
+<section class="panel" id="panel-ams">
+<div class="panel-head"><div><h2>5. Altered Mental Status / Hypoglycemia</h2><p>Prioritize reversible causes.</p></div><span class="tag">Common vignette</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Immediate approach</h3><ul><li>ABCDE and vitals.</li><li><b>Bedside glucose early.</b></li><li>Assess oxygenation, temperature, medications/toxins, infection, trauma, seizures and focal neurologic deficits.</li><li>Consider opioid toxicity, stroke, sepsis, CO exposure, electrolyte disorders and endocrine emergencies depending on context.</li></ul></div>
+<div class="box"><h3>Hypoglycemia clues</h3><p>Autonomic: sweating, tremor, palpitations, hunger. Neuroglycopenic: confusion, behavior change, seizure, focal-like deficit, coma.</p></div>
+<div class="box"><h3>Treatment</h3><ul><li>Alert and able to swallow: rapid oral glucose/carbohydrate, then recheck.</li><li>Severe/unconscious: IV dextrose when IV access is available.</li><li>No IV access: glucagon is an option.</li><li>Recheck glucose after treatment and give longer-acting carbohydrate when appropriate.</li><li>Identify the cause: insulin/sulfonylurea, missed food, alcohol, sepsis, renal/hepatic failure, adrenal insufficiency.</li></ul></div>
+<div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+<div class="kv"><b>Conscious adult</b><span><code class="dose">15 g</code> fast-acting carbohydrate, recheck in <code class="dose">15 min</code></span></div>
+<div class="kv"><b>Repeat</b><span>If still low, repeat fast-acting carbohydrate and recheck</span></div>
+<div class="kv"><b>Severe / unable to swallow</b><span>Use IV dextrose per local formulation/protocol; glucagon if IV access is unavailable</span></div>
+</div>
+</div>
+<div>
+<div class="box green"><h3>🔥 Must memorize</h3><p><b>Altered mental status → glucose early.</b></p></div>
+<div class="box red"><h3>Traps</h3><ul><li>CT first before checking glucose.</li><li>Failing to recheck after treatment.</li><li>Missing prolonged/recurrent hypoglycemia from sulfonylureas or renal impairment.</li></ul></div>
+</div>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 AMS &amp; Hypoglycemia Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-ams" onclick="toggleAlgorithm('ams')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-ams">
+<img alt="AMS &amp; Hypoglycemia clinical algorithm" src="altered_mental_status_emergency_algorithm.png"/>
+<div class="algorithm-links">
+<a href="altered_mental_status_emergency_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#ams">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-ams"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('ams')">Save my addition</button><span class="save-status" id="saved-ams"></span></div></div>
+<div id="quiz-ams"></div>
+<div class="box" id="sources-ams"></div>
+</section>
+<section class="panel" id="panel-heat">
+<div class="panel-head"><div><h2>6. Heat Illness</h2><p>Heat stroke is defined by CNS dysfunction, not by dry skin.</p></div><span class="tag">Pattern recognition</span></div>
+<div class="box table-wrap"><h3>Heat exhaustion vs heat stroke</h3><table>
+<tr><th></th><th>Heat exhaustion</th><th>Heat stroke</th></tr>
+<tr><td><b>Mental status</b></td><td>No severe CNS dysfunction</td><td><b>Delirium, confusion, seizure or coma</b></td></tr>
+<tr><td><b>Temperature</b></td><td>Elevated</td><td>Marked hyperthermia, commonly around ≥40°C but clinical diagnosis depends on CNS dysfunction and heat exposure</td></tr>
+<tr><td><b>Sweating</b></td><td>Usually present</td><td>May be present or absent</td></tr>
+<tr><td><b>Treatment</b></td><td>Cooling + oral/IV fluid as appropriate</td><td><b>Immediate rapid active cooling + ABC resuscitation</b></td></tr>
+</table></div>
+<div class="columns">
+<div>
+<div class="box"><h3>Heat stroke complications</h3><ul><li>Rhabdomyolysis</li><li>AKI</li><li>Hepatic injury</li><li>Coagulopathy/DIC</li><li>Electrolyte abnormalities</li><li>Arrhythmia/shock</li></ul></div>
+<div class="box"><h3>Management priorities</h3><ul><li>ABCDE.</li><li>Rapid active cooling; do not wait for lab results.</li><li>Monitor core temperature, renal function, CK, electrolytes, coagulation and liver injury as indicated.</li></ul></div>
+</div>
+<div>
+<div class="box green"><h3>Memory</h3><p><b>Heat stroke = heat exposure + hyperthermia + CNS dysfunction.</b></p></div>
+<div class="box red"><h3>Trap</h3><p>Dry skin is not required; exertional heat stroke often has sweating.</p></div>
+</div>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Heat Illness Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-heat" onclick="toggleAlgorithm('heat')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-heat">
+<img alt="Heat Illness clinical algorithm" src="heat_illness_rapid_assessment_guide.png"/>
+<div class="algorithm-links">
+<a href="heat_illness_rapid_assessment_guide.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#heat">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-heat"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('heat')">Save my addition</button><span class="save-status" id="saved-heat"></span></div></div>
+<div id="quiz-heat"></div>
+<div class="box" id="sources-heat"></div>
+</section>
+<section class="panel" id="panel-burns">
+<div class="panel-head"><div><h2>7. Burns</h2><p>Airway, burn depth/TBSA, fluid resuscitation, and complications.</p></div><span class="tag">High yield</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Initial approach</h3><ul><li>Stop the burning process; remove hot/wet clothing and constricting jewelry if safe.</li><li>ABCDE.</li><li>Assess burn depth and TBSA.</li><li>Cover with clean dry material after cooling; avoid hypothermia.</li></ul></div>
+<div class="box"><h3>Inhalation injury</h3><p>Clues: enclosed-space fire, facial burns, singed nasal hair, soot, carbonaceous sputum, hoarseness, stridor, respiratory distress.</p><p><b>Airway edema can progress rapidly → early airway planning.</b></p></div>
+<div class="box"><h3>TBSA essentials</h3><ul><li>Rule of Nines is a rapid adult estimate.</li><li>Patient palm including fingers ≈ 1% TBSA for scattered small burns.</li><li>Superficial/first-degree erythema is generally not included in TBSA used for formal fluid resuscitation.</li></ul></div>
+<div class="box"><h3>Burn fluid formulas — exam vs current guideline</h3><p><b>Classic exam formula (Parkland):</b> <code class="dose">4 mL × kg × %TBSA</code> lactated Ringer's in first 24 h; half in first 8 h from time of burn, remainder over next 16 h.</p>
+<p><b>Current ABA 2024 adult burn-shock guidance:</b> for adults with burns ≥20% TBSA, consider starting around <code class="dose">2 mL/kg/%TBSA</code> to reduce excessive fluid volumes, then titrate to clinical response.</p>
+<p>For exam questions, follow the formula specifically requested; if asked contemporary management, know the ABA update.</p></div>
+<div class="box purple"><h3>💊 Key Doses / Numbers</h3>
+<div class="kv"><b>Classic Parkland</b><span><code class="dose">4 mL × kg × %TBSA</code> over 24 h</span></div>
+<div class="kv"><b>Timing</b><span>Half in first <code class="dose">8 h</code> from burn time; remainder over next <code class="dose">16 h</code></span></div>
+<div class="kv"><b>Current ABA adult starting point</b><span><code class="dose">2 mL/kg/%TBSA</code> for ≥20% TBSA, then titrate</span></div>
+</div>
+<div class="box"><h3>Monitoring</h3><p>Urine output and overall clinical response guide titration. Watch for under-resuscitation and “fluid creep.”</p></div>
+</div>
+<div>
+<div class="box red"><h3>Red flags / burn-center-type concerns</h3><ul><li>Airway/inhalation injury</li><li>Large TBSA burns</li><li>Electrical or chemical burns</li><li>Circumferential burns</li><li>Face, hands, genitalia/perineum, major joints</li><li>Associated trauma or significant comorbidity</li></ul></div>
+<div class="box green"><h3>Memory</h3><p><b>Facial burn + soot/hoarseness → inhalation injury → early airway.</b></p></div>
+<div class="box amber"><h3>Don't forget</h3><p>Electrical injury may cause deep tissue damage, rhabdomyolysis and arrhythmias despite limited skin findings.</p></div>
+</div>
+</div>
+<div class="box purple"><h3>Academic depth — burn depth</h3>
+<div class="table-wrap"><table>
+<tr><th>Depth</th><th>Appearance / sensation</th><th>High-yield implication</th></tr>
+<tr><td>Superficial</td><td>Red, dry, blanching, painful</td><td>Not counted in formal TBSA resuscitation calculations</td></tr>
+<tr><td>Superficial partial-thickness</td><td>Blistered, moist, very painful, blanching</td><td>Counted in TBSA; often heals without grafting</td></tr>
+<tr><td>Deep partial-thickness</td><td>Paler/drier, reduced blanching and sensation</td><td>Higher risk of scarring and graft requirement</td></tr>
+<tr><td>Full-thickness</td><td>Leathery/waxy/charred, nonblanching, reduced or absent pin-prick sensation</td><td>Requires burn-specialist assessment; grafting often needed</td></tr>
+</table></div>
+</div>
+<div class="box"><h3>Smoke inhalation, carbon monoxide &amp; cyanide</h3>
+<ul>
+<li><b>Upper-airway thermal injury:</b> hoarseness, stridor, facial/oropharyngeal burns, progressive edema → consider early definitive airway before swelling makes intubation difficult.</li>
+<li><b>Carbon monoxide:</b> standard pulse oximetry can look normal. Diagnose with <b>co-oximetry/carboxyhemoglobin</b> in the appropriate exposure and give high-concentration oxygen while evaluating.</li>
+<li><b>Cyanide toxicity:</b> consider after an enclosed-space fire with severe lactic acidosis, cardiovascular collapse or altered consciousness. Treatment is protocol/toxicology dependent; hydroxocobalamin is commonly used when strongly suspected.</li>
+</ul>
+</div>
+<div class="box"><h3>Fluid resuscitation — how to use the formulas correctly</h3>
+<ul>
+<li>The calculated volume is a <b>starting estimate, not a fixed prescription</b>.</li>
+<li>Adult urine-output target is commonly about <b>0.5 mL/kg/hr</b>; adjust fluids to perfusion and urine output while avoiding fluid creep.</li>
+<li>Remember that the first 8-hour clock starts at the <b>time of injury</b>, not hospital arrival.</li>
+<li>Electrical injury, rhabdomyolysis and special populations may require individualized targets and specialist guidance.</li>
+</ul>
+</div>
+<div class="box amber"><h3>Burn-center consultation / transfer clues</h3>
+<ul>
+<li>Full-thickness burns, partial-thickness burns ≥10% TBSA, deep burns involving face/hands/feet/genitalia/perineum/major joints.</li>
+<li>Suspected inhalation injury, high-voltage electrical injury, chemical injury, significant comorbidity, associated trauma or poorly controlled pain.</li>
+</ul>
+</div>
+<div class="box red"><h3>Higher-level traps</h3>
+<ul>
+<li>Do not use ice directly on significant burns; it can worsen tissue injury and hypothermia.</li>
+<li>Do not rely on normal pulse oximetry to exclude carbon-monoxide poisoning.</li>
+<li>Routine prophylactic systemic antibiotics are <b>not</b> recommended for uncomplicated acute burns.</li>
+<li>Circumferential full-thickness burns compromising limb perfusion or ventilation may require <b>escharotomy</b>.</li>
+</ul>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Burns Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-burns" onclick="toggleAlgorithm('burns')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-burns">
+<img alt="Burns clinical algorithm" src="burn_initial_assessment_algorithm.png"/>
+<div class="algorithm-links">
+<a href="burn_initial_assessment_algorithm.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#burns">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-burns"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('burns')">Save my addition</button><span class="save-status" id="saved-burns"></span></div></div>
+<div id="quiz-burns"></div>
+<div class="box" id="sources-burns"></div>
+</section>
+<section class="panel" id="panel-trauma">
+<div class="panel-head"><div><h2>8. Trauma Basics</h2><p>Primary survey, hemorrhage control and secondary survey.</p></div><span class="tag">ABCDE + C-spine</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Primary survey</h3><ul><li><b>A:</b> Airway with cervical-spine protection.</li><li><b>B:</b> Breathing; immediately treat chest life threats.</li><li><b>C:</b> Circulation with hemorrhage control.</li><li><b>D:</b> Disability — GCS/pupils/neurologic status.</li><li><b>E:</b> Exposure/environment; prevent hypothermia.</li></ul></div>
+<div class="box"><h3>Catastrophic hemorrhage</h3><ul><li>Direct pressure and appropriate hemorrhage-control measures.</li><li>In major hemorrhage, prioritize blood-product-based resuscitation and definitive bleeding control rather than large-volume crystalloid.</li><li>Consider pelvic bleeding, chest/abdomen/retroperitoneum and long-bone sources when external bleeding is absent.</li></ul></div>
+<div class="box"><h3>Chest trauma life threats</h3><ul><li>Tension pneumothorax</li><li>Massive hemothorax</li><li>Open pneumothorax</li><li>Cardiac tamponade</li></ul></div>
+<div class="box"><h3>Secondary survey</h3><p>After immediate threats are controlled: AMPLE history, head-to-toe exam, focused imaging/labs, reassessment and definitive disposition.</p></div>
+</div>
+<div>
+<div class="box green"><h3>Memory</h3><p><b>Primary survey saves life; secondary survey finds the rest.</b></p></div>
+<div class="box red"><h3>Traps</h3><ul><li>Detailed history before stabilizing ABCs.</li><li>Sending an unstable patient to CT before addressing shock.</li><li>Forgetting hypothermia prevention.</li><li>Missing repeated reassessment after an intervention.</li></ul></div>
+</div>
+</div>
+<div class="box purple"><h3>Academic depth — xABCDE and damage-control priorities</h3>
+<ul>
+<li>Many trauma systems use <b>xABCDE</b>: control exsanguinating external hemorrhage before the traditional airway step.</li>
+<li>Primary survey and resuscitation occur <b>simultaneously</b>. Treat each immediate threat when found rather than waiting to finish the survey.</li>
+<li>In major hemorrhage, early definitive bleeding control and a <b>major-hemorrhage / massive-transfusion protocol</b> are more important than repeated crystalloid boluses.</li>
+</ul>
+</div>
+<div class="box"><h3>Hemorrhagic shock &amp; resuscitation strategy</h3>
+<ul>
+<li>Use direct pressure, wound packing/hemostatic dressing and tourniquet for appropriate life-threatening extremity hemorrhage.</li>
+<li>Balanced blood-component resuscitation is commonly used in major hemorrhage; many protocols approximate a <b>1:1:1</b> strategy for RBC:plasma:platelets early in massive transfusion.</li>
+<li><b>Permissive hypotension</b> may be used in selected actively bleeding adults until hemorrhage control, but it is generally <b>not appropriate when traumatic brain injury requires preservation of cerebral perfusion</b>; pregnancy and other special states also need individualized targets.</li>
+<li>Prevent hypothermia aggressively: warmed blood/fluids, blankets and environmental warming.</li>
+</ul>
+</div>
+<div class="box purple"><h3>💊 Tranexamic acid (TXA)</h3>
+<div class="kv"><b>Who</b><span>Trauma patient who is bleeding or at risk of significant bleeding</span></div>
+<div class="kv"><b>When</b><span>As early as possible and <code class="dose">within 3 hours</code> of injury</span></div>
+<div class="kv"><b>Common regimen</b><span><code class="dose">1 g IV over 10 min</code>, then <code class="dose">1 g IV over 8 h</code></span></div>
+<p class="disclaimer">Follow the trauma system/local protocol. Benefit is time-sensitive; do not wait for viscoelastic-test results when TXA is otherwise indicated.</p>
+</div>
+<div class="box"><h3>eFAST — what it can and cannot do</h3>
+<ul>
+<li>Rapid bedside assessment for pericardial fluid, intraperitoneal free fluid and pneumothorax/hemothorax depending on the protocol.</li>
+<li>A positive eFAST in an unstable patient can accelerate definitive intervention.</li>
+<li><b>A negative eFAST does not exclude major injury</b>, including retroperitoneal bleeding, early/limited intraperitoneal bleeding or many hollow-viscus injuries.</li>
+</ul>
+</div>
+<div class="box"><h3>Chest threats that should be treated during the primary survey</h3>
+<ul>
+<li><b>Tension pneumothorax:</b> decompress immediately when clinically suspected in an unstable patient—do not wait for CT.</li>
+<li><b>Open pneumothorax:</b> vented/appropriate occlusive dressing plus definitive chest drainage according to trauma protocol.</li>
+<li><b>Massive hemothorax:</b> chest tube + hemorrhage resuscitation + urgent surgical evaluation when output/physiology warrants.</li>
+<li><b>Tamponade:</b> shock + elevated JVP; POCUS can support rapid recognition.</li>
+</ul>
+</div>
+<div class="box red"><h3>Higher-level traps</h3>
+<ul>
+<li>Do not send an unstable patient to CT simply because the diagnosis is uncertain.</li>
+<li>Do not let a negative FAST falsely reassure you when physiology still suggests hemorrhage.</li>
+<li>Do not normalize BP aggressively before hemorrhage control in every bleeding patient; context—including TBI—changes the target.</li>
+<li>Hypothermia, acidosis and coagulopathy amplify one another; prevention is part of resuscitation, not an afterthought.</li>
+</ul>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div>
+<h3>🧭 Trauma Algorithm</h3>
+<small>Step-by-step DOH exam review</small>
+</div>
+<button class="algorithm-toggle" id="algo-btn-trauma" onclick="toggleAlgorithm('trauma')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-trauma">
+<img alt="Trauma clinical algorithm" src="trauma_primary_survey_cheat_sheet.png"/>
+<div class="algorithm-links">
+<a href="trauma_primary_survey_cheat_sheet.png" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#trauma">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-trauma"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('trauma')">Save my addition</button><span class="save-status" id="saved-trauma"></span></div></div>
+<div id="quiz-trauma"></div>
+<div class="box" id="sources-trauma"></div>
+</section>
+<section class="panel" id="panel-cardioem">
+<div class="panel-head"><div><h2>9. Cardiovascular Emergencies</h2><p>Recognition of immediately dangerous cardiovascular syndromes and the safest first action.</p></div><span class="tag">Time-critical</span></div>
+<div class="columns">
+<div>
+<div class="box blue"><h3>Core principle</h3>
+<p>These conditions often present as <b>chest pain, dyspnea, syncope or shock</b> and may initially resemble ACS. The exam-level skill is to recognize the dangerous pattern and choose the action that prevents harm.</p>
+</div>
+<div class="box"><h3>Acute aortic syndrome / aortic dissection</h3>
+<ul>
+<li><b>Classic pattern:</b> abrupt severe chest or back pain, often maximal at onset; tearing/ripping quality is helpful but not required.</li>
+<li><b>Red flags:</b> pulse deficit or inter-arm BP difference, focal neurologic deficit, syncope, new aortic-regurgitation murmur, shock, known aortic disease or connective-tissue disorder.</li>
+<li><b>Imaging:</b> CTA is commonly used in a stable patient; TEE is useful when unstable or when CT is impractical.</li>
+<li><b>Immediate management:</b> analgesia plus anti-impulse therapy. IV beta-blockade is generally first when not contraindicated, followed by vasodilator therapy if BP remains high.</li>
+<li><b>Key target:</b> SBP <b>&lt;120 mmHg</b> or the lowest BP that preserves organ perfusion; HR about <b>60–80/min</b>.</li>
+<li><b>Type A</b> (ascending aorta involvement) is a surgical emergency.</li>
+</ul>
+</div>
+<div class="box red"><h3>🔥 Safety trap: dissection vs ACS</h3>
+<p><b>Abrupt tearing/back-radiating pain + asymmetric pulses/BP or neurologic findings = think dissection before giving thrombolysis or full anticoagulation.</b> Antithrombotic treatment can be catastrophic if acute aortic dissection is the true diagnosis.</p>
+</div>
+<div class="box"><h3>Cardiac tamponade</h3>
+<ul>
+<li><b>Pattern:</b> hypotension/shock + elevated JVP + tachycardia; muffled heart sounds may occur, but the complete Beck triad is not always present.</li>
+<li><b>Pulsus paradoxus:</b> exaggerated inspiratory fall in systolic BP can be a clue.</li>
+<li><b>POCUS/echo:</b> pericardial effusion, right-atrial/right-ventricular diastolic collapse, plethoric IVC.</li>
+<li><b>Unstable tamponade:</b> urgent pericardial drainage is the definitive life-saving treatment.</li>
+<li>Temporary supportive fluids may help selected preload-dependent patients while definitive drainage is arranged, but should not delay it.</li>
+</ul>
+</div>
+<div class="box"><h3>High-risk pulmonary embolism</h3>
+<ul>
+<li><b>Red flags:</b> sudden dyspnea/chest pain, syncope, hypoxemia, hypotension or shock, recent surgery/immobility, prior VTE.</li>
+<li>In an unstable patient who cannot safely go to CT, bedside echo may show <b>RV dilation/strain</b> and support urgent management.</li>
+<li><b>High-risk PE = hemodynamic instability.</b> Reperfusion therapy may be required when there is shock or persistent hypotension and no prohibitive contraindication.</li>
+<li>Do not delay stabilization while pursuing a perfect diagnostic work-up in a crashing patient.</li>
+</ul>
+</div>
+</div>
+<div>
+<div class="box"><h3>Acute cardiogenic pulmonary edema</h3>
+<ul>
+<li>Severe dyspnea, hypoxemia, crackles, diaphoresis; BP may be very high or very low depending on the cause.</li>
+<li>Support oxygenation/ventilation as needed; non-invasive ventilation can be useful in appropriate patients.</li>
+<li>Nitrates may be useful in hypertensive pulmonary edema when there is no contraindication.</li>
+<li>Look for the trigger: ACS, acute MR, hypertensive crisis, arrhythmia, fluid overload.</li>
+</ul>
+</div>
+<div class="box"><h3>Mechanical complications after MI</h3>
+<div class="table-wrap"><table>
+<tr><th>Complication</th><th>Classic clue</th></tr>
+<tr><td>Papillary muscle rupture</td><td>Acute severe MR → sudden pulmonary edema/shock; new systolic murmur may be soft if shock is profound</td></tr>
+<tr><td>Ventricular septal rupture</td><td>New harsh holosystolic murmur ± thrill + cardiogenic shock</td></tr>
+<tr><td>Free-wall rupture</td><td>Sudden collapse, PEA, hemopericardium/tamponade</td></tr>
+</table></div>
+<p><b>Memory:</b> recent MI + sudden new murmur, pulmonary edema or shock = think mechanical complication.</p>
+</div>
+<div class="box amber"><h3>Don't confuse with</h3>
+<ul>
+<li><b>Tamponade:</b> obstructive shock, high JVP, usually clear lungs.</li>
+<li><b>Cardiogenic pulmonary edema:</b> crackles and pulmonary congestion.</li>
+<li><b>Massive PE:</b> obstructive shock + RV strain, often clear lungs.</li>
+<li><b>Aortic dissection:</b> abrupt pain + pulse/BP/neuro clues.</li>
+</ul>
+</div>
+<div class="box green"><h3>Memory lines</h3>
+<p><b>Dissection:</b> sudden tearing/back pain + asymmetry = protect the aorta before treating “ACS.”</p>
+<p><b>Tamponade:</b> shock + high JVP + clear lungs = think compressed heart.</p>
+<p><b>Post-MI rupture:</b> new murmur + shock = mechanical complication until proven otherwise.</p>
+</div>
+</div>
+</div>
+<div class="algorithm-shell">
+<div class="algorithm-head">
+<div><h3>🧭 Cardiovascular Emergencies Algorithm</h3><small>Pattern → immediate priority → major trap</small></div>
+<button class="algorithm-toggle" id="algo-btn-cardioem" onclick="toggleAlgorithm('cardioem')">View algorithm ▼</button>
+</div>
+<div class="algorithm-body" id="algo-body-cardioem">
+<img alt="Cardiovascular emergencies algorithm" src="day1_cardiovascular_emergencies_algorithm.svg"/>
+<div class="algorithm-links">
+<a href="day1_cardiovascular_emergencies_algorithm.svg" rel="noopener" target="_blank">Open full size ↗</a>
+<a href="algorithms.html#cardioem">Open in Algorithms Library →</a>
+</div>
+</div>
+</div>
+<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-cardioem"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('cardioem')">Save my addition</button><span class="save-status" id="saved-cardioem"></span></div></div>
+<div id="quiz-cardioem"></div>
+<div class="box" id="sources-cardioem"></div>
+</section>
 <section class="card rapid">
-    <div class="panel-head"><div><h2>🔥 Day 1 Rapid Review</h2><p>These should become automatic.</p></div><span class="tag">30–40 ExamCure questions</span></div>
-    <div class="rapid-grid">
-      <div class="rapid-item"><span>Anaphylaxis</span><b>IM epinephrine</b></div>
-      <div class="rapid-item"><span>Septic shock vasopressor</span><b>Norepinephrine</b></div>
-      <div class="rapid-item"><span>Septic shock MAP</span><b>65 mmHg</b></div>
-      <div class="rapid-item"><span>Suspected tension PTX</span><b>Immediate decompression</b></div>
-      <div class="rapid-item"><span>Altered mental status</span><b>Check glucose</b></div>
-      <div class="rapid-item"><span>Heat stroke</span><b>CNS dysfunction + hyperthermia</b></div>
-      <div class="rapid-item"><span>Burn inhalation clue</span><b>Soot/hoarseness → early airway</b></div>
-      <div class="rapid-item"><span>Trauma</span><b>ABCDE + C-spine</b></div>
-      <div class="rapid-item"><span>Dissection clue</span><b>Abrupt back pain + pulse/BP asymmetry</b></div>
-    </div>
-    <div class="tracker" style="margin-top:14px">
-      <div><label class="note-line">Questions</label><input id="ecq" type="number"></div>
-      <div><label class="note-line">Score %</label><input id="ecscore" type="number"></div>
-      <div><label class="note-line">Wrong / flagged</label><input id="ecwrong" type="number"></div>
-      <div><label class="note-line">Weakest topic</label><input id="ecweak" type="text"></div>
-    </div>
-    <button class="btn" style="margin-top:12px" onclick="saveTracker()">Save Day 1 tracker</button>
-  </section>
-
-  <section class="card footer-actions">
-    <div><b>Finished Day 1?</b><div class="note-line">Mark complete only after you review all 9 topics and practice questions.</div></div>
-    <button class="btn" onclick="markDayComplete()">Mark Day 1 complete</button>
-  </section>
+<div class="panel-head"><div><h2>🔥 Day 1 Rapid Review</h2><p>These should become automatic.</p></div><span class="tag">30–40 ExamCure questions</span></div>
+<div class="rapid-grid">
+<div class="rapid-item"><span>Anaphylaxis</span><b>IM epinephrine</b></div>
+<div class="rapid-item"><span>Septic shock vasopressor</span><b>Norepinephrine</b></div>
+<div class="rapid-item"><span>Septic shock MAP</span><b>65 mmHg</b></div>
+<div class="rapid-item"><span>Suspected tension PTX</span><b>Immediate decompression</b></div>
+<div class="rapid-item"><span>Altered mental status</span><b>Check glucose</b></div>
+<div class="rapid-item"><span>Heat stroke</span><b>CNS dysfunction + hyperthermia</b></div>
+<div class="rapid-item"><span>Burn inhalation clue</span><b>Soot/hoarseness → early airway</b></div>
+<div class="rapid-item"><span>Trauma</span><b>ABCDE + C-spine</b></div>
+<div class="rapid-item"><span>Dissection clue</span><b>Abrupt back pain + pulse/BP asymmetry</b></div>
+</div>
+<div class="tracker" style="margin-top:14px">
+<div><label class="note-line">Questions</label><input id="ecq" type="number"/></div>
+<div><label class="note-line">Score %</label><input id="ecscore" type="number"/></div>
+<div><label class="note-line">Wrong / flagged</label><input id="ecwrong" type="number"/></div>
+<div><label class="note-line">Weakest topic</label><input id="ecweak" type="text"/></div>
+</div>
+<button class="btn" onclick="saveTracker()" style="margin-top:12px">Save Day 1 tracker</button>
+</section>
+<section class="card footer-actions">
+<div><b>Finished Day 1?</b><div class="note-line">Mark complete only after you review all 9 topics and practice questions.</div></div>
+<button class="btn" onclick="markDayComplete()">Mark Day 1 complete</button>
+</section>
 </main>
 </div>
-
-<div id="noteModal" class="modal"><div class="modalbox">
-  <h2>Add Note</h2>
-  <label>Title</label><input id="noteTitle" type="text">
-  <br><br><label>Notes</label><textarea id="noteBody"></textarea>
-  <div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div>
+<div class="modal" id="noteModal"><div class="modalbox">
+<h2>Add Note</h2>
+<label>Title</label><input id="noteTitle" type="text"/>
+<br/><br/><label>Notes</label><textarea id="noteBody"></textarea>
+<div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div>
 </div></div>
-<div id="mistakeModal" class="modal"><div class="modalbox">
-  <h2>Add ExamCure Mistake</h2>
-  <label>Topic</label><input id="mTopic" type="text"><br><br>
-  <label>Question clue</label><input id="mClue" type="text"><br><br>
-  <label>Correct answer</label><input id="mAnswer" type="text"><br><br>
-  <label>One-line rule</label><input id="mRule" type="text">
-  <div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
+<div class="modal" id="mistakeModal"><div class="modalbox">
+<h2>Add ExamCure Mistake</h2>
+<label>Topic</label><input id="mTopic" type="text"/><br/><br/>
+<label>Question clue</label><input id="mClue" type="text"/><br/><br/>
+<label>Correct answer</label><input id="mAnswer" type="text"/><br/><br/>
+<label>One-line rule</label><input id="mRule" type="text"/>
+<div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
 </div></div>
-
 <script>
 const topics=['abcde','shock','sepsis','anaphylaxis','ams','heat','burns','trauma','cardioem'];
 
