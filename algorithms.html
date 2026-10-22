@@ -1,177 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algorithms Library — Study Website</title>
-<style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e4e8ef;--blue:#1769e0;--nav:#102033}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
-.top{background:var(--nav);color:#fff;padding:18px 22px;position:sticky;top:0;z-index:5}
-.top a{color:#dbe9f8;text-decoration:none;margin-right:18px;font-weight:700}
-main{max-width:1160px;margin:auto;padding:28px 18px 50px}
-h1{font-size:36px;margin:0 0 6px}.lead{color:var(--muted);margin:0 0 22px}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clinical Algorithms Library · Study Website</title><style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#182033;--muted:#667085;--line:#e2e8f0;--blue:#1769e0;--nav:#102033}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
+.top{background:var(--nav);color:#fff;padding:17px 22px;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px #0002;overflow-x:auto;white-space:nowrap}
+.top a{color:#dbe9f8;text-decoration:none;margin-right:16px;font-weight:700}.top a:hover{color:#fff}
+main{max-width:1180px;margin:auto;padding:28px 18px 60px}
+h1{font-size:36px;margin:0 0 7px}.lead{color:var(--muted);margin:0 0 24px}
+.day-group{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin:20px 0;box-shadow:0 7px 20px rgba(16,32,51,.045)}
+.group-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}.group-head h2{margin:0;font-size:24px}.group-head a{color:#245aa5;text-decoration:none;font-weight:750}
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.algo-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 8px 22px rgba(16,32,51,.05)}
-.algo-card img{width:100%;height:180px;object-fit:cover;object-position:top;display:block}
-.algo-card div{padding:12px}.algo-card strong,.algo-card span{display:block}.algo-card span{color:#356da6;font-size:13px;margin-top:4px}
-.algo-section{scroll-margin-top:76px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:28px 0;box-shadow:0 8px 22px rgba(16,32,51,.05)}
-.section-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.section-head h2{margin:0;font-size:28px}.section-head p{margin:4px 0;color:var(--muted)}.section-head a,.section-actions a{color:#245aa5;text-decoration:none;font-weight:700}
-.algo-section img{display:block;width:min(100%,900px);height:auto;margin:18px auto;border:1px solid var(--line);border-radius:14px}
-.section-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.note{background:#fff8e8;border:1px solid #ffe6b0;border-radius:12px;padding:12px;margin:22px 0;color:#6b4a00}
-@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}h1{font-size:29px}.section-head{flex-direction:column}}
-</style>
-</head>
-<body id="top">
+.tile{display:block;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 4px 14px rgba(16,32,51,.04);transition:transform .15s ease,box-shadow .15s ease}
+.tile:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(16,32,51,.10)}
+.thumb{height:170px;background:#f8fafc;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.tile-copy{padding:11px 12px}.tile-copy strong{display:block;line-height:1.25}.tile-copy span{display:block;color:#356da6;font-size:13px;margin-top:5px;font-weight:700}
+.tip{background:#eef6ff;border:1px solid #cfe0f5;border-radius:14px;padding:12px 14px;color:#34506e;margin:0 0 25px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.group-head{flex-direction:column;align-items:flex-start}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.thumb{height:210px}h1{font-size:29px}}
+</style></head><body>
 <nav class="top">
-  <a href="index.html">🏠 Dashboard</a>
-  <a href="day1.html">📘 Day 1</a>
-  <a href="algorithms.html">🧭 Algorithms</a>
-</nav>
-<main>
-  <h1>🧭 Clinical Algorithms Library</h1>
-  <p class="lead">Step-by-step visual pathways for high-yield DOH decision-making topics.</p>
-  <div class="note"><b>How to use this library:</b> learn the notes first, use the algorithm to rehearse the sequence, then complete the 10-question topic quiz.</div>
-  <div class="grid">
-      <a class="algo-card" href="#abcde">
-        <img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach algorithm preview" loading="lazy">
-        <div><strong>ABCDE Approach</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#shock">
-        <img src="shock_recognition_and_management_guide.png" alt="Shock algorithm preview" loading="lazy">
-        <div><strong>Shock</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#sepsis">
-        <img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock algorithm preview" loading="lazy">
-        <div><strong>Sepsis &amp; Septic Shock</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#anaphylaxis">
-        <img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis algorithm preview" loading="lazy">
-        <div><strong>Anaphylaxis</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#ams">
-        <img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia algorithm preview" loading="lazy">
-        <div><strong>AMS &amp; Hypoglycemia</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#heat">
-        <img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness algorithm preview" loading="lazy">
-        <div><strong>Heat Illness</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#burns">
-        <img src="burn_initial_assessment_algorithm.png" alt="Burns algorithm preview" loading="lazy">
-        <div><strong>Burns</strong><span>Open algorithm ↓</span></div>
-      </a>
-    
-      <a class="algo-card" href="#trauma">
-        <img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma algorithm preview" loading="lazy">
-        <div><strong>Trauma</strong><span>Open algorithm ↓</span></div>
-      </a>
-    <a class="algo-card" href="#cardioem"><img src="day1_cardiovascular_emergencies_algorithm.svg" alt="Cardiovascular Emergencies preview" loading="lazy"><div><strong>Cardiovascular Emergencies</strong><span>View full algorithm ↓</span></div></a></div>
-  
-    <section id="abcde" class="algo-section">
-      <div class="section-head">
-        <div><h2>ABCDE Approach</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener"><img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="shock" class="algo-section">
-      <div class="section-head">
-        <div><h2>Shock</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener"><img src="shock_recognition_and_management_guide.png" alt="Shock algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="sepsis" class="algo-section">
-      <div class="section-head">
-        <div><h2>Sepsis &amp; Septic Shock</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener"><img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="anaphylaxis" class="algo-section">
-      <div class="section-head">
-        <div><h2>Anaphylaxis</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener"><img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="ams" class="algo-section">
-      <div class="section-head">
-        <div><h2>AMS &amp; Hypoglycemia</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener"><img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="heat" class="algo-section">
-      <div class="section-head">
-        <div><h2>Heat Illness</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener"><img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="burns" class="algo-section">
-      <div class="section-head">
-        <div><h2>Burns</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener"><img src="burn_initial_assessment_algorithm.png" alt="Burns algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-    <section id="trauma" class="algo-section">
-      <div class="section-head">
-        <div><h2>Trauma</h2><p>DOH-focused decision pathway</p></div>
-        <a href="day1.html">← Back to Day 1</a>
-      </div>
-      <a href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener"><img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma algorithm" loading="lazy"></a>
-      <div class="section-actions">
-        <a href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener">Open full size ↗</a>
-        <a href="#top">Back to top ↑</a>
-      </div>
-    </section>
-    
-<section id="cardioem" class="algo-section"><div class="section-head"><div><h2>Cardiovascular Emergencies</h2><p>Day 1 — Emergency Medicine</p></div><a href="day1.html">← Day 1 notes</a></div><a href="day1_cardiovascular_emergencies_algorithm.svg" target="_blank" rel="noopener"><img src="day1_cardiovascular_emergencies_algorithm.svg" alt="Cardiovascular Emergencies algorithm" loading="lazy"></a><div class="section-actions"><a href="day1_cardiovascular_emergencies_algorithm.svg" target="_blank" rel="noopener">Open full size ↗</a><a href="#top">Back to top ↑</a></div></section><section class="algo-section"><div class="section-head"><div><h2>Day 2 — Cardiology I</h2><p>Selected clinical decision pathways</p></div><a href="day2.html">Open Day 2 →</a></div><div class="grid"><a class="algo-card" href="#chestpain"><img src="day2_chest_pain_triage_algorithm.svg" alt="Chest Pain Triage preview" loading="lazy"><div><strong>Chest Pain Triage</strong><span>View full algorithm ↓</span></div></a><a class="algo-card" href="#acs"><img src="day2_acs_algorithm.svg" alt="Acute Coronary Syndrome preview" loading="lazy"><div><strong>Acute Coronary Syndrome</strong><span>View full algorithm ↓</span></div></a><a class="algo-card" href="#htndx"><img src="day2_hypertension_diagnosis_algorithm.svg" alt="Hypertension Diagnosis preview" loading="lazy"><div><strong>Hypertension Diagnosis</strong><span>View full algorithm ↓</span></div></a><a class="algo-card" href="#htncrisis"><img src="day2_severe_hypertension_algorithm.svg" alt="Severe Hypertension preview" loading="lazy"><div><strong>Severe Hypertension</strong><span>View full algorithm ↓</span></div></a></div></section><section id="chestpain" class="algo-section"><div class="section-head"><div><h2>Chest Pain Triage</h2><p>Day 2 — Cardiology I</p></div><a href="day2.html">← Day 2 notes</a></div><a href="day2_chest_pain_triage_algorithm.svg" target="_blank"><img src="day2_chest_pain_triage_algorithm.svg" alt="Chest Pain Triage algorithm" loading="lazy"></a><div class="section-actions"><a href="day2_chest_pain_triage_algorithm.svg" target="_blank">Open full size ↗</a><a href="#top">Back to top ↑</a></div></section><section id="acs" class="algo-section"><div class="section-head"><div><h2>Acute Coronary Syndrome</h2><p>Day 2 — Cardiology I</p></div><a href="day2.html">← Day 2 notes</a></div><a href="day2_acs_algorithm.svg" target="_blank"><img src="day2_acs_algorithm.svg" alt="Acute Coronary Syndrome algorithm" loading="lazy"></a><div class="section-actions"><a href="day2_acs_algorithm.svg" target="_blank">Open full size ↗</a><a href="#top">Back to top ↑</a></div></section><section id="htndx" class="algo-section"><div class="section-head"><div><h2>Hypertension Diagnosis</h2><p>Day 2 — Cardiology I</p></div><a href="day2.html">← Day 2 notes</a></div><a href="day2_hypertension_diagnosis_algorithm.svg" target="_blank"><img src="day2_hypertension_diagnosis_algorithm.svg" alt="Hypertension Diagnosis algorithm" loading="lazy"></a><div class="section-actions"><a href="day2_hypertension_diagnosis_algorithm.svg" target="_blank">Open full size ↗</a><a href="#top">Back to top ↑</a></div></section><section id="htncrisis" class="algo-section"><div class="section-head"><div><h2>Severe Hypertension</h2><p>Day 2 — Cardiology I</p></div><a href="day2.html">← Day 2 notes</a></div><a href="day2_severe_hypertension_algorithm.svg" target="_blank"><img src="day2_severe_hypertension_algorithm.svg" alt="Severe Hypertension algorithm" loading="lazy"></a><div class="section-actions"><a href="day2_severe_hypertension_algorithm.svg" target="_blank">Open full size ↗</a><a href="#top">Back to top ↑</a></div></section></main>
-</body>
-</html>
+<a href="index.html">🏠 Dashboard</a>
+<a href="day1.html">Day 1</a>
+<a href="day2.html">Day 2</a>
+<a href="day3.html">Day 3</a>
+<a href="day4.html">Day 4</a>
+<a href="day5.html">Day 5</a>
+<a href="infographics.html">🖼️ Infographics</a>
+<a href="algorithms.html">🧭 Algorithms</a>
+</nav><main>
+<h1>🧭 Clinical Algorithms Library</h1>
+<p class="lead">Decision pathways organized by study day. No duplicate full-size images on this page.</p>
+<div class="tip"><b>Simple gallery:</b> only mini previews are shown here. Click any card to open the full-size algorithm in a separate tab, then use your browser Back button or close the tab to return.</div>
+<section class="day-group">
+<div class="group-head"><h2>Day 1 — Emergency Medicine</h2><a href="day1.html">Open day notes →</a></div>
+<div class="grid"><a class="tile" href="abcde_emergency_assessment_guide.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="abcde_emergency_assessment_guide.png" alt="ABCDE Approach" loading="lazy"></div>
+<div class="tile-copy"><strong>ABCDE Approach</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="shock_recognition_and_management_guide.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="shock_recognition_and_management_guide.png" alt="Shock" loading="lazy"></div>
+<div class="tile-copy"><strong>Shock</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="sepsis_first_hour_management_flowchart.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="sepsis_first_hour_management_flowchart.png" alt="Sepsis &amp; Septic Shock" loading="lazy"></div>
+<div class="tile-copy"><strong>Sepsis &amp; Septic Shock</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="anaphylaxis_rapid_response_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="anaphylaxis_rapid_response_algorithm.png" alt="Anaphylaxis" loading="lazy"></div>
+<div class="tile-copy"><strong>Anaphylaxis</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="altered_mental_status_emergency_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="altered_mental_status_emergency_algorithm.png" alt="AMS &amp; Hypoglycemia" loading="lazy"></div>
+<div class="tile-copy"><strong>AMS &amp; Hypoglycemia</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="heat_illness_rapid_assessment_guide.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="heat_illness_rapid_assessment_guide.png" alt="Heat Illness" loading="lazy"></div>
+<div class="tile-copy"><strong>Heat Illness</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="burn_initial_assessment_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="burn_initial_assessment_algorithm.png" alt="Burns" loading="lazy"></div>
+<div class="tile-copy"><strong>Burns</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="trauma_primary_survey_cheat_sheet.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="trauma_primary_survey_cheat_sheet.png" alt="Trauma Primary Survey" loading="lazy"></div>
+<div class="tile-copy"><strong>Trauma Primary Survey</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day1_cardiovascular_emergencies_algorithm.svg" target="_blank" rel="noopener">
+<div class="thumb"><img src="day1_cardiovascular_emergencies_algorithm.svg" alt="Cardiovascular Emergencies" loading="lazy"></div>
+<div class="tile-copy"><strong>Cardiovascular Emergencies</strong><span>Click to open full size ↗</span></div>
+</a></div>
+</section><section class="day-group">
+<div class="group-head"><h2>Day 2 — Cardiology I</h2><a href="day2.html">Open day notes →</a></div>
+<div class="grid"><a class="tile" href="day2_chest_pain_triage_algorithm.svg" target="_blank" rel="noopener">
+<div class="thumb"><img src="day2_chest_pain_triage_algorithm.svg" alt="Chest Pain Triage" loading="lazy"></div>
+<div class="tile-copy"><strong>Chest Pain Triage</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day2_acs_algorithm.svg" target="_blank" rel="noopener">
+<div class="thumb"><img src="day2_acs_algorithm.svg" alt="Acute Coronary Syndrome" loading="lazy"></div>
+<div class="tile-copy"><strong>Acute Coronary Syndrome</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day2_hypertension_diagnosis_algorithm.svg" target="_blank" rel="noopener">
+<div class="thumb"><img src="day2_hypertension_diagnosis_algorithm.svg" alt="Hypertension Diagnosis" loading="lazy"></div>
+<div class="tile-copy"><strong>Hypertension Diagnosis</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day2_severe_hypertension_algorithm.svg" target="_blank" rel="noopener">
+<div class="thumb"><img src="day2_severe_hypertension_algorithm.svg" alt="Severe Hypertension" loading="lazy"></div>
+<div class="tile-copy"><strong>Severe Hypertension</strong><span>Click to open full size ↗</span></div>
+</a></div>
+</section><section class="day-group">
+<div class="group-head"><h2>Day 3 — Cardiology II</h2><a href="day3.html">Open day notes →</a></div>
+<div class="grid"><a class="tile" href="day3_tachyarrhythmia_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day3_tachyarrhythmia_algorithm.png" alt="Tachyarrhythmia" loading="lazy"></div>
+<div class="tile-copy"><strong>Tachyarrhythmia</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day3_af_flutter_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day3_af_flutter_algorithm.png" alt="Atrial Fibrillation &amp; Flutter" loading="lazy"></div>
+<div class="tile-copy"><strong>Atrial Fibrillation &amp; Flutter</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day3_bradycardia_avblock_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day3_bradycardia_avblock_algorithm.png" alt="Bradycardia &amp; AV Block" loading="lazy"></div>
+<div class="tile-copy"><strong>Bradycardia &amp; AV Block</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day3_acute_hf_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day3_acute_hf_algorithm.png" alt="Acute Heart Failure / Pulmonary Edema" loading="lazy"></div>
+<div class="tile-copy"><strong>Acute Heart Failure / Pulmonary Edema</strong><span>Click to open full size ↗</span></div>
+</a></div>
+</section><section class="day-group">
+<div class="group-head"><h2>Day 4 — Respiratory Medicine</h2><a href="day4.html">Open day notes →</a></div>
+<div class="grid"><a class="tile" href="day4_acute_asthma_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day4_acute_asthma_algorithm.png" alt="Acute Severe Asthma" loading="lazy"></div>
+<div class="tile-copy"><strong>Acute Severe Asthma</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day4_copd_exacerbation_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day4_copd_exacerbation_algorithm.png" alt="COPD Exacerbation" loading="lazy"></div>
+<div class="tile-copy"><strong>COPD Exacerbation</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day4_cap_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day4_cap_algorithm.png" alt="Community-Acquired Pneumonia" loading="lazy"></div>
+<div class="tile-copy"><strong>Community-Acquired Pneumonia</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day4_pleural_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day4_pleural_algorithm.png" alt="Pneumothorax &amp; Pleural Effusion" loading="lazy"></div>
+<div class="tile-copy"><strong>Pneumothorax &amp; Pleural Effusion</strong><span>Click to open full size ↗</span></div>
+</a></div>
+</section><section class="day-group">
+<div class="group-head"><h2>Day 5 — Endocrinology I</h2><a href="day5.html">Open day notes →</a></div>
+<div class="grid"><a class="tile" href="day5_hypoglycemia_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day5_hypoglycemia_algorithm.png" alt="Hypoglycemia Emergency" loading="lazy"></div>
+<div class="tile-copy"><strong>Hypoglycemia Emergency</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day5_dka_hhs_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day5_dka_hhs_algorithm.png" alt="DKA / HHS" loading="lazy"></div>
+<div class="tile-copy"><strong>DKA / HHS</strong><span>Click to open full size ↗</span></div>
+</a><a class="tile" href="day5_adrenal_crisis_algorithm.png" target="_blank" rel="noopener">
+<div class="thumb"><img src="day5_adrenal_crisis_algorithm.png" alt="Adrenal Crisis" loading="lazy"></div>
+<div class="tile-copy"><strong>Adrenal Crisis</strong><span>Click to open full size ↗</span></div>
+</a></div>
+</section>
+</main></body></html>
