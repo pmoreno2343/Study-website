@@ -32,8 +32,9 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 .modal.open{display:flex}.modalbox{background:#fff;border-radius:18px;padding:20px;width:min(720px,96vw);max-height:88vh;overflow:auto}
 .modalbox input,.modalbox textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px}.modalbox textarea{min-height:120px}
 .actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-</style></head>
-<body><div class="app"><aside class="sidebar">
+</style><link rel="stylesheet" href="qbank-tracker.css">
+</head>
+<body data-study-day="Day 2"><div class="app"><aside class="sidebar">
 <div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
 <div class="nav-label">Navigation</div>
 <nav class="nav">
@@ -49,6 +50,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <nav class="nav">
 <a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
 <a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
+<a href="#qbank-tracker">📊 QBank Tracker</a>
 </nav>
 </aside><main class="main">
 <div class="topbar"><input class="search" id="searchBox" placeholder="Search within Day 2..."/></div>
@@ -98,7 +100,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li>A negative very-early troponin does <b>not</b> automatically exclude MI; use the assay-specific serial pathway.</li>
 <li>Do not reflexively give anticoagulation or thrombolysis when the presentation strongly suggests acute aortic syndrome.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-chestpain"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('chestpain')">Save my addition</button><span class="save-status" id="saved-chestpain"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-chestpain"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('chestpain')">Save my addition</button><span class="save-status" id="saved-chestpain"></span></div></div>
 <div id="quiz-chestpain"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link local-source" href="https://www.doh.gov.ae/-/media/Feature/Resources/Standards/2025/13062025--DOH-Standard-for-Acute-Chest-Pain-STEMI-Management-in-Abu-dhabi.ashx" rel="noopener" target="_blank"><b>🇦🇪 Abu Dhabi DoH — Standard for Acute Chest Pain (STEMI) Management in Abu Dhabi, V2 (2025)</b><span>Current Abu Dhabi system-of-care standard for acute chest pain/STEMI pathways.</span></a><a class="source-link international-source" href="https://www.acc.org/Guidelines/Guidelines/2025/02/27/14/55/Acute-Coronary-Syndromes" rel="noopener" target="_blank"><b>2025 ACC/AHA Acute Coronary Syndromes Guideline</b><span>Current ACS evaluation and management guideline.</span></a></div></div>
 </section>
@@ -140,7 +142,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </ul></div>
 <div class="box amber"><h3>Don't confuse with</h3>
 <p><b>Stable angina = reproducible pattern.</b> Unstable angina/ACS = new, worsening, lower-threshold, prolonged or rest symptoms.</p></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-stableacs"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('stableacs')">Save my addition</button><span class="save-status" id="saved-stableacs"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-stableacs"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('stableacs')">Save my addition</button><span class="save-status" id="saved-stableacs"></span></div></div>
 <div id="quiz-stableacs"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/chronic-coronary-syndromes/" rel="noopener" target="_blank"><b>2024 ESC Chronic Coronary Syndromes Guideline</b><span>Current approach to suspected and established chronic coronary syndromes.</span></a><a class="source-link local-source" href="https://www.doh.gov.ae/-/media/Feature/Resources/Standards/2025/13062025--DOH-Standard-for-Acute-Chest-Pain-STEMI-Management-in-Abu-dhabi.ashx" rel="noopener" target="_blank"><b>🇦🇪 Abu Dhabi DoH — Acute Chest Pain/STEMI Standard (2025)</b><span>Local pathway for acute presentations that may represent ACS.</span></a></div></div>
 </section>
@@ -185,7 +187,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li>Radial access is preferred for PCI when feasible because it lowers bleeding/vascular complications.</li>
 <li>Complete revascularization is favored in appropriate patients with multivessel disease, individualized to anatomy and comorbidity.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-acs"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('acs')">Save my addition</button><span class="save-status" id="saved-acs"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-acs"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('acs')">Save my addition</button><span class="save-status" id="saved-acs"></span></div></div>
 <div id="quiz-acs"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link local-source" href="https://www.doh.gov.ae/-/media/Feature/Resources/Standards/2025/13062025--DOH-Standard-for-Acute-Chest-Pain-STEMI-Management-in-Abu-dhabi.ashx" rel="noopener" target="_blank"><b>🇦🇪 Abu Dhabi DoH — Standard for Acute Chest Pain (STEMI) Management in Abu Dhabi, V2 (2025)</b><span>Local chest-pain/STEMI network standard.</span></a><a class="source-link international-source" href="https://www.acc.org/About-ACC/Press-Releases/2025/02/28/17/51/ACC-AHA-Issue-New-Acute-Coronary-Syndromes-Guideline" rel="noopener" target="_blank"><b>2025 ACC/AHA Acute Coronary Syndromes Guideline</b><span>Current STEMI/NSTEMI management recommendations.</span></a></div></div>
 </section>
@@ -229,7 +231,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </ul></div>
 <div class="box red"><h3>Higher-level trap</h3>
 <p><b>“Positive troponin = NSTEMI” is wrong.</b> First decide whether the injury is acute, then whether ischemia is present, then determine the likely mechanism.</p></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-troponin"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('troponin')">Save my addition</button><span class="save-status" id="saved-troponin"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-troponin"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('troponin')">Save my addition</button><span class="save-status" id="saved-troponin"></span></div></div>
 <div id="quiz-troponin"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://www.acc.org/About-ACC/Press-Releases/2025/02/28/17/51/ACC-AHA-Issue-New-Acute-Coronary-Syndromes-Guideline" rel="noopener" target="_blank"><b>2025 ACC/AHA Acute Coronary Syndromes Guideline</b><span>Current ACS diagnostic and management framework.</span></a><a class="source-link international-source" href="https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/chronic-coronary-syndromes/" rel="noopener" target="_blank"><b>2024 ESC Chronic Coronary Syndromes Guideline</b><span>ECG and diagnostic evaluation in suspected coronary disease.</span></a></div></div>
 </section>
@@ -272,7 +274,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li>Pheochromocytoma/paraganglioma: episodic headache, palpitations, diaphoresis.</li>
 <li>Thyroid disease, Cushing syndrome, coarctation and medication/substance causes.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-htndx"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htndx')">Save my addition</button><span class="save-status" id="saved-htndx"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-htndx"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htndx')">Save my addition</button><span class="save-status" id="saved-htndx"></span></div></div>
 <div id="quiz-htndx"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline" rel="noopener" target="_blank"><b>2025 AHA/ACC High Blood Pressure Guideline</b><span>Current U.S. adult BP classification, confirmation and treatment framework.</span></a><a class="source-link international-source" href="https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/elevated-blood-pressure-and-hypertension/" rel="noopener" target="_blank"><b>2024 ESC Elevated Blood Pressure &amp; Hypertension Guideline</b><span>Current European BP classification and diagnostic approach.</span></a><a class="source-link local-source" href="https://www.doh.gov.ae/en/resources/standards.aspx" rel="noopener" target="_blank"><b>🇦🇪 Abu Dhabi DoH Standards Library</b><span>Official Abu Dhabi standards repository. No newer general standalone hypertension standard was identified during this update.</span></a></div></div>
 </section>
@@ -319,7 +321,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li>Look for interfering drugs/substances and secondary causes, especially primary aldosteronism and OSA.</li>
 <li>Do not combine an ACE inhibitor with an ARB for routine hypertension treatment.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-htnmeds"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htnmeds')">Save my addition</button><span class="save-status" id="saved-htnmeds"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-htnmeds"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htnmeds')">Save my addition</button><span class="save-status" id="saved-htnmeds"></span></div></div>
 <div id="quiz-htnmeds"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline" rel="noopener" target="_blank"><b>2025 AHA/ACC High Blood Pressure Guideline</b><span>Current adult pharmacologic treatment guidance.</span></a><a class="source-link international-source" href="https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/elevated-blood-pressure-and-hypertension/" rel="noopener" target="_blank"><b>2024 ESC Elevated Blood Pressure &amp; Hypertension Guideline</b><span>Current European pharmacologic and target guidance.</span></a></div></div>
 </section>
@@ -360,7 +362,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li>Rapid IV normalization in an asymptomatic patient can cause cerebral, coronary or renal hypoperfusion.</li>
 <li>Severe headache alone is not enough—look for encephalopathy, focal deficits, papilledema or other objective organ injury.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-htncrisis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htncrisis')">Save my addition</button><span class="save-status" id="saved-htncrisis"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-htncrisis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('htncrisis')">Save my addition</button><span class="save-status" id="saved-htncrisis"></span></div></div>
 <div id="quiz-htncrisis"></div>
 <div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://professional.heart.org/en/science-news/2025-high-blood-pressure-guideline/top-things-to-know" rel="noopener" target="_blank"><b>2025 AHA/ACC High Blood Pressure Guideline — Top Things to Know</b><span>Includes current guidance for severe hypertension without acute target-organ damage.</span></a><a class="source-link international-source" href="https://www.escardio.org/guidelines/clinical-practice-guidelines/all-esc-practice-guidelines/elevated-blood-pressure-and-hypertension/" rel="noopener" target="_blank"><b>2024 ESC Elevated Blood Pressure &amp; Hypertension Guideline</b><span>Current European hypertension framework and acute severe BP management context.</span></a></div></div>
 </section>
@@ -383,7 +385,8 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <li><b>Bupropion:</b> useful option but avoid with seizure disorder or other important contraindications.</li>
 <li>Medication works best when paired with behavioral support and planned follow-up.</li>
 </ul></div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-prevention"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('prevention')">Save my addition</button><span class="save-status" id="saved-prevention"></span></div></div><div id="quiz-prevention"></div><div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://www.acc.org/About-ACC/Press-Releases/2025/02/28/17/51/ACC-AHA-Issue-New-Acute-Coronary-Syndromes-Guideline" rel="noopener" target="_blank"><b>2025 ACC/AHA Acute Coronary Syndromes Guideline</b><span>Secondary prevention after ACS, including lipid lowering and cardiac rehabilitation.</span></a><a class="source-link international-source" href="https://www.heart.org/en/healthy-living/healthy-lifestyle/quit-smoking-tobacco" rel="noopener" target="_blank"><b>American Heart Association — Tobacco &amp; Cardiovascular Disease</b><span>Smoking cessation and cardiovascular risk information.</span></a></div></div></section><section class="card rapid"><div class="panel-head"><div><h2>🔥 Day 2 Rapid Review</h2><p>Core facts that should become automatic.</p></div><span class="tag">20–40 ExamCure questions</span></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-prevention"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('prevention')">Save my addition</button><span class="save-status" id="saved-prevention"></span></div></div><div id="quiz-prevention"></div><div class="box"><h3>📚 Guidelines &amp; Academic Sources</h3><div class="sources-list"><a class="source-link international-source" href="https://www.acc.org/About-ACC/Press-Releases/2025/02/28/17/51/ACC-AHA-Issue-New-Acute-Coronary-Syndromes-Guideline" rel="noopener" target="_blank"><b>2025 ACC/AHA Acute Coronary Syndromes Guideline</b><span>Secondary prevention after ACS, including lipid lowering and cardiac rehabilitation.</span></a><a class="source-link international-source" href="https://www.heart.org/en/healthy-living/healthy-lifestyle/quit-smoking-tobacco" rel="noopener" target="_blank"><b>American Heart Association — Tobacco &amp; Cardiovascular Disease</b><span>Smoking cessation and cardiovascular risk information.</span></a></div></div></section><section id="qbank-tracker" data-day="Day 2"></section>
+<section class="card rapid"><div class="panel-head"><div><h2>🔥 Day 2 Rapid Review</h2><p>Core facts that should become automatic.</p></div><span class="tag">Practice-question target</span></div>
 <div class="rapid-grid">
 <div class="rapid-item"><span>Suspected ACS</span><b>ECG promptly</b></div>
 <div class="rapid-item"><span>Clear STEMI</span><b>Reperfusion pathway; don't wait for troponin</b></div>
@@ -402,11 +405,11 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <br/><br/><label>Notes</label><textarea id="noteBody"></textarea>
 <div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div>
 </div></div><div class="modal" id="mistakeModal"><div class="modalbox">
-<h2>Add ExamCure Mistake</h2>
+<h2>Add Learning Point</h2>
 <label>Topic</label><input id="mTopic" type="text"/><br/><br/>
-<label>Question clue</label><input id="mClue" type="text"/><br/><br/>
-<label>Correct answer</label><input id="mAnswer" type="text"/><br/><br/>
-<label>One-line rule</label><input id="mRule" type="text"/>
+<label>What I missed</label><input id="mClue" type="text"/><br/><br/>
+<label>Correct rule / answer concept</label><input id="mAnswer" type="text"/><br/><br/>
+<label>One-line learning point</label><input id="mRule" type="text"/>
 <div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
 </div></div><script>
 function openModal(id){document.getElementById(id).classList.add('open')}
@@ -449,4 +452,5 @@ function markDayComplete(){localStorage.setItem('day2_complete','true');alert('D
 function loadSaved(){topics.forEach(id=>{document.getElementById('add-'+id).value=localStorage.getItem('day2_add_'+id)||'';renderQuiz(id);});const t=JSON.parse(localStorage.getItem('day2_tracker')||'{}');if(t.q!=null)ecq.value=t.q;if(t.score!=null)ecscore.value=t.score;if(t.wrong!=null)ecwrong.value=t.wrong;if(t.weak)ecweak.value=t.weak;showTopic(localStorage.getItem('day2_active_topic')||'chestpain');}
 document.getElementById('searchBox').addEventListener('input',e=>{const q=e.target.value.toLowerCase().trim();if(!q)return;const hit=topics.find(id=>document.getElementById('panel-'+id).innerText.toLowerCase().includes(q));if(hit)showTopic(hit);});
 document.addEventListener('DOMContentLoaded',loadSaved);
-</script></body></html>
+</script><script src="qbank-tracker.js"></script>
+</body></html>

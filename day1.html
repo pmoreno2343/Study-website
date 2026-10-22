@@ -146,8 +146,9 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 @media(max-width:1050px){.topic-grid{grid-template-columns:repeat(2,1fr)}.columns{grid-template-columns:1fr}.tracker{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.app{grid-template-columns:1fr}.sidebar{position:static;height:auto}.nav{display:flex;overflow:auto;gap:5px}.nav-label{display:none}.nav a{white-space:nowrap}.main{padding:14px}.topic-grid{grid-template-columns:1fr}.rapid-grid,.tracker{grid-template-columns:1fr}.page-title{flex-direction:column}.kv{grid-template-columns:1fr}}
 </style>
+<link rel="stylesheet" href="qbank-tracker.css">
 </head>
-<body>
+<body data-study-day="Day 1">
 <div class="app">
 <aside class="sidebar">
 <div class="brand"><div class="logo">🧠</div><div><b>Study Website</b><small>Study smarter. One step at a time.</small></div></div>
@@ -166,6 +167,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <nav class="nav">
 <a href="#" onclick="openModal('noteModal');return false;">➕ Add Note</a>
 <a href="#" onclick="openModal('mistakeModal');return false;">⚠️ Add Mistake</a>
+<a href="#qbank-tracker">📊 QBank Tracker</a>
 </nav>
 </aside>
 <main class="main">
@@ -175,7 +177,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 <div class="breadcrumb">Emergency Medicine › Day 1</div>
 <div class="page-title">
-<div><h1>Day 1 — Emergency Medicine</h1><p>Press a topic button to open the full high-yield DOH review.</p></div>
+<div><h1>Day 1 — Emergency Medicine</h1><p>Press a topic button to open the full high-yield clinical review.</p></div>
 <div class="day-badge">📅 Day 1</div>
 </div>
 <section class="card topic-menu">
@@ -212,7 +214,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 ABCDE Approach Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-abcde" onclick="toggleAlgorithm('abcde')">View algorithm ▼</button>
 </div>
@@ -224,7 +226,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-abcde"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('abcde')">Save my addition</button><span class="save-status" id="saved-abcde"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-abcde"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('abcde')">Save my addition</button><span class="save-status" id="saved-abcde"></span></div></div>
 <div id="quiz-abcde"></div>
 <div class="box" id="sources-abcde"></div>
 </section>
@@ -280,7 +282,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Shock Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-shock" onclick="toggleAlgorithm('shock')">View algorithm ▼</button>
 </div>
@@ -292,7 +294,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-shock"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('shock')">Save my addition</button><span class="save-status" id="saved-shock"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-shock"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('shock')">Save my addition</button><span class="save-status" id="saved-shock"></span></div></div>
 <div id="quiz-shock"></div>
 <div class="box" id="sources-shock"></div>
 </section>
@@ -397,7 +399,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Sepsis &amp; Septic Shock Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-sepsis" onclick="toggleAlgorithm('sepsis')">View algorithm ▼</button>
 </div>
@@ -409,7 +411,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-sepsis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('sepsis')">Save my addition</button><span class="save-status" id="saved-sepsis"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-sepsis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('sepsis')">Save my addition</button><span class="save-status" id="saved-sepsis"></span></div></div>
 <div id="quiz-sepsis"></div>
 <div class="box" id="sources-sepsis"></div>
 </section>
@@ -435,7 +437,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Anaphylaxis Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-anaphylaxis" onclick="toggleAlgorithm('anaphylaxis')">View algorithm ▼</button>
 </div>
@@ -447,7 +449,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-anaphylaxis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('anaphylaxis')">Save my addition</button><span class="save-status" id="saved-anaphylaxis"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-anaphylaxis"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('anaphylaxis')">Save my addition</button><span class="save-status" id="saved-anaphylaxis"></span></div></div>
 <div id="quiz-anaphylaxis"></div>
 <div class="box" id="sources-anaphylaxis"></div>
 </section>
@@ -473,7 +475,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 AMS &amp; Hypoglycemia Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-ams" onclick="toggleAlgorithm('ams')">View algorithm ▼</button>
 </div>
@@ -485,7 +487,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-ams"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('ams')">Save my addition</button><span class="save-status" id="saved-ams"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-ams"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('ams')">Save my addition</button><span class="save-status" id="saved-ams"></span></div></div>
 <div id="quiz-ams"></div>
 <div class="box" id="sources-ams"></div>
 </section>
@@ -512,7 +514,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Heat Illness Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-heat" onclick="toggleAlgorithm('heat')">View algorithm ▼</button>
 </div>
@@ -524,7 +526,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-heat"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('heat')">Save my addition</button><span class="save-status" id="saved-heat"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-heat"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('heat')">Save my addition</button><span class="save-status" id="saved-heat"></span></div></div>
 <div id="quiz-heat"></div>
 <div class="box" id="sources-heat"></div>
 </section>
@@ -593,7 +595,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Burns Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-burns" onclick="toggleAlgorithm('burns')">View algorithm ▼</button>
 </div>
@@ -605,7 +607,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-burns"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('burns')">Save my addition</button><span class="save-status" id="saved-burns"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-burns"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('burns')">Save my addition</button><span class="save-status" id="saved-burns"></span></div></div>
 <div id="quiz-burns"></div>
 <div class="box" id="sources-burns"></div>
 </section>
@@ -671,7 +673,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="algorithm-head">
 <div>
 <h3>🧭 Trauma Algorithm</h3>
-<small>Step-by-step DOH exam review</small>
+<small>Step-by-step clinical review</small>
 </div>
 <button class="algorithm-toggle" id="algo-btn-trauma" onclick="toggleAlgorithm('trauma')">View algorithm ▼</button>
 </div>
@@ -683,7 +685,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-trauma"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('trauma')">Save my addition</button><span class="save-status" id="saved-trauma"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-trauma"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('trauma')">Save my addition</button><span class="save-status" id="saved-trauma"></span></div></div>
 <div id="quiz-trauma"></div>
 <div class="box" id="sources-trauma"></div>
 </section>
@@ -771,7 +773,7 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-cardioem"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('cardioem')">Save my addition</button><span class="save-status" id="saved-cardioem"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-cardioem"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('cardioem')">Save my addition</button><span class="save-status" id="saved-cardioem"></span></div></div>
 <div id="quiz-cardioem"></div>
 <div class="box" id="sources-cardioem"></div>
 </section>
@@ -871,12 +873,13 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 </div>
 </div>
 </div>
-<div class="additions"><b>✍️ My additions / ExamCure pearls</b><textarea id="add-toxidromes"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('toxidromes')">Save my addition</button><span class="save-status" id="saved-toxidromes"></span></div></div>
+<div class="additions"><b>✍️ My Learning Points</b><textarea id="add-toxidromes"></textarea><div class="save-row"><button class="btn secondary" onclick="saveAddition('toxidromes')">Save my addition</button><span class="save-status" id="saved-toxidromes"></span></div></div>
 <div id="quiz-toxidromes"></div>
 <div class="box" id="sources-toxidromes"></div>
 </section>
+<section id="qbank-tracker" data-day="Day 1"></section>
 <section class="card rapid">
-<div class="panel-head"><div><h2>🔥 Day 1 Rapid Review</h2><p>These should become automatic.</p></div><span class="tag">30–40 ExamCure questions</span></div>
+<div class="panel-head"><div><h2>🔥 Day 1 Rapid Review</h2><p>These should become automatic.</p></div><span class="tag">Practice-question target</span></div>
 <div class="rapid-grid">
 <div class="rapid-item"><span>Anaphylaxis</span><b>IM epinephrine</b></div>
 <div class="rapid-item"><span>Septic shock vasopressor</span><b>Norepinephrine</b></div>
@@ -911,11 +914,11 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="actions"><button class="btn secondary" onclick="closeModal('noteModal')">Cancel</button><button class="btn" onclick="saveGeneralNote()">Save</button></div>
 </div></div>
 <div class="modal" id="mistakeModal"><div class="modalbox">
-<h2>Add ExamCure Mistake</h2>
+<h2>Add Learning Point</h2>
 <label>Topic</label><input id="mTopic" type="text"/><br/><br/>
-<label>Question clue</label><input id="mClue" type="text"/><br/><br/>
-<label>Correct answer</label><input id="mAnswer" type="text"/><br/><br/>
-<label>One-line rule</label><input id="mRule" type="text"/>
+<label>What I missed</label><input id="mClue" type="text"/><br/><br/>
+<label>Correct rule / answer concept</label><input id="mAnswer" type="text"/><br/><br/>
+<label>One-line learning point</label><input id="mRule" type="text"/>
 <div class="actions"><button class="btn secondary" onclick="closeModal('mistakeModal')">Cancel</button><button class="btn" onclick="saveMistake()">Save</button></div>
 </div></div>
 <script>
@@ -977,7 +980,7 @@ function renderQuiz(topic){
   let h='';
   h+='<div class="quiz-shell">';
   h+='<div class="quiz-summary">';
-  h+='<div class="quiz-summary-left"><div><h3>📝 10 Original DOH-Style Practice Questions</h3><p>Clinical-vignette level for GP / DOH exam preparation.</p></div></div>';
+  h+='<div class="quiz-summary-left"><div><h3>📝 10 Original Practice Questions</h3><p>Clinical-vignette level for medical exam preparation.</p></div></div>';
   h+='<div class="quiz-summary-actions">';
   h+='<span id="score-'+topic+'" class="score-pill">'+saved+'</span>';
   h+='<button id="toggle-'+topic+'" class="quiz-toggle" onclick="toggleQuiz(\''+topic+'\')">Open test <span class="quiz-chevron">▼</span></button>';
@@ -1077,5 +1080,6 @@ document.getElementById('searchBox').addEventListener('input',e=>{
 });
 document.addEventListener('DOMContentLoaded',()=>{loadSaved();renderLearningBlocks();});
 </script>
+<script src="qbank-tracker.js"></script>
 </body>
 </html>
