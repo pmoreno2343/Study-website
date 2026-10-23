@@ -341,7 +341,6 @@ html,body{min-height:100%}
 <div class="rapid-item"><span>Acute pulmonary edema</span><b>Oxygen if hypoxemic + NIV/diuresis ± nitrates by phenotype</b></div>
 <div class="rapid-item"><span>Severe AS</span><b>Angina + syncope + dyspnea/HF</b></div>
 <div class="rapid-item"><span>Acute MR after MI</span><b>Papillary-muscle rupture → pulmonary edema/shock</b></div>
-<div class="tracker"><label>Questions <input id="trackQuestions" min="0" type="number"/></label><label>Score % <input id="trackScore" max="100" min="0" type="number"/></label><button class="btn" onclick="saveTracker()">Save Day 3 tracker</button><span id="trackSaved"></span></div>
 </section>
 <section class="card complete-card"><h3>Finished Day 3?</h3><p>Mark complete only after you review all 8 topics and practice questions.</p><button class="btn" id="completeBtn" onclick="toggleComplete()">Mark Day 3 Complete</button></section>
 </main></div>
@@ -414,7 +413,6 @@ function saveGeneralNote(){
 function saveMistake(){
  const arr=JSON.parse(localStorage.getItem('study_mistakes')||'[]');arr.push({topic:mTopic.value,clue:mClue.value,answer:mAnswer.value,rule:mRule.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_mistakes',JSON.stringify(arr));closeModal('mistakeModal');alert('Mistake saved in this browser.');
 }
-function saveTracker(){localStorage.setItem('day3_tracker',JSON.stringify({q:trackQuestions.value,s:trackScore.value}));trackSaved.textContent='Saved ✓'}
 function toggleComplete(){
  const v=localStorage.getItem('day3_complete')==='1';localStorage.setItem('day3_complete',v?'0':'1');paintComplete();
 }
@@ -422,7 +420,7 @@ function paintComplete(){const done=localStorage.getItem('day3_complete')==='1';
 window.addEventListener('DOMContentLoaded',()=>{
  topics.forEach(t=>{renderQuiz(t);renderSources(t);document.getElementById('add-'+t).value=localStorage.getItem('day3_add_'+t)||''});
  const t=localStorage.getItem('day3_active_topic'); if(t&&topics.includes(t))showTopic(t);
- const tr=JSON.parse(localStorage.getItem('day3_tracker')||'{}');trackQuestions.value=tr.q||'';trackScore.value=tr.s||'';paintComplete();
+ paintComplete();
 });
 </script><script src="qbank-tracker.js"></script>
 </body></html>

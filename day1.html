@@ -966,13 +966,6 @@ code.dose{background:#f1f5f9;border-radius:6px;padding:2px 6px;font-family:ui-mo
 <div class="rapid-item"><span>Trauma</span><b>ABCDE + C-spine</b></div>
 <div class="rapid-item"><span>Dissection clue</span><b>Abrupt back pain + pulse/BP asymmetry</b></div>
 </div>
-<div class="tracker" style="margin-top:14px">
-<div><label class="note-line">Questions</label><input id="ecq" type="number"/></div>
-<div><label class="note-line">Score %</label><input id="ecscore" type="number"/></div>
-<div><label class="note-line">Wrong / flagged</label><input id="ecwrong" type="number"/></div>
-<div><label class="note-line">Weakest topic</label><input id="ecweak" type="text"/></div>
-</div>
-<button class="btn" onclick="saveTracker()" style="margin-top:12px">Save Day 1 tracker</button>
 </section>
 <section class="card footer-actions">
 <div><b>Finished Day 1?</b><div class="note-line">Mark complete only after you review all 11 topics and practice questions.</div></div>
@@ -1018,16 +1011,7 @@ function loadSaved(){
     const el=document.getElementById('add-'+id);
     if(el) el.value=localStorage.getItem('day1_add_'+id)||'';
   });
-  const t=JSON.parse(localStorage.getItem('day1_tracker')||'{}');
-  if(t.q!=null) document.getElementById('ecq').value=t.q;
-  if(t.score!=null) document.getElementById('ecscore').value=t.score;
-  if(t.wrong!=null) document.getElementById('ecwrong').value=t.wrong;
-  if(t.weak) document.getElementById('ecweak').value=t.weak;
   showTopic(localStorage.getItem('day1_active_topic')||'abcde');
-}
-function saveTracker(){
-  const data={q:document.getElementById('ecq').value,score:document.getElementById('ecscore').value,wrong:document.getElementById('ecwrong').value,weak:document.getElementById('ecweak').value};
-  localStorage.setItem('day1_tracker',JSON.stringify(data)); alert('Day 1 tracker saved.');
 }
 function markDayComplete(){localStorage.setItem('day1_complete','true');alert('Day 1 marked complete.')}
 function openModal(id){document.getElementById(id).classList.add('open')}

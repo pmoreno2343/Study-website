@@ -367,7 +367,6 @@ html,body{min-height:100%}.app{min-height:100vh;align-items:stretch}.sidebar{ali
 <div class="rapid-item"><span>Thyroid storm</span><b>Beta-blocker + thionamide → iodine + steroid</b></div>
 <div class="rapid-item"><span>Adrenal crisis</span><b>Hydrocortisone 100 mg IV/IM immediately</b></div>
 <div class="rapid-item"><span>Hypercalcemia</span><b>Confirm → PTH → cause → hydrate/treat severity</b></div>
-<div class="tracker"><label>Questions <input id="trackQuestions" min="0" type="number"/></label><label>Score % <input id="trackScore" max="100" min="0" type="number"/></label><button class="btn" onclick="saveTracker()">Save Day 5 tracker</button><span id="trackSaved"></span></div>
 </section>
 <section class="card complete-card"><h3>Finished Day 5?</h3><p>Mark complete only after you review all 8 topics and practice questions.</p><button class="btn" id="completeBtn" onclick="toggleComplete()">Mark Day 5 Complete</button></section>
 </main></div>
@@ -420,9 +419,8 @@ function openModal(id){document.getElementById(id).classList.add('open')}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function saveGeneralNote(){const arr=JSON.parse(localStorage.getItem('study_notes')||'[]');arr.push({title:noteTitle.value,body:noteBody.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_notes',JSON.stringify(arr));closeModal('noteModal');alert('Note saved in this browser.');}
 function saveMistake(){const arr=JSON.parse(localStorage.getItem('study_mistakes')||'[]');arr.push({topic:mTopic.value,clue:mClue.value,answer:mAnswer.value,rule:mRule.value,date:new Date().toLocaleDateString()});localStorage.setItem('study_mistakes',JSON.stringify(arr));closeModal('mistakeModal');alert('Mistake saved in this browser.');}
-function saveTracker(){localStorage.setItem('day5_tracker',JSON.stringify({q:trackQuestions.value,s:trackScore.value}));trackSaved.textContent='Saved ✓'}
 function toggleComplete(){const v=localStorage.getItem('day5_complete')==='1';localStorage.setItem('day5_complete',v?'0':'1');paintComplete()}
 function paintComplete(){const d=localStorage.getItem('day5_complete')==='1';completeBtn.textContent=d?'✓ Day 5 Complete':'Mark Day 5 Complete';completeBtn.classList.toggle('done',d)}
-window.addEventListener('DOMContentLoaded',()=>{topics.forEach(t=>{renderQuiz(t);renderSources(t);document.getElementById('add-'+t).value=localStorage.getItem('day5_add_'+t)||''});const t=localStorage.getItem('day5_active_topic');if(t&&topics.includes(t))showTopic(t);const tr=JSON.parse(localStorage.getItem('day5_tracker')||'{}');trackQuestions.value=tr.q||'';trackScore.value=tr.s||'';paintComplete();});
+window.addEventListener('DOMContentLoaded',()=>{topics.forEach(t=>{renderQuiz(t);renderSources(t);document.getElementById('add-'+t).value=localStorage.getItem('day5_add_'+t)||''});const t=localStorage.getItem('day5_active_topic');if(t&&topics.includes(t))showTopic(t);paintComplete();});
 </script><script src="qbank-tracker.js"></script>
 </body></html>
