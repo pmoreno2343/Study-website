@@ -4,8 +4,8 @@
 <style>
 html,body{min-height:100%}
 .shell{min-height:100vh;align-items:stretch}
-.sidebar{align-self:stretch;min-height:100vh}
-@media(max-width:760px){.sidebar{min-height:auto}}
+.sidebar{align-self:stretch;min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable}
+@media(max-width:760px){.sidebar{min-height:auto;position:static;height:auto;overflow:visible;scrollbar-gutter:auto}}
 </style>
 </head><body>
 <div class="shell"><aside class="sidebar">
