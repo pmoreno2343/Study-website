@@ -2,7 +2,7 @@
   const KEY='universal_qbank_tracker_v2';
   const OLD_KEY='universal_qbank_tracker_v1';
   const SUBJECTS=['Emergency Medicine','Cardiology','Respiratory Medicine','Endocrinology','Gastroenterology','Neurology','Infectious Diseases','Nephrology','Hematology','Rheumatology','Pediatrics','Obstetrics & Gynecology','Psychiatry','Dermatology','Surgery','Preventive Medicine','Mixed / General Medicine'];
-  const DAY_SUBJECT={'Day 1':'Emergency Medicine','Day 2':'Cardiology','Day 3':'Cardiology','Day 4':'Respiratory Medicine','Day 5':'Endocrinology','Day 6':'Endocrinology'};
+  const DAY_SUBJECT={'Day 1':'Emergency Medicine','Day 2':'Cardiology','Day 3':'Cardiology','Day 4':'Respiratory Medicine','Day 5':'Endocrinology','Day 6':'Endocrinology','Day 7':'Nephrology','Day 8':'Nephrology','Day 9':'Infectious Diseases','Day 10':'Infectious Diseases'};
   function load(){
     try{
       let v=JSON.parse(localStorage.getItem(KEY)||'null');
